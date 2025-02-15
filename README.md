@@ -1,14 +1,3 @@
----
-title: "Churn Prediction Project Documentation"
-author: "R4DataScienceNigeria Team"
-format: 
-  html:
-    theme: cosmo
-    toc: true
-    toc-title: "Content"
-    toc-depth: 2
----
-
 ## 1. Customer Retention Analysis
 
 This documentation outlines the development of a robust Machine Learning model that accurately predicts customer churn for banks.
