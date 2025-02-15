@@ -3,18 +3,11 @@ library(readr)
 library(googledrive)
 library(janitor)
 library(stringr)
-
-
 ##Read in the data------------------------------------------------
 churn_df <- read_table("Team A/Bank_customer_churn.txt")
-
 ## Data Cleaning---------------------------------------------------
-
 #str(churn_df) # check data structure 
-
 #glimpse(churn_df) # Inspecting data structure
-
-
 # 1. change column names to lower case
 new_churn <- churn_df |>
   clean_names() |> # change names to lower case
@@ -40,10 +33,6 @@ new_churn <- churn_df |>
 
 # Save the data frame to an RDS file
 saveRDS(new_churn, file = "Team A/clean_churn.rds")
-
 # Read the data frame from the RDS file
 #df <- readRDS("path/to/your/file.rds")
-
-
-
 

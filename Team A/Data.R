@@ -14,7 +14,6 @@ library(stringr)
 #txt_data <- read_delim(drive_download(file_id, path = tempfile(), overwrite = TRUE), delim = "/t", col_names = TRUE)
 
 
-
 ##Read in the data------------------------------------------------
 churn_df <- read_table("Team A/Bank_customer_churn.txt")
 
