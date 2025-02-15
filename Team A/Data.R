@@ -44,46 +44,16 @@ new_churn <- churn_df |>
            debit_val = "last_12_months_debit_value",
            credit_val = "last_12_months_credit_value",
          ) |>
+  filter(!(ave %in% c("GBP", "JPY", "NGN", "SBA", "USD"))) |>
   mutate(across(c(ave, subsegment, debit_vol, debit_val, credit_val), 
-                ~ str_replace_all(., ",", "") %>%
-                  str_replace_all("-", "0") %>%
-                  as.numeric())) |>
-  glimpse()
+                ~ parse_number(str_replace_all(., ",", "") %>%
+                                 str_replace_all("-", "0")))) |>
+  mutate(across(where(is.character), as.factor))
 
 
 
 new_churn |>
-  count(ave) |>
-  tail()
-
-churn_df |>
-  count(AVE) |>
-  tail()
-
-churn_df |>
-  filter(AVE != c("GBP","JPY","NGN","SBA","USD")) |>
-  count(AVE)
- 
-acct_id
-risk
-currency
-bal
-scheme
-mobile_app
-internet_banking
-ussd_banking
-digital_loan
-unsecured_loan
-termloan
-credit_card
-subsegment
-
-ave
-subsegment
-debit_vol
-debit_val
-credit_val
-
+  count(ave)
 
 
 
