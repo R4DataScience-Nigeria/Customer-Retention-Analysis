@@ -3,6 +3,7 @@ library(readr)
 library(googledrive)
 library(janitor)
 library(stringr)
+library(here)
 ##Read in the data------------------------------------------------
 churn_df <- read_table("Team A/Bank_customer_churn.txt")
 ## Data Cleaning---------------------------------------------------
@@ -33,6 +34,6 @@ new_churn <- churn_df |>
 
 # Save the data frame to an RDS file
 saveRDS(new_churn, file = "Team A/clean_churn.rds")
-# Read the data frame from the RDS file
-#df <- readRDS("path/to/your/file.rds")
 
+# Read the data frame from the RDS file
+# df <- read_rds(here("Team A", "clean_churn.rds"))
