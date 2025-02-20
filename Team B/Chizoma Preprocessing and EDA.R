@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 library(here)
 library(readr)
 library(tidyverse)
@@ -57,4 +55,3 @@ df_2 <- df %>%
 
 
 #univariate and multivariate analysis
->>>>>>> e500216781f9f77d2dca9f22be4e6487534fd934
