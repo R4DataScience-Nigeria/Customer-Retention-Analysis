@@ -35,5 +35,4 @@ new_churn <- churn_df |>
 # Save the data frame to an RDS file
 saveRDS(new_churn, file = "Team A/clean_churn.rds")
 
-# Read the data frame from the RDS file
-# df <- read_rds(here("Team A", "clean_churn.rds"))
+
