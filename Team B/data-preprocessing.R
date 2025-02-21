@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 library(here)
 library(readr)
 library(tidyverse)
