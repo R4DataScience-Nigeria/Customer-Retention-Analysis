@@ -1,129 +1,116 @@
 library(here)
-library(readr)
 library(tidyverse)
 
 # Read the data frame from the RDS file
 df <- read_rds(here("Team A", "clean_churn.rds"))
 
-#View(df)
-
-#Check dimension of data
-
-dim(df)
 
 #checking data types of variables
+#View(df)
+#glimpse(df)
+#str(df)
 
-glimpse(df)
+# removing the credit_val and x21 (contains huge numbers of missing values)
+new_df <- df |>
+           select(-c(credit_val,x21)) |>
+           rename(churn_status = "churn")
 
-str(df)
+# data inspection
+glimpse(new_df)
 
-#Checking credit_val
+# Understanding the Scope of Churn
+# What percentage of customers have churned?
 
-df |>
-  count(credit_val,x21)
-
-
-#Checking for unique values in acct_id
-
-df %>%
-  count(acct_id) %>%
-  slice_head(n = 10) #To check first 10 observations (rows)
-
-
-df %>% #Checking for duplicated values in acct_id column
-  group_by(acct_id) %>% 
-  summarise(n = n()) %>% 
-  arrange(desc(n)) %>%  # Arrange in descending order
-  slice_head(n = 50)     # Select the top 20 rows
-
-#ggplot(aes(y = acct_id, x = n))+
-#geom_col()
+churn_percentage <- new_df %>%
+  summarise(not_churn_rate = mean(churn_status == "not churned") * 100,
+            churn_rate = mean(churn_status == "churned") * 100)
 
 
-df %>% 
-  filter(acct_id == "Account_2727") %>% #checking if Account_2727 is duplicated
-  View()
+ churn_by_risk <- new_df %>%
+  group_by(risk) %>%
+  summarise(not_churn_rate = mean(churn_status == "not churned") * 100,
+            churn_rate = mean(churn_status == "churned") * 100)
 
-#sum(duplicated(df) == TRUE) #Checking for duplicates
+# create visualization for churn distribution
+ ggplot(df_2, aes(x = risk)) +
+   geom_bar( aes(fill = churn), alpha = 0.5, color = "black",
+             position = "dodge") +
+   labs(title = "Distribution of customer churn rate by risk", 
+        x = "Risk", y="Frequency")
 
 
-#Dropping credit_val and x21 columns
+# How are customers categorized based on risk levels
+risk_levels <- new_df |>
+              count(risk)
 
-df_2 <- df %>% 
-  select(-credit_val, -x21)
-  View(df_2)
+# Proportion of customers using digital banking services
 
-# UNIVARIATE & MULTIVARIATE ANALYSIS---- By answering some research questions
+  new_df |> 
+  summarise(mobile_prop = mean(mobile_app == "Y") * 100,
+            internet_prop = mean(internet_banking == "Y") * 100,
+            ussd_prop = mean(ussd_banking == "Y") * 100 )
+  
+  # Proportion of customers not using digital banking services
+  new_df |> 
+    summarise(mobile_prop = mean(mobile_app == "N") * 100,
+              internet_prop = mean(internet_banking == "N") * 100,
+              ussd_prop = mean(ussd_banking == "N") * 100 )
+  
+  
+  
+# Checking the churn rate by credit card
+  
+  new_df |>
+    group_by(credit_card) |>
+    summarise(churn_rate = mean(churn_status == "churned") * 100) |>
+    arrange(desc(churn_rate))
+  
+  # total numbers of customers
+  new_df |>
+    count(acct_id) |> 
+    nrow()
+  
+  #first 10 observations (rows)
+  new_df |>
+    count(acct_id) |>
+    arrange(desc(n)) |>
+    slice_head(n = 10)
+    
+  #last 10 observations (rows)
+  new_df %>%
+    count(acct_id) |>
+    arrange(desc(n)) |>
+    slice_tail(n = 10)
+
+#---------UNIVARIATE & MULTIVARIATE ANALYSIS
+#---- By answering some research questions
 
 #UNIVARIATE ANALYSIS
   
-#Checking relationship between years and churn status
+#Checking relationship between years,ave, subsegment, credit_vol, debit_vol and debit_val
+  # Transaction Patterns & Churn Impact
+  # Analyzing the correlation between credit and debit volumes
+  correlation_credit_debit <- new_df %>%
+    summarise(correlation = cor(credit_vol, debit_vol, years))
   
-#Ensure churn is a numeric variable (0 for not churned, 1 for churned)
-df_2$churn <- ifelse(df_2$churn == "churned", 1, 0)  
-str(df_2$churn)
-#Separate churned and non-churned customers
-churned <- df_2 %>% filter(churn == 1)   # Churned customers
-not_churned <- df_2 %>% filter(churn == 0)  # Non-churned customers
-  
-# Group by years and summarize counts
-churn_summary <- df_2 %>%
-group_by(years) %>%
-summarize(
-churned_count = sum(churn),   # Total churned customers per year
-not_churned_count = sum(1 - churn),  # Total non-churned customers per year
-total_customers = n(),  
-churn_rate = churned_count / total_customers  # Churn rate per year
-)
-print(churn_summary)
 
-#What percentage of customers have churned?
-  
-table(df_2$churn)  # Frequency count
-prop.table(table(df_2$churn)) * 100  # Percentage
 
-#About 52% of customers churned, based on the data set.
-
-#How are customers categorized based on risk levels? In percentage
-table(df_2$risk)  # Count of each risk category
-prop.table(table(df_2$risk)) * 100  # Percentage breakdown
-
-#Checking the distribution of customer churn rate in risk column
-df_2 %>% 
-  group_by(churn) %>% 
-  summarise(count_low = sum(risk == "LOW"),
-            count_medium = sum(risk == "MEDIUM"),
-            count_high = sum(risk == "HIGH"))
-
-ggplot(df_2, aes(x = risk)) +
-  geom_bar( aes(fill = churn), alpha = 0.5, color = "black",
-            position = "dodge") +
-  labs(title = "Distribution of customer churn rate by risk", 
-       x = "Risk", y="Frequency")
 #Based on customer risk, the Medium risk customers have high tendency to churn compared the other risk categories (high and low risk customers)
 
 
-#checking the counts 
-df_2 %>% 
-  group_by(risk, churn) %>% 
-  summarise(count = n())
+  freq1_df <- new_df %>%
+    count(risk, churn_status) %>%
+    rename(Frequency = n)
 
-#churn rate by risk
-churn_rate_by_risk <- df_2 %>% 
-  group_by(risk) %>% 
-  summarise(churn_rate = sum(churn == "churned") / n(),
-            Not_churn_rate = sum(churn == "not churned") / n())
-churn_rate_by_risk
- #plot to visualize risk rate of customers
+  
+  new_df %>%
+    count(currency, churn_status) %>%
+    rename(Frequency = n)
+  
+  
 
-#How many customers use digital banking services?
-table(df_2$mobile_app)
-table(df_2$internet_banking)
-table(df_2$ussd_banking)
-prop.table(table(df_2$mobile_app)) * 100
-prop.table(table(df_2$internet_banking)) * 100
-prop.table(table(df_2$ussd_banking)) * 100
 
+ 
 # Plot visualize the use of digital services
 
 #Do customers who make use of mobile app have higher churn rate 
