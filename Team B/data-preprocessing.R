@@ -2,6 +2,8 @@ library(here)
 library(reshape2)
 library(tidyverse)
 library(corrplot)
+library(ggstatsplot)
+library(scales)
 
 # Read the data frame from the RDS file
 df <- read_rds(here("Team A", "clean_churn.rds"))
@@ -15,6 +17,7 @@ df <- read_rds(here("Team A", "clean_churn.rds"))
 new_df <- df |>
            select(-c(credit_val,x21)) |>
            rename(churn_status = "churn")
+
 
 # data inspection
 glimpse(new_df)
@@ -81,19 +84,16 @@ risk_levels <- new_df |>
 #UNIVARIATE ANALYSIS
   
 #Checking relationship between years,ave, subsegment, credit_vol, debit_vol and debit_val
-  # Transaction Patterns & Churn Impact
-  # Analyzing the correlation between credit and debit volumes
-  correlation_credit_debit <- new_df %>%
-    select(credit_vol, debit_vol, years) |>
-    summarise(correlation = cor())
-  
   
   # Assuming your dataframe is called 'new_df' and the six variables are years,ave, subsegment, credit_vol, debit_vol and debit_val
   variables <- new_df %>%
     select(years,ave, subsegment, credit_vol, debit_vol,debit_val)
   
   # Calculate the correlation matrix
-  correlation_matrix <- cor(variables, use = "complete.obs")
+  #correlation_matrix <- cor(variables, use = "complete.obs")
+  ggcorrmat(variables, matrix.type = "full",
+            title = "Correlational Plot",
+              caption = "Source:")
   
   # Convert the correlation matrix to a long format for visualization
   correlation_long <- melt(correlation_matrix)
@@ -110,7 +110,6 @@ risk_levels <- new_df |>
 
 
 #Based on customer risk, the Medium risk customers have high tendency to churn compared the other risk categories (high and low risk customers)
-
 
   freq1_df <- new_df %>%
     count(risk, churn_status) %>%
@@ -129,7 +128,7 @@ risk_levels <- new_df |>
   
   
   
-  #------------------------------------------- VISUALIZATIOON
+#------------------------------------------- VISUALIZATIOON
   
 # Plot visualize the use of digital services
   
@@ -140,14 +139,24 @@ risk_levels <- new_df |>
     summarise(churn_rate = mean(churn_status == "churned") * 100)
   
   # create visualization for churn distribution
-  ggplot(df_2, aes(x = risk)) +
-    geom_bar( aes(fill = churn), alpha = 0.5, color = "black",
+  ggplot(new_df, aes(x = fct_relevel(risk,c("LOW","MEDIUM","HIGH")))) +
+    geom_bar( aes(fill = churn_status), alpha = 0.5, color = "black",
               position = "dodge") +
-    labs(title = "Distribution of customer churn rate by risk", 
-         x = "Risk", y="Frequency")
-  
-  ggplot(churn_by_year, aes(x = years, y = churn_rate)) +
-    geom_line()
+    labs(title = "Customer's Risk Churn Rate", 
+         x = "Customer's Risk Profile", y="Frequency of Churn Status", 
+         caption = "Source")+
+    scale_y_continuous(labels = comma,
+                       breaks = seq(from = 0, 140000, by = 20000))+
+    scale_fill_manual(values = c("churned"="black",
+                                  "not churned"="blue"))+
+    theme_minimal()+
+    theme(axis.title = element_text(face = "bold.italic", 
+                                    color = "gray20",size = 10),
+          plot.title = element_text(face = "bold",
+                                    size = 12,
+                                    colour = "gray20"),
+          plot.caption = element_text(face = "bold.italic",
+                                      size = 8))
   
   churn_by_years <- new_df %>%
     group_by(years) %>%
@@ -159,18 +168,40 @@ risk_levels <- new_df |>
       names_to = "rate"
     )
   
+  #I touched this
   ggplot(churn_by_years, aes(x = years, y = values, colour = rate)) +
     geom_line() +
-    ggtitle("Churned vs. Non-Churned Customers by Year") +
-    xlab("Years with Bank") +
-    ylab("Number of Customers")
+    labs(title = "Customer Loyalty Over Time:", 
+         subtitle = "A Deep Dive into the Effect of Years in the Bank on Churn",
+         x = "Years with Bank", y = "Number of Customers",
+         caption = "Source:", color = "Rate")+
+    scale_color_manual(values = c("churn_rate"="black",
+                                  "not_churn_rate"="blue"))+
+    annotate("text",x = 1, y= 10, label = "Not Churn", color = "blue")+
+    annotate("text", x = 0, y = 90, label = "Churn", color = "black")+
+    scale_x_continuous(breaks = seq(from = 0, to = 13, by = 2))+
+    scale_y_continuous(breaks = seq(from = 0, to = 110, by = 10))+
+    theme_minimal()+
+    theme(legend.position = "top",axis.title = element_text(face = "bold.italic", 
+                                    color = "gray20",size = 10),
+          plot.title = element_text(face = "bold",
+                                    size = 12,
+                                    colour = "gray20"),
+          plot.caption = element_text(face = "bold.italic",
+                                      size = 8))
   
-
 #Do customers who make use of mobile app have higher churn rate 
-ggplot(df_2, aes(x = mobile_app)) +
-  geom_bar(aes(fill = churn), alpha = 0.5, color = "black",
+ggplot(new_df, aes(x = mobile_app)) +
+  geom_bar(aes(fill = churn_status), alpha = 0.5, color = "black",
            position = "dodge") +
-  labs(title = "Churn rate by Mobile app", x = "Mobile App", y = "frequency")
+  labs(title = "Churn rate by Mobile app", x = "Mobile App", y = "frequency")+
+  scale_fill_manual(values = c("churned"="black",
+                                "not churned"="blue"))+
+  theme_minimal()
+
+
+# Where we STOP!!!!!!!!!!!! -----------------------------------------------
+
 churn_rate_by_MA <- df_2 %>% 
   group_by(mobile_app) %>% 
   summarise(churn_rate = sum(churn == "churned") / n(),
