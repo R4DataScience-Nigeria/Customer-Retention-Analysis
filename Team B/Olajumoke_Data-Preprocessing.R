@@ -84,8 +84,7 @@ ggplot(churn_summary, aes(x = years)) +
 churn_currency_summary <- df_2 %>%
   group_by(currency, churn) %>%  # Group by currency and churn status
   summarize(count = n(), .groups = 'drop')  # Count customers
-
-#print(churn_mobile_summary)
+print(churn_mobile_summary)
 
 
 #WHAT IS THE RELATIONSHIP BETWEEN CUSTOMER CHURN AND CURRENCE?

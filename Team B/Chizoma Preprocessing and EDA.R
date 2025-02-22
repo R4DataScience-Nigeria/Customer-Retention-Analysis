@@ -54,4 +54,9 @@ df_2 <- df %>%
   View()
 
 
-#univariate and multivariate analysis
+#Establishing some Metrics
+
+# a) Customer Churn Rate (CCR)= No of Churned cust/Total No of churned Cust
+
+# total_No_cust <- 499152
+# No_churned_cust <-
