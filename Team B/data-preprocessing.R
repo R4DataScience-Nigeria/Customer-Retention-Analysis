@@ -1,9 +1,10 @@
 library(here)
+library(reshape2)
 library(tidyverse)
+library(corrplot)
 
 # Read the data frame from the RDS file
 df <- read_rds(here("Team A", "clean_churn.rds"))
-
 
 #checking data types of variables
 #View(df)
@@ -30,14 +31,6 @@ churn_percentage <- new_df %>%
   group_by(risk) %>%
   summarise(not_churn_rate = mean(churn_status == "not churned") * 100,
             churn_rate = mean(churn_status == "churned") * 100)
-
-# create visualization for churn distribution
- ggplot(df_2, aes(x = risk)) +
-   geom_bar( aes(fill = churn), alpha = 0.5, color = "black",
-             position = "dodge") +
-   labs(title = "Distribution of customer churn rate by risk", 
-        x = "Risk", y="Frequency")
-
 
 # How are customers categorized based on risk levels
 risk_levels <- new_df |>
@@ -91,8 +84,29 @@ risk_levels <- new_df |>
   # Transaction Patterns & Churn Impact
   # Analyzing the correlation between credit and debit volumes
   correlation_credit_debit <- new_df %>%
-    summarise(correlation = cor(credit_vol, debit_vol, years))
+    select(credit_vol, debit_vol, years) |>
+    summarise(correlation = cor())
   
+  
+  # Assuming your dataframe is called 'new_df' and the six variables are years,ave, subsegment, credit_vol, debit_vol and debit_val
+  variables <- new_df %>%
+    select(years,ave, subsegment, credit_vol, debit_vol,debit_val)
+  
+  # Calculate the correlation matrix
+  correlation_matrix <- cor(variables, use = "complete.obs")
+  
+  # Convert the correlation matrix to a long format for visualization
+  correlation_long <- melt(correlation_matrix)
+
+  # Impact of transaction volumes and values on churn
+  transaction_impact_on_churn <- new_df %>%
+    group_by(churn_status) %>%
+    summarise(credit_volume = mean(credit_vol),
+              debit_volume = mean(debit_vol),
+              subsegment = mean(subsegment),
+              ave = mean(ave),
+              years = mean(years),
+              debit_value = mean(debit_val))
 
 
 #Based on customer risk, the Medium risk customers have high tendency to churn compared the other risk categories (high and low risk customers)
@@ -102,16 +116,55 @@ risk_levels <- new_df |>
     count(risk, churn_status) %>%
     rename(Frequency = n)
 
-  
   new_df %>%
     count(currency, churn_status) %>%
     rename(Frequency = n)
   
   
-
-
- 
+  # Relationship between customer churn and currency
+  currency_churn_relationship <- new_df %>%
+    group_by(currency, churn_status) %>%
+    summarise(count = n())
+  
+  
+  
+  
+  #------------------------------------------- VISUALIZATIOON
+  
 # Plot visualize the use of digital services
+  
+  # Temporal Trends & Currency Influence on Churn
+  # How does customer churn vary by years?
+  churn_by_year <- new_df %>%
+    group_by(years) %>%
+    summarise(churn_rate = mean(churn_status == "churned") * 100)
+  
+  # create visualization for churn distribution
+  ggplot(df_2, aes(x = risk)) +
+    geom_bar( aes(fill = churn), alpha = 0.5, color = "black",
+              position = "dodge") +
+    labs(title = "Distribution of customer churn rate by risk", 
+         x = "Risk", y="Frequency")
+  
+  ggplot(churn_by_year, aes(x = years, y = churn_rate)) +
+    geom_line()
+  
+  churn_by_years <- new_df %>%
+    group_by(years) %>%
+    summarise(not_churn_rate = mean(churn_status == "not churned") * 100,
+              churn_rate = mean(churn_status == "churned") * 100) |>
+    pivot_longer(
+      cols = 2:3,
+      values_to = "values",
+      names_to = "rate"
+    )
+  
+  ggplot(churn_by_years, aes(x = years, y = values, colour = rate)) +
+    geom_line() +
+    ggtitle("Churned vs. Non-Churned Customers by Year") +
+    xlab("Years with Bank") +
+    ylab("Number of Customers")
+  
 
 #Do customers who make use of mobile app have higher churn rate 
 ggplot(df_2, aes(x = mobile_app)) +
@@ -195,14 +248,6 @@ ggplot(df_2, aes(x = churn, y = credit_vol)) +
   stat_summary(fun = mean, geom = "bar") + 
   labs(title = "Average Credit Volume by Churn Status", x = "Churn Status", y = "Average Credit Volume")
 
-# Debit Volume
-ggplot(df_2, aes(x = churn, y = debit_vol)) + 
-  stat_summary(fun = mean, geom = "bar") + 
-  labs(title = "Average Debit Volume by Churn Status", x = "Churn Status", y = "Average Debit Volume")
-
-cor(df_2$debit_val, df_2$debit_vol, use = "complete.obs") #There is a very strong correlation between the debit value and debit volume
-aggregate(debit_val ~ churn, data = df_2, mean)  
-aggregate(debit_vol ~ churn, data =df_2, mean)
 
 # Impact of transaction volumes and values on churn
 transaction_churn <- df_2 %>%
@@ -293,24 +338,6 @@ ggplot(df_2, aes(y = bal)) +
 
 
 # Proportion of customers using digital banking services
-
-library(ggplot2)
-library(dplyr)
-
-# Function to convert proportions to data frame
-get_proportion_df <- function(column, name) {df %>%
-    count(!!sym(column)) %>%
-    mutate(percentage = (n / sum(n)) * 100) %>%
-    rename(category = !!sym(column)) %>%
-    mutate(channel = name)}
-
-# Compute proportions for each banking channel
-mobile_app_df <- get_proportion_df("mobile_app", "Mobile App")
-internet_banking_df <- get_proportion_df("internet_banking", "Internet Banking")
-ussd_banking_df <- get_proportion_df("ussd_banking", "USSD Banking")
-
-# Combine all into one dataset
-plot_data <- bind_rows(mobile_app_df, internet_banking_df, ussd_banking_df)
 
 ggplot(plot_data, aes(x = category, y = percentage, fill = channel)) +
   geom_bar(stat = "identity", position = "dodge") +
