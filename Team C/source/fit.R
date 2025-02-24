@@ -1,58 +1,50 @@
 # situating --------------------------------------------------------------------
 # pak::pak("QSARdata")
-library(QSARdata)
+#library(QSARdata)
 library(tidymodels)
+library(tidyverse)
 library(baguette)
 library(bundle)
-library(doMC)
+#(doMC)
 library(finetune)
+library(here)
 registerDoMC(cores = max(1, parallelly::availableCores() - 1))
 
-data(Mutagen)
-
-head(Mutagen_Dragon)
-
-# in the paper, their model results on the test set read:
-truth <- as.factor(c(rep(F, 163), rep(T, 290), rep(F, 30), rep(T, 52)))
-estimate <- as.factor(c(rep(F, 163), rep(T, 290), rep(T, 30), rep(F, 52)))
-
-accuracy_vec(truth, estimate)
-# [1] 0.846729
 
 # data setup -------------------------------------------------------------------
-mutagen_tbl <- 
-  bind_cols(
-    as_tibble_col(Mutagen_Outcome, "outcome"),
-    as_tibble(Mutagen_Dragon)
-  )
 
-mutagen_tbl
+churn_df <- read_rds(here("Team A", "clean_churn.rds")) |>
+                        select(-c(credit_val,x21)) |>
+                        rename(churn_status = "churn")
 
-save(mutagen_tbl, file = "data/mutagen_tbl.Rda")
+glimpse(churn_df)
+
+missing_values <- churn_df %>%
+  summarise_all(~ sum(is.na(.)))
+
+# Print the columns with missing values and their counts
+missing_values[missing_values > 0]
+
 
 set.seed(1)
-mutagen_split <- initial_split(mutagen_tbl)
-mutagen_train <- training(mutagen_split)
-mutagen_test <- testing(mutagen_split)
+churn_split <- initial_split(churn_df)
+churn_train <- training(churn_split)
+churn_test <- testing(churn_split)
 
 set.seed(1)
-mutagen_folds <- vfold_cv(mutagen_train)
+churn_folds <- vfold_cv(churn_train)
 
 # strategy: define basic + toxicosph.. recipes + some model specs, tune w workflowsets
 # pursue best model further with iterative tuning
 # preprocessors --------------------
 recipe_basic <-
-  recipe(outcome ~ ., mutagen_train) %>%
+  recipe(churn_status ~ ., churn_train) %>%
   step_nzv(all_predictors())
 
 recipe_normalize <-
   recipe_basic %>%
   step_YeoJohnson(all_double_predictors()) %>%
   step_normalize(all_double_predictors())
-
-recipe_pca <- 
-  recipe_normalize %>%
-  step_pca(all_numeric_predictors(), num_comp = tune())
 
 # model specifications -------------
 spec_lr <-
@@ -85,7 +77,7 @@ spec_xgb <-
   set_mode("classification")
 
 # metrics ------
-mutagen_metrics <- metric_set(roc_auc, accuracy, kap, mcc)
+churn_metrics <- metric_set(roc_auc, accuracy, kap, mcc)
 
 # combine into a workflow set -------
 wf_set <-
@@ -104,7 +96,7 @@ wf_set <-
       )
     )
   ) %>%
-  bind_rows(
+  bind_rows( 
     workflow_set(
       preproc = list(pca = recipe_pca),
       models = list(
@@ -124,7 +116,7 @@ wf_set_fit <-
     fn = "tune_grid", 
     verbose = TRUE, 
     seed = 1,
-    resamples = mutagen_folds,
+    resamples = churn_folds,
     metrics = mutagen_metrics,
     control = control_grid(parallel_over = "everything")
   )

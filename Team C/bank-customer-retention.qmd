@@ -12,14 +12,12 @@ logo-alt:
 editor: visual
 ---
 
-
 ```{r}
 library(ggplot2)
 library(gt)
 spam <- 12
 comments <- "R4DS"
 ```
-
 
 # Churn(standard)
 
@@ -54,15 +52,18 @@ list(
   value = comments
 )
 ```
-## Row 2 
 
-### Column {width=60%}
+## Row 2
+
+### Column {width="60%"}
+
 ```{r}
 #| title: plot1
 plot(mpg$year,mpg$cty)
 ```
 
-### Column {width=40%}
+### Column {width="40%"}
+
 ```{r}
 #| title: plot 2
 plot(mpg$year,mpg$cty)
@@ -72,13 +73,13 @@ plot(mpg$year,mpg$cty)
 #| title: plot 3
 plot(mpg$year,mpg$cty)
 ```
+
 ## Row 3
 
 ```{r}
 #|title: table 1
 head(mpg)
 ```
-
 
 # Prediction
 
