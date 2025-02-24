@@ -1,0 +1,287 @@
+---
+title: "Churn Prediction Analysis"
+author: "R4DataScienceNigeria Team"
+format: 
+  html:
+    theme: cosmo
+    toc: true
+    toc-title: "Contents"
+    toc-depth: 2
+---
+
+```{r setup, include=FALSE}
+# Load required packages
+install.packages(c("tidyverse", "tidymodels", "ggfortify", "gt", "validate", "themis", "vip", "lime", "plumber"))
+library(tidyverse)
+library(tidymodels)
+library(ggfortify)
+library(gt)
+library(validate)
+library(themis)
+library(vip)
+library(lime)
+library(plumber)
+
+# Set seed for reproducibility
+set.seed(123)
+```
+
+## 1. Load and Prepare the Data
+
+
+```{r}
+# Load the data
+churn_data <- read_csv("churn_data.csv")
+
+# Inspect the data
+glimpse(churn_data)
+
+# Split the data into training and testing sets
+data_split <- initial_split(churn_data, prop = 0.8)
+train_data <- training(data_split)
+test_data <- testing(data_split)
+```
+
+## 2. Data Validation
+
+```{r}
+# Define validation rules
+rules <- validator(
+  is.numeric(tenure),
+  is.numeric(MonthlyCharges),
+  is.numeric(TotalCharges),
+  TotalCharges >= 0,
+  MonthlyCharges >= 0
+)
+
+# Validate the data
+validation_results <- confront(churn_data, rules)
+summary(validation_results)
+```
+
+## 3. Handle Class Imbalance
+
+```{r}
+# Apply SMOTE to the training data
+train_data_balanced <- recipe(churn ~ ., data = train_data) %>%
+  step_smote(churn) %>%
+  prep() %>%
+  juice()
+```
+
+## 4. Preprocess the Data
+
+```{r}
+# Create a recipe for preprocessing the data
+churn_recipe <- recipe(churn ~ ., data = train_data_balanced) %>%
+  step_normalize(all_numeric_predictors()) %>%
+  step_dummy(all_nominal_predictors())
+```
+
+## 5. Define Models
+
+```{r}
+# Logistic Regression
+log_reg_model <- logistic_reg() %>%
+  set_engine("glm")
+
+# Decision Tree
+tree_model <- decision_tree() %>%
+  set_engine("rpart") %>%
+  set_mode("classification")
+
+# Random Forest
+rf_model <- rand_forest() %>%
+  set_engine("ranger") %>%
+  set_mode("classification")
+```
+
+## 6. Create Workflows
+
+```{r}
+# Logistic Regression Workflow
+log_reg_workflow <- workflow() %>%
+  add_model(log_reg_model) %>%
+  add_recipe(churn_recipe)
+
+# Decision Tree Workflow
+tree_workflow <- workflow() %>%
+  add_model(tree_model) %>%
+  add_recipe(churn_recipe)
+
+# Random Forest Workflow
+rf_workflow <- workflow() %>%
+  add_model(rf_model) %>%
+  add_recipe(churn_recipe)
+```
+
+## 7. Hyperparameter Tuning
+
+```{r}
+# Example of hyperparameter tuning for Random Forest
+rf_tune <- rand_forest(mtry = tune(), trees = tune()) %>%
+  set_engine("ranger") %>%
+  set_mode("classification")
+
+rf_workflow_tune <- workflow() %>%
+  add_model(rf_tune) %>%
+  add_recipe(churn_recipe)
+
+# Define a grid of hyperparameters
+rf_grid <- grid_regular(mtry(range = c(1, 10)), trees(range = c(50, 200)), levels = 5)
+
+# Perform tuning
+rf_tune_results <- tune_grid(
+  rf_workflow_tune,
+  resamples = vfold_cv(train_data_balanced, v = 5),
+  grid = rf_grid
+)
+
+# Select the best hyperparameters
+best_rf <- select_best(rf_tune_results, "accuracy")
+
+# Finalize the workflow with the best hyperparameters
+rf_final <- finalize_workflow(rf_workflow_tune, best_rf)
+
+# Fit the final model
+rf_fit_final <- fit(rf_final, data = train_data_balanced)
+```
+
+## 8. Train the Models
+
+```{r}
+# Fit Logistic Regression
+log_reg_fit <- fit(log_reg_workflow, data = train_data_balanced)
+
+# Fit Decision Tree
+tree_fit <- fit(tree_workflow, data = train_data_balanced)
+
+# Fit Random Forest
+rf_fit <- fit(rf_workflow, data = train_data_balanced)
+```
+
+## 9. Cross-Validation
+
+```{r}
+# Perform cross-validation
+cv_results <- vfold_cv(train_data_balanced, v = 5)
+
+# Evaluate models using cross-validation
+log_reg_cv <- fit_resamples(log_reg_workflow, resamples = cv_results)
+tree_cv <- fit_resamples(tree_workflow, resamples = cv_results)
+rf_cv <- fit_resamples(rf_workflow, resamples = cv_results)
+
+# Collect metrics
+log_reg_metrics <- collect_metrics(log_reg_cv)
+tree_metrics <- collect_metrics(tree_cv)
+rf_metrics <- collect_metrics(rf_cv)
+
+# Combine metrics into a table
+cv_metrics <- bind_rows(
+  log_reg_metrics %>% mutate(model = "Logistic Regression"),
+  tree_metrics %>% mutate(model = "Decision Tree"),
+  rf_metrics %>% mutate(model = "Random Forest")
+)
+
+# Display metrics table
+cv_metrics %>%
+  select(model, .metric, mean) %>%
+  spread(key = .metric, value = mean) %>%
+  gt()
+```
+
+## 10. Evaluate the Models
+
+```{r}
+# Logistic Regression Evaluation
+log_reg_preds <- predict(log_reg_fit, test_data) %>%
+  bind_cols(test_data) %>%
+  metrics(truth = churn, estimate = .pred_class)
+
+# Decision Tree Evaluation
+tree_preds <- predict(tree_fit, test_data) %>%
+  bind_cols(test_data) %>%
+  metrics(truth = churn, estimate = .pred_class)
+
+# Random Forest Evaluation
+rf_preds <- predict(rf_fit, test_data) %>%
+  bind_cols(test_data) %>%
+  metrics(truth = churn, estimate = .pred_class)
+```
+
+## 11. Combine Metrics into a Table
+
+```{r}
+# Combine metrics
+all_metrics <- bind_rows(
+  log_reg_preds %>% mutate(model = "Logistic Regression"),
+  tree_preds %>% mutate(model = "Decision Tree"),
+  rf_preds %>% mutate(model = "Random Forest")
+)
+
+# Display metrics table
+all_metrics %>%
+  select(model, .metric, .estimate) %>%
+  spread(key = .metric, value = .estimate) %>%
+  gt()
+```
+
+## 12. Create Auto Plots
+
+```{r}
+# Auto Plot for Decision Tree
+autoplot(tree_fit)
+
+# Auto Plot for Random Forest
+autoplot(rf_fit)
+```
+
+## 13. Model Interpretation
+
+```{r}
+# Variable Importance for Random Forest
+vip(rf_fit)
+
+# Local Interpretable Model-Agnostic Explanations (LIME)
+explainer <- lime(train_data_balanced, rf_fit)
+explanation <- explain(test_data[1:10, ], explainer, n_features = 5)
+plot_features(explanation)
+```
+
+## 14. Model Deployment
+
+```{r}
+# Create a plumber API
+# Save the trained model
+save(rf_fit_final, file = "rf_fit_final.RData")
+
+# Define the API
+#* @apiTitle Churn Prediction API
+#* @param data A data frame with customer information
+#* @post /predict
+function(data) {
+  predict(rf_fit_final, data)
+}
+
+# Save the API as a plumber file
+writeLines(con = "plumber.R", text = "
+# Load required packages
+library(tidymodels)
+library(plumber)
+
+# Load the trained model
+load('rf_fit_final.RData')
+
+# Define the API
+#* @apiTitle Churn Prediction API
+#* @param data A data frame with customer information
+#* @post /predict
+function(data) {
+  predict(rf_fit_final, data)
+}
+")
+
+# Run the API
+pr <- plumber::plumb("plumber.R")
+pr$run(port = 8000)
+```

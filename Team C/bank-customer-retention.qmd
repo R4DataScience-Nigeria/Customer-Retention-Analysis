@@ -1,0 +1,85 @@
+---
+title: "R4DS Customer Retention"
+format: 
+  dashboard:
+    logo: images/penguins.png
+    nav-buttons: [linkedin, twitter, github]
+    linkedin:
+    github: https://github.com/R4DataScience-Nigeria/Customer-Retention-Analysis.git
+    twitter:
+logo: ""
+logo-alt: 
+editor: visual
+---
+
+
+```{r}
+library(ggplot2)
+library(gt)
+spam <- 12
+comments <- "R4DS"
+```
+
+
+# Churn(standard)
+
+## Row 1 {height = "15"}
+
+```{r}
+#| content: valuebox
+#| title: "Spam per day"
+list(
+  icon = "trash",
+  color = "danger",
+  value = spam
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Let's chat"
+list(
+ icon = "chat",
+  color = "primary",
+  value = comments
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Congratulation"
+list(
+ icon = "archive",
+  color = "success",
+  value = comments
+)
+```
+## Row 2 
+
+### Column {width=60%}
+```{r}
+#| title: plot1
+plot(mpg$year,mpg$cty)
+```
+
+### Column {width=40%}
+```{r}
+#| title: plot 2
+plot(mpg$year,mpg$cty)
+```
+
+```{r}
+#| title: plot 3
+plot(mpg$year,mpg$cty)
+```
+## Row 3
+
+```{r}
+#|title: table 1
+head(mpg)
+```
+
+
+# Prediction
+
+# Data
