@@ -5,7 +5,7 @@ library(tidyverse)
 # Read the data frame from the RDS file
 df <- read_rds(here("Team A", "clean_churn.rds"))
 
-#View(df)
+View(df)
 
 #Check dimension of data
 
@@ -61,6 +61,7 @@ df_2 <- df %>%
 View(df_2)
 
 #univariate and multivariate analysis
+
 #what percentage of customers have churned?
 
 table(df_2$churn)  # Frequency count

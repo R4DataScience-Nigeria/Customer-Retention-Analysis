@@ -62,7 +62,7 @@ df_2 %>%
             count_medium = sum(risk == "MEDIUM"),
             count_high = sum(risk == "HIGH"))
 
-ggplot(df, aes(x = risk)) +
+ggplot(df_2, aes(x = risk)) +
   geom_bar( aes(fill = churn), alpha = 0.5, color = "black",
             position = "dodge") +
   labs(title = "Distribution of customer churn rate by risk", 
@@ -78,6 +78,7 @@ ggplot(df_2, aes(x = years)) +
   geom_histogram(aes(fill = churn), bins = 50, color = "black") +
   labs(title = "Varaition of Churn rate by years",
       x = "Years")
+
 #churn rate by risk
 churn_rate_by_risk <- df_2 %>% 
   group_by(risk) %>% 

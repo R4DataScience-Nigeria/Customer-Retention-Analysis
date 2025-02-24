@@ -83,6 +83,6 @@ df_2 <- df_2 %>%
     churn = ifelse(churn == "Churned", 1, 0))
 
 # Chi-Square Test: Is there an association between churn and internet banking?
-chisq.test(table(df_2$churn, df_2$internet_banking)
+chisq.test(table(df_2$churn, df_2$internet_banking))
            
            
