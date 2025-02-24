@@ -1,6 +1,7 @@
 library(tidyverse)
 library(dplyr)
 
+df <- clean_churn
 #Check dimension of data
 dim(df)
 
@@ -9,8 +10,8 @@ glimpse(df)
 str(df)
 
 #Checking credit_val
-df |>
-  count(credit_val,x21)
+#df |>
+  #count(credit_val,x21)
 
 #Checking for unique values in acct_id
 df %>%
@@ -81,14 +82,14 @@ ggplot(churn_summary, aes(x = years)) +
 #churn vs mobile_app, internet_bank, ussd_bank users
 
 # Summarize churn counts by currency
-churn_currency_summary <- df_2 %>%
-  group_by(currency, churn) %>%  # Group by currency and churn status
-  summarize(count = n(), .groups = 'drop')  # Count customers
+#churn_currency_summary <- df_2 %>%
+  #group_by(currency, churn) %>%  # Group by currency and churn status
+  #summarize(count = n(), .groups = 'drop')  # Count customers
 
 #print(churn_mobile_summary)
 
 
-#WHAT IS THE RELATIONSHIP BETWEEN CUSTOMER CHURN AND CURRENCE?
+#WHAT IS THE RELATIONSHIP BETWEEN CUSTOMER CHURN AND CURRENCY?
 churn_currency_summary <- df_2 %>%
   group_by(currency) %>%
   summarize(
