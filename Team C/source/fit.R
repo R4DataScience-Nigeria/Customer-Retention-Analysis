@@ -46,6 +46,11 @@ recipe_normalize <-
   step_YeoJohnson(all_double_predictors()) %>%
   step_normalize(all_double_predictors())
 
+data_recipe <- recipe(~ ., data = your_data_frame) %>%
+  step_dummy(all_nominal_predictors(), -all_outcomes()) %>%
+  step_zv(all_predictors()) %>%
+  step_normalize(all_numeric_predictors())
+
 # model specifications -------------
 spec_lr <-
   logistic_reg() %>%
