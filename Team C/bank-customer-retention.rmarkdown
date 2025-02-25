@@ -35,8 +35,6 @@ new_df <- read_rds(here("Team A", "clean_churn.rds")) |>
    
 ```
 
-
-
 ```{r}
 #| label: churn-characteristics
 # customer churn rate
@@ -65,9 +63,13 @@ risk_levels <- new_df |>
 ```
 
 
+
+
 # Churn(standard)
 
 ## Row 1
+
+
 
 ```{r}
 #| content: valuebox
@@ -100,7 +102,11 @@ list(
 )
 ```
 
+
+
 ## Row 2 {height = "60%"}
+
+
 
 ```{r}
    churn_by_years <- new_df %>%
@@ -126,13 +132,21 @@ list(
 ```
 
 
+
+
 ### Churn by years {width="60%"}
+
+
 
 ```{r}
 ggplotly(churn_by_years)
 ```
 
+
+
 ### Column {width="40%"}
+
+
 
 ```{r}
 #| title: plot 2
@@ -144,13 +158,20 @@ plot(mpg$year,mpg$cty)
 plot(mpg$year,mpg$cty)
 ```
 
+
+
 ## Row 3
+
+
 
 ```{r}
 #|title: table 1
 head(mpg)
 ```
 
+
+
 # Prediction
 
 # Data
+

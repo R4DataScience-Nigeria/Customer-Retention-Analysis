@@ -61,11 +61,7 @@ risk_levels <- new_df |>
     summarise(churn_rate = mean(churn_status == "churned") * 100) |>
     arrange(desc(churn_rate))
   
-  # total numbers of customers
-  new_df |>
-    count(acct_id) |> 
-    nrow()
-  
+ 
   #first 10 observations (rows)
   new_df |>
     count(acct_id) |>
