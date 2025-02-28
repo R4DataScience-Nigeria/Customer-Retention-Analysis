@@ -122,8 +122,6 @@ risk_levels <- new_df |>
     summarise(count = n())
   
   
-  
-  
 #------------------------------------------- VISUALIZATIOON
   
 # Plot visualize the use of digital services

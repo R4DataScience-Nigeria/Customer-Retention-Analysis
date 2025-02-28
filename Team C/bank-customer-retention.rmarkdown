@@ -15,6 +15,7 @@ editor: visual
 ```{r}
 #| label: load-packages
 #| message: false
+#| include: false
 library(gt)
 library(here)
 library(reshape2)
@@ -23,6 +24,7 @@ library(corrplot)
 library(ggstatsplot)
 library(scales)
 library(plotly)
+library(nord)
 ```
 
 ```{r}
@@ -35,13 +37,20 @@ new_df <- read_rds(here("Team A", "clean_churn.rds")) |>
    
 ```
 
+
+
+# Churn(standard)
+
+
+
 ```{r}
 #| label: churn-characteristics
 # customer churn rate
-churn_percentage <- new_df %>%
+churn_rate <- new_df %>%
   summarise(not_churn_rate = mean(churn_status == "not churned") * 100,
             churn_rate = mean(churn_status == "churned") * 100) |>
   pull(churn_rate)
+
 
 # customer 
  churn_by_risk <- new_df %>%
@@ -64,10 +73,7 @@ risk_levels <- new_df |>
 
 
 
-
-# Churn(standard)
-
-## Row 1
+## Row 1 {height ="10%"}
 
 
 
@@ -78,7 +84,7 @@ risk_levels <- new_df |>
 list(
   icon = "speedometer",
   color = "danger",
-  value = "51.59%"
+  value = paste0(round(churn_rate,3), "%")
 )
 ```
 
@@ -88,7 +94,7 @@ list(
 list(
  icon = "people",
   color = "primary",
-  value = "48,8233"
+  value = comma(total_customer)
 )
 ```
 
@@ -104,7 +110,7 @@ list(
 
 
 
-## Row 2 {height = "60%"}
+## Row 2
 
 
 
@@ -133,42 +139,72 @@ list(
 
 
 
-
-### Churn by years {width="60%"}
-
-
-
-```{r}
-ggplotly(churn_by_years)
-```
-
-
-
-### Column {width="40%"}
+### Churn by years {width="40%"}
 
 
 
 ```{r}
-#| title: plot 2
-plot(mpg$year,mpg$cty)
+#| label: customers loyalty over time
+#| fig-width: 10
+#| fig-asp: 0.618
+churn_by_years
 ```
+
+
+
+### churn by products {.tabset}
+
+::: {.card title="Top 10 products churn rate"}  
+Product sorted in descending order of churn rates.
+
+
 
 ```{r}
-#| title: plot 3
-plot(mpg$year,mpg$cty)
+#| lable: top 10 bank product churn rate
+
+new_df |>
+    group_by(credit_card) |>
+    summarise(churn_rate = mean(churn_status == "churned") * 100) |>
+    arrange(desc(churn_rate)) |>
+    slice_head(n = 30) |>
+    select(`Credit card` = credit_card, `Churn rate` = churn_rate) |>
+    gt() |>
+    cols_align(align = "left", columns = `Credit card`) |>
+    data_color(
+    method = "numeric",
+    palette = "nord::aurora"
+    )
 ```
 
 
+:::
 
-## Row 3
+
+::: {.card title="Bottom 10 products churn rate"}  
+Product sorted in ascending order of churn rates.
 
 
 
 ```{r}
-#|title: table 1
-head(mpg)
+#| lable: top 10 bank product churn rate
+
+new_df |>
+    group_by(credit_card) |>
+    summarise(churn_rate = mean(churn_status == "churned") * 100) |>
+    arrange(desc(churn_rate)) |>
+    slice_tail(n = 30) |>
+    select(`Credit card` = credit_card, `Churn rate` = churn_rate) |>
+    gt() |>
+    cols_align(align = "left", columns = `Credit card`) |>
+    data_color(
+    method = "numeric",
+    palette = "nord::aurora"
+    )
+
 ```
 
+
+:::
 
 
 # Prediction
