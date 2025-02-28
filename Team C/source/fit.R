@@ -1,13 +1,12 @@
 # situating --------------------------------------------------------------------
-# pak::pak("QSARdata")
-#library(QSARdata)
 library(tidymodels)
 library(tidyverse)
 library(baguette)
 library(bundle)
-#(doMC)
+library(doMC)
 library(finetune)
 library(here)
+library(xgboost)
 registerDoMC(cores = max(1, parallelly::availableCores() - 1))
 
 
@@ -46,7 +45,7 @@ recipe_normalize <-
   step_YeoJohnson(all_double_predictors()) %>%
   step_normalize(all_double_predictors())
 
-data_recipe <- recipe(~ ., data = your_data_frame) %>%
+data_recipe <- recipe(~ ., churn_train) %>%
   step_dummy(all_nominal_predictors(), -all_outcomes()) %>%
   step_zv(all_predictors()) %>%
   step_normalize(all_numeric_predictors())
@@ -103,7 +102,7 @@ wf_set <-
   ) %>%
   bind_rows( 
     workflow_set(
-      preproc = list(pca = recipe_pca),
+      preproc = list(churn = data_recipe),
       models = list(
         bag_tree = spec_bt,
         bag_mars = spec_bm,
@@ -122,7 +121,7 @@ wf_set_fit <-
     verbose = TRUE, 
     seed = 1,
     resamples = churn_folds,
-    metrics = mutagen_metrics,
+    metrics = churn_metrics ,
     control = control_grid(parallel_over = "everything")
   )
 
