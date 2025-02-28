@@ -2,6 +2,7 @@
 title: "Customer Churn Dashboard"
 format: 
   dashboard:
+    orientation: columns
     logo: images/penguins.png
     nav-buttons: [linkedin, twitter, github]
     linkedin:
@@ -38,7 +39,6 @@ new_df <- read_rds(here("Team A", "clean_churn.rds")) |>
 ```
 
 # Churn(standard)
-
 ```{r}
 #| label: churn-characteristics
 # customer churn rate
@@ -66,9 +66,8 @@ risk_levels <- new_df |>
               count(risk)
 
 ```
-
-## Row 1 {height ="10%"}
-
+## column 1 {width="80%"}
+### row 1 {height="25%"}
 ```{r}
 #| content: valuebox
 #| title: "Churn rate"
@@ -99,9 +98,7 @@ list(
   value = "10%"
 )
 ```
-
-## Row 2
-
+### row 2 {height="75%"}
 ```{r}
    churn_by_years <- new_df %>%
     group_by(years) %>%
@@ -124,8 +121,7 @@ list(
           plot.title = element_text(face = "bold",size = 12,colour = "gray20"),
           plot.caption = element_text(face = "bold.italic",size = 8))
 ```
-
-### Churn by years {width="40%"}
+#### Churn by years {width="30%"}
 
 ```{r}
 #| label: customers loyalty over time
@@ -134,13 +130,47 @@ list(
 churn_by_years
 ```
 
-### churn by products {.tabset}
 
-::: {.card title="Top 10 products churn rate"}  
+#### Churn by Risk {width="30%"}
+```{r}
+  # create visualization for churn distribution
+  ggplot(new_df, aes(x = fct_relevel(risk,c("LOW","MEDIUM","HIGH")))) +
+    geom_bar( aes(fill = churn_status), alpha = 0.5, color = "black",
+              position = "dodge") +
+    labs(title = "Customer's Risk Churn Rate", 
+         x = "Customer's Risk Profile", y="Frequency of Churn Status", 
+         caption = "Source")+
+    scale_y_continuous(labels = comma,
+                       breaks = seq(from = 0, 140000, by = 20000))+
+    scale_fill_manual(values = c("churned"="black",
+                                  "not churned"="blue"))+
+    theme_minimal()+
+    theme(axis.title = element_text(face = "bold.italic", 
+                                    color = "gray20",size = 10),
+          plot.title = element_text(face = "bold",
+                                    size = 12,
+                                    colour = "gray20"),
+          plot.caption = element_text(face = "bold.italic",
+                                      size = 8))
+  
+  churn_by_years <- new_df %>%
+    group_by(years) %>%
+    summarise(not_churn_rate = mean(churn_status == "not churned") * 100,
+              churn_rate = mean(churn_status == "churned") * 100) |>
+    pivot_longer(
+      cols = 2:3,
+      values_to = "values",
+      names_to = "rate"
+    )
+```
+
+## column 2 {.tabset height="100%" width="20"}
+
+::: {.card title="Top 10 products"}
 Product sorted in descending order of churn rates.
 
 ```{r}
-#| lable: top 10 bank product churn rate
+#| lable: top 10 bank product
 
 new_df |>
     group_by(credit_card) |>
@@ -154,15 +184,15 @@ new_df |>
     method = "numeric",
     palette = "nord::aurora"
     )
+
 ```
 :::
 
-
-::: {.card title="Bottom 10 products churn rate"}  
+::: {.card title="Bottom 10 products"}
 Product sorted in ascending order of churn rates.
 
 ```{r}
-#| lable: top 10 bank product churn rate
+#| lable: bottom 10 bank product
 
 new_df |>
     group_by(credit_card) |>
@@ -179,8 +209,6 @@ new_df |>
 
 ```
 :::
-
-
 # Prediction
 
 # Data
