@@ -71,7 +71,7 @@ wf_set_fit <- workflow_map(
   control = ctrl
 )
 
-save(wf_set_fit, file = "wf_set_fit.Rda")
+save(wf_set_fit, file = "Team C/models/wf_set_fit.Rda")
 
 wf_set_fit <-
   wf_set_fit[
@@ -87,7 +87,7 @@ metrics_wf_set %>%
   filter(.metric == "roc_auc") %>%
   arrange(desc(.estimate))
 
-save(metrics_wf_set, file = "metrics_wf_set.Rda")
+save(metrics_wf_set, file = "Team C/models/metrics_wf_set.Rda")
 
 # Extract best XGBoost model
 xgb_res <- extract_workflow_set_result(wf_set_fit, "mixed_boost_tree")
@@ -108,11 +108,11 @@ xgb_sim_anneal_fit <-
     control = control_sim_anneal(verbose = TRUE, parallel_over = "everything")
   )
 
-save(xgb_sim_anneal_fit, file = "xgb_sim_anneal_fit.Rda")
+save(xgb_sim_anneal_fit, file = "Team C/models/xgb_sim_anneal_fit.Rda")
 
 metrics_xgb <- collect_metrics(xgb_sim_anneal_fit, summarize = FALSE)
 
-save(metrics_xgb, file = "metrics_xgb.Rda")
+save(metrics_xgb, file = "Team C/models/metrics_xgb.Rda")
 
 # Final model fit and evaluation against test set
 xgb_final_fit <-
@@ -121,9 +121,9 @@ xgb_final_fit <-
     churn_split
   )
 
-save(xgb_final_fit, file = "xgb_final_fit.Rda")
+save(xgb_final_fit, file = "Team C/models/xgb_final_fit.Rda")
 final_fit <- bundle(xgb_final_fit$.workflow[[1]])
-save(final_fit, file = "final_fit.Rda")
+save(final_fit, file = "Team C/models/final_fit.Rda")
 ## Deploying to Connect
 
 #From here, all we need to do to deploy our fitted model is pass it off to vetiver for deployment to Posit Connect:
