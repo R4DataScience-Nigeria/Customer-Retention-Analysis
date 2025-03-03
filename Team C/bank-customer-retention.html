@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Churn Dashboard</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="bank-customer-retention_files/libs/clipboard/clipboard.min.js"></script>
+<script src="bank-customer-retention_files/libs/quarto-html/quarto.js"></script>
+<script src="bank-customer-retention_files/libs/quarto-html/popper.min.js"></script>
+<script src="bank-customer-retention_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="bank-customer-retention_files/libs/quarto-html/anchor.min.js"></script>
+<link href="bank-customer-retention_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="bank-customer-retention_files/libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="bank-customer-retention_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="bank-customer-retention_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="bank-customer-retention_files/libs/bootstrap/bootstrap-130ec09c3cd7991ae3a8dd5b8c2ed30b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="bank-customer-retention_files/libs/quarto-dashboard/quarto-dashboard.js"></script>
+<script src="bank-customer-retention_files/libs/quarto-dashboard/stickythead.js"></script>
+<script src="bank-customer-retention_files/libs/quarto-dashboard/datatables.min.js" kdttablesentinel="true"></script>
+<script src="bank-customer-retention_files/libs/quarto-dashboard/pdfmake.min.js" kdttablesentinel="true"></script>
+<script src="bank-customer-retention_files/libs/quarto-dashboard/vfs_fonts.js" kdttablesentinel="true"></script>
+<script src="bank-customer-retention_files/libs/quarto-dashboard/web-components.js" type="module"></script>
+<script src="bank-customer-retention_files/libs/quarto-dashboard/components.js"></script>
+<link href="bank-customer-retention_files/libs/quarto-dashboard/datatables.min.css" rel="stylesheet" kdttablesentinel="true">
+<link href="bank-customer-retention_files/libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="bank-customer-retention_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="bank-customer-retention_files/libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="bank-customer-retention_files/libs/datatables-binding-0.33/datatables.js"></script>
+<script src="bank-customer-retention_files/libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="bank-customer-retention_files/libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="bank-customer-retention_files/libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="bank-customer-retention_files/libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="bank-customer-retention_files/libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="bank-customer-retention_files/libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
+
+</head>
+
+<body class="quarto-dashboard dashboard-fill dashboard-sidebar fullcontent">
+
+<header id="quarto-dashboard-header">
+<nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
+  <div class="navbar-container container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
+
+
+    <div class="navbar-brand-container">       
+    <a href="#"><img src="images/bank-logo.png" alt="" class="navbar-logo d-inline-block"></a>
+      <div class="navbar-title">
+        <div class="navbar-title-text"><a href="#">Churn Dashboard</a></div>
+        
+        
+      </div>
+    </div>
+<div id="dashboard-collapse" class="navbar-collapse collapse"><ul class="navbar-nav navbar-nav-scroll me-auto" role="tablist"><li class="nav-item" role="presentation"><a id="tab-churnstandard" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#churnstandard" data-scrolling="false" href="#churnstandard" aria-controls="churnstandard" aria-selected="true"><span class="nav-link-text">Churn(standard)</span></a></li><li class="nav-item" role="presentation"><a id="tab-prediction" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#prediction" data-scrolling="false" href="#prediction" aria-controls="prediction" aria-selected="false"><span class="nav-link-text">Prediction</span></a></li><li class="nav-item" role="presentation"><a id="tab-data" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#data" data-scrolling="false" href="#data" aria-controls="data" aria-selected="false"><span class="nav-link-text">Data</span></a></li></ul><div class="quarto-dashboard-links"><a class="quarto-dashboard-link" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|&amp;title=Churn%20Dashboard" title="LinkedIn"><i class="bi bi-linkedin"></i></a><a class="quarto-dashboard-link" href="https://twitter.com/intent/tweet?url=|url|&amp;text=Churn%20Dashboard" title="Twitter"><i class="bi bi-twitter"></i></a><a class="quarto-dashboard-link" href="https://github.com/R4DataScience-Nigeria/Customer-Retention-Analysis/" title="GitHub"><i class="bi bi-github"></i></a></div></div></div>
+</nav>
+</header>
+<div class="page-layout-custom quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill quarto-dashboard-pages">  
+
+<div class="bslib-grid-item html-fill-item tab-content bslib-grid" data-layout="fill" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div id="churnstandard" class="dashboard-page tab-pane show active html-fill-item html-fill-container" data-orientation="columns" aria-labelledby="tab-churnstandard">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 80fr) minmax(3em, 20fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 25fr) minmax(3em, 75fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-danger showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div data-icon="speedometer" class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
+
+<i class="bi bi-speedometer"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Churn rate
+</p>
+<p class="value-box-value">
+51.6%
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-primary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div data-icon="people" class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
+
+<i class="bi bi-people"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Total customers
+</p>
+<p class="value-box-value">
+488,233
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-success showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div data-icon="bullseye" class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
+
+<i class="bi bi-bullseye"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Churn rate goal
+</p>
+<p class="value-box-value">
+10%
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 30fr) minmax(3em, 30fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="bank-customer-retention_files/figure-html/customers%20loyalty%20over%20time-1.png" class="img-fluid quarto-dashboard-img-contain">
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="bank-customer-retention_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-dashboard-img-contain">
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+</div><div class="card tabset html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header bslib-navs-card-title"><div class="card-title"><span style="display: inline">
+
+</span></div><ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-6"><li class="nav-item" role="presentation"><a href="#card-tabset-6-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Top 10 products" aria-selected="true" class="nav-link active">Top 10 products</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-6-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Bottom 10 products" aria-selected="false" class="nav-link">Bottom 10 products</a></li></ul></div>
+
+
+<div class="tab-content html-fill-item html-fill-container" data-tabset-id="card-tabset-6"><div class="tab-pane active show html-fill-item html-fill-container" role="tabpanel" id="card-tabset-6-1"><div class="card-body html-fill-item html-fill-container" data-title="Top 10 products">
+<p>Product sorted in descending order of churn rates.</p>
+<div class="cell-output-display html-fill-item html-fill-container">
+<div id="theboxvxgn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;" class="html-fill-item html-fill-container">
+<style>#theboxvxgn table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#theboxvxgn thead, #theboxvxgn tbody, #theboxvxgn tfoot, #theboxvxgn tr, #theboxvxgn td, #theboxvxgn th {
+  border-style: none;
+}
+
+#theboxvxgn p {
+  margin: 0;
+  padding: 0;
+}
+
+#theboxvxgn .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#theboxvxgn .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#theboxvxgn .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#theboxvxgn .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#theboxvxgn .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#theboxvxgn .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#theboxvxgn .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#theboxvxgn .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#theboxvxgn .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#theboxvxgn .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#theboxvxgn .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#theboxvxgn .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#theboxvxgn .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#theboxvxgn .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#theboxvxgn .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#theboxvxgn .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#theboxvxgn .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#theboxvxgn .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#theboxvxgn .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#theboxvxgn .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#theboxvxgn .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#theboxvxgn .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#theboxvxgn .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#theboxvxgn .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#theboxvxgn .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#theboxvxgn .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#theboxvxgn .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#theboxvxgn .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#theboxvxgn .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#theboxvxgn .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#theboxvxgn .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#theboxvxgn .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#theboxvxgn .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#theboxvxgn .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#theboxvxgn .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#theboxvxgn .gt_left {
+  text-align: left;
+}
+
+#theboxvxgn .gt_center {
+  text-align: center;
+}
+
+#theboxvxgn .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#theboxvxgn .gt_font_normal {
+  font-weight: normal;
+}
+
+#theboxvxgn .gt_font_bold {
+  font-weight: bold;
+}
+
+#theboxvxgn .gt_font_italic {
+  font-style: italic;
+}
+
+#theboxvxgn .gt_super {
+  font-size: 65%;
+}
+
+#theboxvxgn .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#theboxvxgn .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#theboxvxgn .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#theboxvxgn .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#theboxvxgn .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#theboxvxgn .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#theboxvxgn .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#theboxvxgn .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#theboxvxgn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Credit-card" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Credit card</th>
+<th id="Churn-rate" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Churn rate</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Credit card">product13</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #B48EAD; color: #FFFFFF">98.44720</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Credit card">product10</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #B0A0A2; color: #000000">93.75000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Credit card">product2</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #A8B394; color: #000000">88.22318</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Credit card">product4</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #A8B494; color: #000000">88.10680</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Credit card">product12</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #A7BF8C; color: #000000">84.47489</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Credit card">product11</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #CEC68B; color: #000000">77.38095</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Credit card">product1</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #E7C187; color: #000000">69.79592</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Credit card">product3</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #E3B582; color: #000000">67.60563</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Credit card">product8</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #D89A78; color: #000000">62.33460</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Credit card">product9</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #CD806F; color: #FFFFFF">55.87467</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Credit card">product7</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #C8766D; color: #FFFFFF">52.41150</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Credit card">product6</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #C1656B; color: #FFFFFF">46.47361</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Credit card">product15</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #C0636A; color: #FFFFFF">45.93023</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Credit card">product5</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #BF616A; color: #FFFFFF">45.22234</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-6-2"><div class="card-body html-fill-item html-fill-container" data-title="Bottom 10 products">
+<p>Product sorted in ascending order of churn rates.</p>
+<div class="cell-output-display html-fill-item html-fill-container">
+<div id="skkeelumin" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;" class="html-fill-item html-fill-container">
+<style>#skkeelumin table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#skkeelumin thead, #skkeelumin tbody, #skkeelumin tfoot, #skkeelumin tr, #skkeelumin td, #skkeelumin th {
+  border-style: none;
+}
+
+#skkeelumin p {
+  margin: 0;
+  padding: 0;
+}
+
+#skkeelumin .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#skkeelumin .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#skkeelumin .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#skkeelumin .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#skkeelumin .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#skkeelumin .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#skkeelumin .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#skkeelumin .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#skkeelumin .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#skkeelumin .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#skkeelumin .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#skkeelumin .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#skkeelumin .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#skkeelumin .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#skkeelumin .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#skkeelumin .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#skkeelumin .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#skkeelumin .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#skkeelumin .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#skkeelumin .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#skkeelumin .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#skkeelumin .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#skkeelumin .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#skkeelumin .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#skkeelumin .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#skkeelumin .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#skkeelumin .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#skkeelumin .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#skkeelumin .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#skkeelumin .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#skkeelumin .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#skkeelumin .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#skkeelumin .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#skkeelumin .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#skkeelumin .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#skkeelumin .gt_left {
+  text-align: left;
+}
+
+#skkeelumin .gt_center {
+  text-align: center;
+}
+
+#skkeelumin .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#skkeelumin .gt_font_normal {
+  font-weight: normal;
+}
+
+#skkeelumin .gt_font_bold {
+  font-weight: bold;
+}
+
+#skkeelumin .gt_font_italic {
+  font-style: italic;
+}
+
+#skkeelumin .gt_super {
+  font-size: 65%;
+}
+
+#skkeelumin .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#skkeelumin .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#skkeelumin .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#skkeelumin .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#skkeelumin .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#skkeelumin .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#skkeelumin .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#skkeelumin .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#skkeelumin div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Credit-card" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Credit card</th>
+<th id="Churn-rate" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Churn rate</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Credit card">product5</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #BF616A; color: #FFFFFF">45.22234</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Credit card">product15</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #C0636A; color: #FFFFFF">45.93023</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Credit card">product6</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #C1656B; color: #FFFFFF">46.47361</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Credit card">product7</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #C8766D; color: #FFFFFF">52.41150</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Credit card">product9</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #CD806F; color: #FFFFFF">55.87467</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Credit card">product8</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #D89A78; color: #000000">62.33460</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Credit card">product3</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #E3B582; color: #000000">67.60563</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Credit card">product1</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #E7C187; color: #000000">69.79592</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Credit card">product11</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #CEC68B; color: #000000">77.38095</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Credit card">product12</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #A7BF8C; color: #000000">84.47489</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Credit card">product4</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #A8B494; color: #000000">88.10680</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Credit card">product2</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #A8B394; color: #000000">88.22318</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Credit card">product10</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #B0A0A2; color: #000000">93.75000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Credit card">product13</td>
+<td class="gt_row gt_right" headers="Churn rate" style="background-color: #B48EAD; color: #FFFFFF">98.44720</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div></div></div><bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div><div id="prediction" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="columns" aria-labelledby="tab-prediction">
+
+</div><div id="data" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container dashboard-sidebar-container" data-orientation="columns" aria-labelledby="tab-data">
+<div class="bslib-sidebar-layout html-fill-item html-fill-container" data-bslib-sidebar-open="desktop" data-bslib-sidebar-init="true" data-bslib-sidebar-border="false" data-bslib-sidebar-border-radius="false"><div class="main html-fill-container html-fill-item"><div class="sidebar-content html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" data-height="60%" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Data" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title html-fill-item html-fill-container"><span style="display: inline">
+Data
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-e841c88c086a7e2e32fd" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-e841c88c086a7e2e32fd">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161","162","163","164","165","166","167","168","169","170","171","172","173","174","175","176","177","178","179","180","181","182","183","184","185","186","187","188","189","190","191","192","193","194","195","196","197","198","199","200"],["Account_288996","Account_267656","Account_481086","Account_350630","Account_280379","Account_29825","Account_314277","Account_414011","Account_254684","Account_428429","Account_247626","Account_157497","Account_471371","Account_380629","Account_311386","Account_161077","Account_179347","Account_38075","Account_378476","Account_181192","Account_159091","Account_101357","Account_189800","Account_247004","Account_307144","Account_46796","Account_484837","Account_180224","Account_393055","Account_43475","Account_4322","Account_349481","Account_454404","Account_60603","Account_90770","Account_165303","Account_349969","Account_443700","Account_177630","Account_302410","Account_359740","Account_214964","Account_425603","Account_464705","Account_134378","Account_370000","Account_450215","Account_347386","Account_446064","Account_488472","Account_478801","Account_386373","Account_67061","Account_343998","Account_59377","Account_134113","Account_292689","Account_89303","Account_445150","Account_479187","Account_135690","Account_357753","Account_470931","Account_246455","Account_484985","Account_250301","Account_407360","Account_197789","Account_404228","Account_443311","Account_329934","Account_140886","Account_406761","Account_5340","Account_126086","Account_142071","Account_342942","Account_322922","Account_73070","Account_124184","Account_263071","Account_72447","Account_432582","Account_343979","Account_193524","Account_242825","Account_107826","Account_259154","Account_287894","Account_5315","Account_370233","Account_430881","Account_348633","Account_254590","Account_263839","Account_114431","Account_10028","Account_313698","Account_362183","Account_14398","Account_412299","Account_479052","Account_298389","Account_462426","Account_262889","Account_162907","Account_257265","Account_399439","Account_445638","Account_68153","Account_318695","Account_356333","Account_207415","Account_186283","Account_17825","Account_475590","Account_139507","Account_440037","Account_435086","Account_418629","Account_188382","Account_112498","Account_15921","Account_10609","Account_180651","Account_53966","Account_399766","Account_443846","Account_158065","Account_70502","Account_320015","Account_113940","Account_60886","Account_43546","Account_45227","Account_360099","Account_297261","Account_312020","Account_481036","Account_334249","Account_247347","Account_330469","Account_262728","Account_103816","Account_21710","Account_367075","Account_448002","Account_398595","Account_88662","Account_240188","Account_353552","Account_18381","Account_381855","Account_237311","Account_214529","Account_392602","Account_226070","Account_267100","Account_29183","Account_413730","Account_454836","Account_57132","Account_315115","Account_381195","Account_406786","Account_137918","Account_69516","Account_458811","Account_319560","Account_392346","Account_340578","Account_375248","Account_251714","Account_89842","Account_22912","Account_460882","Account_227116","Account_460219","Account_325688","Account_295336","Account_127103","Account_207156","Account_214807","Account_37107","Account_222591","Account_49713","Account_57139","Account_351089","Account_478378","Account_170656","Account_191949","Account_357639","Account_368837","Account_175047","Account_423700","Account_261760","Account_353618","Account_457454","Account_93160","Account_15214"],[7,7,6,11,1,5,3,5,7,2,10,4,6,0,4,11,3,11,0,5,7,10,8,8,5,7,12,1,1,7,10,1,6,9,5,3,6,7,1,1,0,6,0,9,6,9,2,11,5,0,7,6,7,2,4,9,7,7,11,2,12,9,5,0,8,11,4,8,11,4,8,9,7,10,3,6,10,10,8,7,0,4,12,0,5,9,6,12,7,9,12,7,11,11,0,1,12,3,3,8,0,9,3,6,1,7,9,7,7,11,5,4,1,5,5,10,12,6,12,0,10,11,1,4,4,2,1,12,9,2,10,0,9,1,10,2,5,12,2,4,10,1,5,6,1,1,4,5,1,10,1,10,1,6,3,1,2,6,5,10,9,1,10,0,1,9,1,9,3,8,11,3,9,2,6,3,4,9,8,10,8,8,11,10,2,11,7,7,9,12,0,6,12,7,6,3,10,7,10,10],["not churned","not churned","not churned","churned","not churned","not churned","churned","churned","not churned","not churned","churned","not churned","not churned","churned","churned","not churned","churned","churned","churned","not churned","not churned","not churned","not churned","not churned","churned","churned","churned","churned","not churned","not churned","not churned","churned","not churned","not churned","churned","not churned","churned","not churned","churned","churned","churned","not churned","churned","churned","churned","not churned","churned","not churned","churned","churned","churned","not churned","not churned","churned","not churned","not churned","not churned","churned","not churned","churned","churned","churned","churned","churned","not churned","not churned","churned","churned","churned","churned","churned","not churned","not churned","churned","not churned","not churned","not churned","churned","churned","not churned","churned","not churned","churned","churned","not churned","churned","churned","churned","not churned","not churned","churned","not churned","not churned","not churned","churned","not churned","not churned","not churned","not churned","not churned","churned","churned","churned","not churned","churned","not churned","churned","not churned","not churned","not churned","not churned","churned","churned","churned","churned","not churned","churned","churned","churned","churned","not churned","churned","not churned","not churned","churned","churned","churned","not churned","churned","not churned","churned","churned","not churned","churned","not churned","not churned","not churned","churned","churned","churned","churned","churned","churned","churned","churned","not churned","churned","churned","not churned","not churned","not churned","not churned","churned","not churned","not churned","not churned","churned","churned","not churned","not churned","churned","not churned","not churned","churned","not churned","churned","churned","churned","not churned","not churned","not churned","churned","not churned","churned","churned","churned","not churned","not churned","churned","churned","churned","churned","not churned","not churned","not churned","not churned","churned","churned","not churned","churned","churned","not churned","not churned","not churned","not churned","not churned","not churned","not churned","not churned","not churned"],["MEDIUM","LOW","MEDIUM","LOW","MEDIUM","LOW","MEDIUM","MEDIUM","MEDIUM","LOW","LOW","LOW","MEDIUM","MEDIUM","LOW","LOW","LOW","LOW","LOW","MEDIUM","LOW","LOW","LOW","LOW","LOW","LOW","LOW","LOW","MEDIUM","MEDIUM","LOW","LOW","MEDIUM","MEDIUM","MEDIUM","LOW","LOW","LOW","MEDIUM","LOW","MEDIUM","LOW","MEDIUM","MEDIUM","LOW","MEDIUM","MEDIUM","MEDIUM","LOW","MEDIUM","MEDIUM","MEDIUM","MEDIUM","MEDIUM","LOW","LOW","LOW","MEDIUM","MEDIUM","MEDIUM","LOW","MEDIUM","LOW","LOW","MEDIUM","LOW","LOW","MEDIUM","MEDIUM","LOW","LOW","LOW","MEDIUM","LOW","LOW","MEDIUM","MEDIUM","LOW","LOW","MEDIUM","MEDIUM","MEDIUM","LOW","LOW","LOW","MEDIUM","MEDIUM","MEDIUM","LOW","MEDIUM","MEDIUM","LOW","MEDIUM","LOW","MEDIUM","LOW","MEDIUM","LOW","LOW","LOW","MEDIUM","LOW","LOW","MEDIUM","MEDIUM","LOW","MEDIUM","LOW","LOW","LOW","MEDIUM","MEDIUM","MEDIUM","MEDIUM","LOW","HIGH","MEDIUM","LOW","MEDIUM","MEDIUM","LOW","LOW","MEDIUM","LOW","LOW","HIGH","LOW","MEDIUM","LOW","LOW","LOW","HIGH","MEDIUM","MEDIUM","LOW","MEDIUM","MEDIUM","MEDIUM","MEDIUM","LOW","LOW","MEDIUM","LOW","MEDIUM","MEDIUM","HIGH","LOW","MEDIUM","MEDIUM","LOW","MEDIUM","LOW","MEDIUM","MEDIUM","MEDIUM","MEDIUM","LOW","LOW","MEDIUM","LOW","MEDIUM","LOW","LOW","LOW","MEDIUM","MEDIUM","MEDIUM","LOW","LOW","MEDIUM","LOW","MEDIUM","MEDIUM","MEDIUM","LOW","MEDIUM","LOW","LOW","MEDIUM","MEDIUM","HIGH","LOW","LOW","LOW","MEDIUM","LOW","MEDIUM","LOW","LOW","HIGH","LOW","HIGH","MEDIUM","MEDIUM","MEDIUM","LOW","LOW","LOW","MEDIUM","MEDIUM"],["NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","USD","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","USD","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","USD","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","USD","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN"],[528.13,1434.21,696.1800000000001,737.05,0,4.23,91600.12000000001,17630.86,8196.84,0,191.63,878.8299999999999,1559.3,65000,82743.22,2466.62,0,1561.95,611.05,640.64,676.7900000000001,8.4,2868.36,1631.29,746582.8200000001,3129.04,10581,1308.57,0,29.2,564.2700000000001,66.38,241.19,80.04000000000001,117.69,945.1900000000001,212.47,3305.32,3.46,33624.28,13698.57,451.27,11048.8,6419.690000000001,47.5,2091.69,0,957.74,3050.66,224.84,1688.69,161.81,1178.87,389.61,0,1402.82,861.1700000000001,103623.42,533.9599999999999,0,493.83,445.33,1194.1,0,18.82,624.38,5312.72,5053.56,93922.75,616.5599999999999,8858.799999999999,15436.2,826.92,1962.84,69.45,15970.15,148.81,570.3099999999999,667.88,3317.69,46.36,3519.15,1041399.93,361275.58,210.02,15.54,0,250200.86,11778.38,184.03,402.12,1821.09,720.0599999999999,3787.67,0,0,0,622.41,235.85,1530.66,0,262.59,33076.97,2210,18.54,413.84,5510282.149999999,476.42,1505.78,0,0,5288.28,147990.6,225654.36,355.8,133039.93,7142.89,284.64,746.41,0,1865.73,363.83,170.22,239.14,2488.99,22670.66,133.76,4.970000000000001,170766.78,2771.37,24989.37,0,82.41000000000001,282.45,621.0599999999999,604.23,2489.47,384158.26,625.9399999999999,303.78,3875.29,101.09,11534595.8,2950.87,216.91,0,743.72,430.81,1627.12,1106.3,683.5,8929.01,452.67,1329.32,147.34,22.89,1223.6,65586.78999999999,0,665.13,1039.79,564.92,1255.8,26293.18,0,410.96,36749.82,5871.71,21.68,261.03,384.15,57.68,1404,1425.54,24989.74,23818.2,4.34,2.77,32685.94,4346.03,54542.71999999999,1597.64,2843.02,3730.61,167.64,26,463.31,8760.049999999999,65,22248874.69,599.4599999999999,11947.35,0,79.81,360.67,824.02,5.21,59332.3,6.5,3411.25],["SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","ODA","SBA","SBA","SBA","SBA","SBA","ODA","SBA","SBA","SBA","SBA","ODA","SBA","SBA","ODA","ODA","SBA","ODA","ODA","SBA","ODA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","ODA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","CAA","ODA","SBA","SBA","SBA","ODA","SBA","SBA","SBA","LAA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","ODA","ODA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","ODA","SBA","SBA","SBA","ODA","SBA","SBA","ODA","ODA","SBA","ODA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","ODA","SBA","ODA","ODA","SBA","SBA","ODA","SBA","SBA","SBA","LAA","ODA","ODA","ODA","SBA","SBA","SBA","SBA","ODA","SBA","SBA","SBA","ODA","SBA","SBA","LAA","SBA","ODA","ODA","ODA","SBA","ODA","SBA","SBA","ODA","SBA","SBA","ODA","SBA","SBA","SBA","SBA","SBA","ODA","SBA","SBA","ODA","SBA","ODA","SBA","ODA","SBA","SBA","SBA","SBA","SBA","SBA","ODA","SBA","ODA","SBA","SBA","SBA","LAA","SBA","SBA","ODA","ODA","SBA","ODA","SBA","SBA","SBA","SBA","ODA","ODA","SBA","ODA","SBA","SBA","ODA","SBA","ODA","ODA","ODA","ODA","SBA","SBA","ODA","SBA","SBA","SBA","SBA","SBA","SBA","ODA","SBA"],["N","N","N","N","N","Y","Y","Y","N","N","N","Y","N","N","N","N","N","N","Y","N","Y","N","N","N","N","Y","Y","N","N","N","N","N","N","N","N","Y","N","N","N","Y","N","N","N","Y","N","N","Y","N","Y","Y","N","N","N","N","N","N","N","Y","N","Y","Y","N","Y","N","N","N","N","N","Y","N","Y","N","N","N","N","N","N","Y","Y","N","Y","N","N","Y","N","Y","Y","N","N","N","N","N","N","N","N","N","N","N","Y","N","N","Y","N","N","Y","N","Y","Y","N","N","N","Y","N","N","N","N","Y","N","N","N","N","N","N","N","Y","Y","N","Y","Y","N","Y","N","N","N","Y","N","N","Y","Y","Y","N","N","Y","N","N","N","N","Y","N","N","N","N","N","N","N","N","N","Y","N","Y","Y","N","N","Y","N","N","N","N","N","N","N","N","N","Y","Y","N","N","N","N","Y","Y","Y","N","N","Y","N","N","Y","N","Y","Y","Y","N","N","N","N","Y","Y","N","N"],["N","N","N","N","N","Y","Y","Y","N","N","N","Y","N","N","N","N","N","N","Y","Y","Y","N","N","N","N","Y","Y","N","N","N","Y","N","N","N","N","Y","N","N","N","Y","N","N","N","Y","N","Y","Y","N","Y","Y","N","N","N","N","N","N","N","Y","N","Y","Y","N","Y","N","N","Y","N","N","Y","N","Y","N","N","N","N","N","N","Y","Y","N","Y","N","N","Y","N","Y","Y","Y","N","N","N","N","N","N","N","N","N","N","Y","N","N","Y","N","N","Y","N","Y","Y","N","N","N","Y","N","N","N","Y","Y","N","Y","N","N","N","N","N","Y","Y","N","Y","Y","N","Y","N","N","N","Y","N","N","Y","Y","Y","N","N","Y","Y","N","Y","N","Y","N","N","N","Y","N","N","N","N","Y","Y","N","Y","Y","N","N","Y","N","N","N","N","N","N","N","N","N","Y","Y","N","N","N","N","Y","Y","Y","N","N","Y","N","N","Y","N","Y","Y","Y","N","N","N","Y","Y","Y","N","Y"],["N","N","N","Y","N","Y","Y","N","N","Y","N","Y","N","N","N","N","Y","Y","Y","Y","N","N","N","N","Y","Y","N","N","N","N","N","Y","N","N","Y","Y","N","N","N","Y","Y","N","Y","Y","Y","N","Y","N","Y","Y","Y","N","N","Y","N","N","Y","Y","N","Y","N","Y","Y","N","N","N","Y","N","Y","Y","Y","N","Y","Y","Y","N","N","Y","Y","N","Y","N","Y","Y","N","Y","Y","N","N","N","N","N","N","N","N","N","N","Y","Y","N","N","Y","Y","N","N","N","Y","N","N","N","N","Y","N","Y","Y","N","Y","Y","Y","Y","N","Y","N","Y","Y","N","Y","Y","Y","N","N","N","N","N","Y","Y","N","Y","Y","Y","N","Y","N","Y","Y","N","Y","Y","N","N","N","N","N","N","Y","Y","Y","N","N","N","Y","Y","N","Y","N","N","N","N","Y","N","N","N","N","Y","Y","Y","N","N","Y","N","N","Y","N","N","Y","N","Y","Y","N","N","Y","N","N","Y","N","N","Y","N","N","N"],["N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","Y","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","Y","N","N","N","N","N","N","N","N","N","N","N","N","N","N","Y","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N"],["N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N"],["N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N"],["N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","Y","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","Y","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N"],["product7","product7","product5","product5","product5","product5","product8","product7","product5","product5","product6","product5","product7","product7","product7","product7","product5","product5","product7","product5","product7","product8","product5","product5","product7","product7","product7","product7","product8","product7","product7","product8","product7","product6","product6","product7","product5","product5","product5","product7","product8","product6","product7","product8","product7","product5","product5","product5","product7","product7","product7","product5","product5","product7","product5","product5","product5","product7","product5","product8","product7","product6","product5","product7","product7","product5","product5","product7","product5","product8","product8","product6","product5","product8","product5","product6","product6","product5","product5","product7","product7","product7","product7","product7","product5","product5","product8","product6","product7","product7","product5","product7","product7","product5","product5","product7","product5","product5","product5","product6","product7","product7","product5","product6","product8","product7","product8","product7","product5","product5","product5","product8","product7","product5","product6","product4","product5","product8","product6","product7","product5","product6","product7","product7","product5","product7","product7","product7","product7","product7","product7","product4","product7","product8","product8","product7","product7","product2","product7","product7","product7","product8","product2","product5","product8","product4","product6","product7","product7","product6","product6","product7","product8","product8","product5","product8","product5","product8","product5","product6","product8","product8","product6","product8","product7","product5","product5","product7","product5","product7","product5","product6","product7","product5","product5","product5","product5","product7","product5","product8","product4","product8","product5","product6","product8","product5","product5","product7","product6","product4","product7","product4","product5","product7","product5","product5","product5","product7","product6","product5"],[0,0,0,1,1,0,365,57,0,0,1,0,0,0,15,0,40,9,1,0,0,0,0,0,1,172,109,1,0,0,0,162,0,0,14,0,40,0,15,88,84,0,37,21,34,0,148,0,59,30,79,0,0,74,0,0,0,10,0,228,17,31,79,0,0,0,36,38,23,186,247,0,0,119,2,0,0,33,119,0,43,0,27,6,0,71,76,12,1,0,0,0,0,0,0,1,0,0,1,0,31,115,44,0,17,0,36,0,0,0,0,206,6,98,81,0,131,94,16,8,0,23,3,84,49,0,3,0,3,0,58,0,0,7,0,0,0,58,262,1,4,97,6,216,170,2,20,258,1,0,0,0,8,0,0,14,117,101,0,0,42,0,0,29,0,12,15,85,0,0,0,7,0,131,2,38,0,0,14,287,0,52,0,0,5,0,6,615,0,100,9,0,0,3,0,0,0,0,0,0],[0,0,0,1,2,0,1148,629,0,0,2,0,0,0,16,0,65,14,12,0,0,0,0,0,1,91,513,0,0,0,0,169,0,0,22,0,58,0,13,612,61,0,50,59,100,0,296,0,100,50,170,0,0,168,0,0,0,31,0,682,42,40,214,0,0,0,16,166,12,147,548,0,0,179,2,0,0,76,301,0,137,0,409,22,0,205,240,7,0,0,3,0,0,0,0,1,0,0,0,0,18,446,338,0,14,0,87,0,0,0,0,605,0,326,264,0,856,92,51,21,0,49,3,124,54,0,6,0,2,0,130,0,0,7,0,0,0,398,352,2,14,236,6,388,477,2,19,521,0,0,0,0,14,0,0,40,201,457,0,0,123,0,0,8,0,3,13,188,0,0,0,16,0,275,0,151,0,0,16,1237,31,176,0,0,15,0,12,389,0,322,9,0,0,5,0,0,0,0,0,0],[0,0,0,2600,301457.95,0,9938141.239999998,54390542.61,0,0,2177.5,0,0,0,3419000,0,284960,60233.94,184210,0,0,0,0,0,8450,893975.55,7164344.2,0,0,0,0,376067.9,0,0,167570,0,174226,0,204180.78,16752281.69,299032.5,0,5264168,1641406,835587.03,0,15111756.73,0,497536,209989,976692.6,0,0,407335.5,0,0,0,326365,0,48575766.82,2947581,676196.9500000001,1627913.25,0,0,0,244364.9,8320650,174334.88,1150203.6,1386396.74,0,0,1029457,5070,0,0,969124,1179207.9,0,669539,0,8693127.300000001,5811721.5,0,1034834.39,3458281.39,150136.03,0,0,5850,0,0,0,0,11700,0,0,0,0,454480,1796060.5,542929.4500000001,0,75569.25999999999,0,225342,0,0,0,0,13308344.3,0,1548030.21,2286619.56,0,52838000.88,1878500,770679,32370,0,868221.25,26520,1503594.3,320357.05,0,118560,0,25541.2,0,21255663.88,0,0,26260,0,0,0,63900848.30999999,7542439.94,5668,775580,2575937,1974482.9,3792948.9,6161734.359999999,7193160,104195,1609426,0,0,0,0,134680,0,0,212036.5,738855,8352939.1,0,0,1198821.96,0,0,168057.5,0,78910,161759.66,458575,0,0,0,143715,0,580333.3400000001,0,231619.7,0,0,471445.01,46259653.7,6535844.6,5463042.649999999,0,0,392405,0,44473,10854206.03,0,281698739.19,153229.21,0,0,1586,0,0,0,0,0,0],[0,0,0,2600,27791.83,0,9490422.84,54410033.64,0,0,1300,0,0,65000,1992250,0,284668.48,60758.75,130000,0,0,0,0,0,755248,864922.5,6984185,1300,0,0,0,382408.65,0,0,167700,0,174785,0,125846.86,16222542.78,314795,0,5278130,1646182.2,828396.4,0,15090459.8,0,498576,213200,953034.39,0,0,405730,0,0,0,179400,0,47808676.36,2899412.72,658454.98,1705938,0,0,0,234923,6408148.5,839563.23,1165665.8,1328915.9,0,0,816316.8,5265,0,0,972010,1151459.08,0,672530.3,0,8796255,6172270,0,1007995.11,2935465.92,169000,10010,0,0,0,0,0,0,13000,0,0,26,0,459160,1660477.98,577887.3100000001,0,77259,0,3602875.86,0,0,0,0,13026349.54,134810,1360623.88,2345982.9,0,52668010.69000001,1814410,770907.3200000001,32760,0,805944.4300000001,26585,1513234.97,317135,0,117000,0,51764.95,0,18661977.27,0,0,27937,0,0,0,56693308.74,7479550,5850,585000,2531035,889215.55,3799705.98,6160442.44,404430000,93210,1602058.9,1560,0,0,0,133770,0,0,260650,701033.7899999999,8320414.58,0,0,1235760.81,0,0,194545,0,78650,99700.60000000001,466310,0,0,0,144430,0,534993.88,24440,242970.98,0,0,465862.24,44944842.32,0,4922203.01,0,0,316550,0,44785,10857381.44,0,308561275.96,122716.5,0,0,1560,0,0,0,0,0,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>acct_id<\/th>\n      <th>years<\/th>\n      <th>churn_status<\/th>\n      <th>risk<\/th>\n      <th>currency<\/th>\n      <th>ave<\/th>\n      <th>bal<\/th>\n      <th>scheme<\/th>\n      <th>mobile_app<\/th>\n      <th>internet_banking<\/th>\n      <th>ussd_banking<\/th>\n      <th>digital_loan<\/th>\n      <th>unsecured_loan<\/th>\n      <th>termloan<\/th>\n      <th>credit_card<\/th>\n      <th>subsegment<\/th>\n      <th>credit_vol<\/th>\n      <th>debit_vol<\/th>\n      <th>debit_val<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"ftp","language":{"info":"Showing _TOTAL_ entries"},"paging":true,"columnDefs":[{"className":"dt-right","targets":[2,6,16,17,18,19]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"acct_id","targets":1},{"name":"years","targets":2},{"name":"churn_status","targets":3},{"name":"risk","targets":4},{"name":"currency","targets":5},{"name":"ave","targets":6},{"name":"bal","targets":7},{"name":"scheme","targets":8},{"name":"mobile_app","targets":9},{"name":"internet_banking","targets":10},{"name":"ussd_banking","targets":11},{"name":"digital_loan","targets":12},{"name":"unsecured_loan","targets":13},{"name":"termloan","targets":14},{"name":"credit_card","targets":15},{"name":"subsegment","targets":16},{"name":"credit_vol","targets":17},{"name":"debit_vol","targets":18},{"name":"debit_val","targets":19}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+</div></div><aside id="bslib-sidebar-1" class="sidebar html-fill-container html-fill-item"><div class="html-fill-item html-fill-container">
+<p>This dashboard displays bank customer churn data stored:</p>
+<p><strong>Méribel, <a href="https://en.wikipedia.org/wiki/Les_Allues">Les Allues</a>, Auvergne-Rhône-Alpes, France</strong></p>
+<p>The data was obtained from a multinational bank with branches in Nigeria and across Africa. It was generated in 2023. <a href="https://www.visualcrossing.com/">Virtual Crossing</a>.</p>
+<p><br></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Metadata
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The variables and their definition are given below.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 82%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Variable</strong></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Account ID</td>
+<td style="text-align: left;">A unique identifier for each customer account.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Years</td>
+<td style="text-align: left;">The number of years a customer has been with the bank.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Churn</td>
+<td style="text-align: left;">A binary indicator of whether the customer has churned (e.g., 0 for not churned, 1 for churned).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Risk rating</td>
+<td style="text-align: left;">A rating or score that reflects the financial risk associated with the customer.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Currency</td>
+<td style="text-align: left;">The currency used in the customer’s account (e.g., NGN, USD, EUR).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Available balance</td>
+<td style="text-align: left;">The average balance in the customer’s account over a specified period.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Scheme type</td>
+<td style="text-align: left;">The type of banking scheme or product the customer is using. Y = Yes; N = No.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mobile App Adoption</td>
+<td style="text-align: left;">Indicates whether the customer uses the bank’s mobile app. Y = Yes; N = No.</td>
+</tr>
+</tbody>
+</table>
+<p>Source: <a href="https://www.visualcrossing.com/resources/documentation/weather-api/unit-groups-and-measurement-units/">https://www.visualcrossing.com/resources/documentation/weather-api/unit-groups-and-measurement-units</a>.</p>
+</div>
+</div>
+</div>
+</div></aside>
+<button class="collapse-toggle" type="button" title="Toggle sidebar" aria-expanded="true" aria-controls="bslib-sidebar-1">
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" class="bi bi-chevron-left collapse-icon" style="fill:currentColor;" aria-hidden="true" role="img">
+      <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"></path>
+    </svg>
+</button>
+<script data-bslib-sidebar-init="">
+bslib.Sidebar.initCollapsibleAll()
+</script>
+</div>
+</div>
+</div>
+
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /container fluid -->
+
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (_event) {
+  if (window.bslib.Card) {
+    window.bslib.Card.initializeAllCards();
+  }
+}); 
+</script>
+  
+
+
+
+</body></html>

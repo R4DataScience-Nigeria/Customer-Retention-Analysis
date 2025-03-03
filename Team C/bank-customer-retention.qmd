@@ -1,0 +1,263 @@
+---
+title: "Churn Dashboard"
+format: 
+  dashboard:
+    orientation: columns
+    nav-buttons: [linkedin, twitter, github]
+    linkedin:
+    github: https://github.com/R4DataScience-Nigeria/Customer-Retention-Analysis.git
+    twitter:
+logo: images/bank-logo.png
+logo-alt: 
+editor: visual
+---
+
+```{r}
+#| label: load-packages
+#| message: false
+#| include: false
+library(gt)
+library(DT)
+library(here)
+library(reshape2)
+library(tidyverse)
+library(corrplot)
+library(ggstatsplot)
+library(scales)
+library(plotly)
+library(nord)
+```
+
+```{r}
+#| label: load-data
+#| message: false
+# Read the data frame from the RDS file
+new_df <- read_rds(here("Team A", "clean_churn.rds")) |>
+           select(-c(credit_val,x21)) |>
+           rename(churn_status = "churn")
+   
+```
+
+# Churn(standard)
+
+```{r}
+#| label: churn-characteristics
+# customer churn rate
+churn_rate <- new_df %>%
+  summarise(not_churn_rate = mean(churn_status == "not churned") * 100,
+            churn_rate = mean(churn_status == "churned") * 100) |>
+  pull(churn_rate)
+
+
+# customer 
+ churn_by_risk <- new_df %>%
+  group_by(risk) %>%
+  summarise(not_churn_rate = mean(churn_status == "not churned") * 100,
+            churn_rate = mean(churn_status == "churned") * 100) |>
+   pull(risk)
+
+  # total numbers of customers
+  total_customer <-new_df |>
+    count(acct_id) |> 
+    nrow()
+  
+
+# How are customers categorized based on risk levels
+risk_levels <- new_df |>
+              count(risk)
+
+```
+
+## column 1 {width="80%"}
+
+### row 1 {height="25%"}
+
+```{r}
+#| content: valuebox
+#| title: "Churn rate"
+
+list(
+  icon = "speedometer",
+  color = "danger",
+  value = paste0(round(churn_rate,3), "%")
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Total customers"
+list(
+ icon = "people",
+  color = "primary",
+  value = comma(total_customer)
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Churn rate goal"
+list(
+ icon = "bullseye",
+  color = "success",
+  value = "10%"
+)
+```
+
+### row 2 {height="75%"}
+
+```{r}
+   churn_by_years <- new_df %>%
+    group_by(years) %>%
+    summarise(not_churn_rate = mean(churn_status == "not churned") * 100,
+              churn_rate = mean(churn_status == "churned") * 100) |>
+    pivot_longer(cols = 2:3,values_to = "values",names_to = "rate") |>
+    ggplot( aes(x = years, y = values, colour = rate)) +
+    geom_line() +
+    labs(title = "Customer Loyalty Over Time:", 
+         subtitle = "A Deep Dive into the Effect of Years in the Bank on Churn",
+         x = "Years with Bank", y = "Number of Customers",
+         caption = "Source:", color = "Rate")+
+    scale_color_manual(values = c("churn_rate"="darkred","not_churn_rate"="darkgreen"))+
+    annotate("text",x = 1, y= 10, label = "Not Churn", color = "darkgreen")+
+    annotate("text", x = 0, y = 90, label = "Churn", color = "darkred")+
+    scale_x_continuous(breaks = seq(from = 0, to = 13, by = 2))+
+    scale_y_continuous(breaks = seq(from = 0, to = 110, by = 10))+
+    theme_minimal()+
+    theme(legend.position = "top",axis.title = element_text(face = "bold.italic",color = "gray20",size = 10),
+          plot.title = element_text(face = "bold",size = 12,colour = "gray20"),
+          plot.caption = element_text(face = "bold.italic",size = 8))
+```
+
+#### Churn by years {width="30%"}
+
+```{r}
+#| label: customers loyalty over time
+#| fig-width: 10
+#| fig-asp: 0.618
+churn_by_years
+```
+
+#### Churn by Risk {width="30%"}
+
+```{r}
+  # create visualization for churn distribution
+  ggplot(new_df, aes(x = fct_relevel(risk,c("LOW","MEDIUM","HIGH")))) +
+    geom_bar( aes(fill = churn_status), alpha = 0.5, color = "black",
+              position = "dodge") +
+    labs(title = "Customer's Risk Churn Rate", 
+         x = "Customer's Risk Profile", y="Frequency of Churn Status", 
+         caption = "Source")+
+    scale_y_continuous(labels = comma,
+                       breaks = seq(from = 0, 140000, by = 20000))+
+    scale_fill_manual(values = c("churned"="darkred",
+                                  "not churned"="darkgreen"))+
+    theme_minimal()+
+    theme(axis.title = element_text(face = "bold.italic", 
+                                    color = "gray20",size = 10),
+          plot.title = element_text(face = "bold",
+                                    size = 12,
+                                    colour = "gray20"),
+          plot.caption = element_text(face = "bold.italic",
+                                      size = 8))
+  
+  churn_by_years <- new_df %>%
+    group_by(years) %>%
+    summarise(not_churn_rate = mean(churn_status == "not churned") * 100,
+              churn_rate = mean(churn_status == "churned") * 100) |>
+    pivot_longer(
+      cols = 2:3,
+      values_to = "values",
+      names_to = "rate"
+    )
+```
+
+## column 2 {.tabset height="100%" width="20"}
+
+::: {.card title="Top 10 products"}
+Product sorted in descending order of churn rates.
+
+```{r}
+#| lable: top 10 bank product
+
+new_df |>
+    group_by(credit_card) |>
+    summarise(churn_rate = mean(churn_status == "churned") * 100) |>
+    arrange(desc(churn_rate)) |>
+    slice_head(n = 30) |>
+    select(`Credit card` = credit_card, `Churn rate` = churn_rate) |>
+    gt() |>
+    cols_align(align = "left", columns = `Credit card`) |>
+    data_color(
+    method = "numeric",
+    palette = "nord::aurora"
+    )
+
+```
+:::
+
+::: {.card title="Bottom 10 products"}
+Product sorted in ascending order of churn rates.
+
+```{r}
+#| lable: bottom 10 bank product
+
+new_df |>
+    group_by(credit_card) |>
+    summarise(churn_rate = mean(churn_status == "churned") * 100) |>
+    arrange(churn_rate) |>
+    slice_tail(n = 30) |>
+    select(`Credit card` = credit_card, `Churn rate` = churn_rate) |>
+    gt() |>
+    cols_align(align = "left", columns = `Credit card`) |>
+    data_color(
+    method = "numeric",
+    palette = "nord::aurora"
+    )
+
+```
+:::
+
+# Prediction
+
+# Data
+
+## column 3 {.sidebar}
+
+This dashboard displays bank customer churn data stored:
+
+**Méribel, [Les Allues](https://en.wikipedia.org/wiki/Les_Allues), Auvergne-Rhône-Alpes, France**
+
+The data was obtained from a multinational bank with branches in Nigeria and across Africa. It was generated in 2023. [Virtual Crossing](https://www.visualcrossing.com/).
+
+<br>
+
+::: {.callout-note collapse="true"}
+## Metadata
+
+The variables and their definition are given below.
+
+|                     |                                                                                                  |
+|:--------------------|:-------------------------------------------------------------------------------------------------|
+| **Variable**        |                                                                                                  |
+| Account ID          | A unique identifier for each customer account.                                                   |
+| Years               | The number of years a customer has been with the bank.                                           |
+| Churn               | A binary indicator of whether the customer has churned (e.g., 0 for not churned, 1 for churned). |
+| Risk rating         | A rating or score that reflects the financial risk associated with the customer.                 |
+| Currency            | The currency used in the customer’s account (e.g., NGN, USD, EUR).                               |
+| Available balance   | The average balance in the customer’s account over a specified period.                           |
+| Scheme type         | The type of banking scheme or product the customer is using. Y = Yes; N = No.                    |
+| Mobile App Adoption | Indicates whether the customer uses the bank’s mobile app. Y = Yes; N = No.                      |
+
+Source: [https://www.visualcrossing.com/resources/documentation/weather-api/unit-groups-and-measurement-units](https://www.visualcrossing.com/resources/documentation/weather-api/unit-groups-and-measurement-units/).
+:::
+
+## Row {height="60%"}
+
+```{r}
+#| title: Data
+
+new_df |> 
+  slice_sample(n = 200) |> 
+  datatable(options = list(dom = 'ftp', paging = TRUE))
+
+```
