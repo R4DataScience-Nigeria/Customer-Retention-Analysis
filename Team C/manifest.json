@@ -465,30 +465,6 @@
         "Built": "R 4.4.0; ; 2025-02-15 04:14:48 UTC; unix"
       }
     },
-    "RANN": {
-      "Source": "CRAN",
-      "Repository": "http://rspm/default/latest",
-      "description": {
-        "Package": "RANN",
-        "Title": "Fast Nearest Neighbour Search (Wraps ANN Library) Using L2\nMetric",
-        "Version": "2.6.2",
-        "Authors@R": "c(\n    person(\"Gregory\",\"Jefferis\", email=\"jefferis@gmail.com\", \n      role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-0587-9355\")),\n    person(given = c(\"Samuel\", \"E.\"), family = \"Kemp\", role = \"aut\"),\n    person(given = \"Kirill\",\n             family = \"M\\u00fcller\",\n             role = \"ctb\",\n             comment = c(ORCID = \"0000-0002-1416-3412\")),\n    person(\"Sunil\",\"Arya\", role=c(\"aut\", \"cph\"),\n      comment = c(ORCID = \"0000-0003-0939-4192\")),\n    person(\"David\",\"Mount\", role=c(\"aut\", \"cph\"), \n      comment = c(ORCID = \"0000-0002-3290-8932\")),\n    person(\"University of Maryland\", role=\"cph\",\n      comment = \"ANN library is copyright University of Maryland and Sunil Arya and\n    David Mount. See file COPYRIGHT for details\")\n    )",
-        "Description": "Finds the k nearest neighbours for every point in a\n    given dataset in O(N log N) time using Arya and Mount's ANN library\n    (v1.1.3). There is support for approximate as well as exact searches,\n    fixed radius searches and 'bd' as well as 'kd' trees. The distance is\n    computed using the L2 (Euclidean) metric. Please see package 'RANN.L1'\n    for the same functionality using the L1 (Manhattan, taxicab) metric.",
-        "License": "GPL (>= 3)",
-        "URL": "https://github.com/jefferislab/RANN,\nhttps://jefferislab.github.io/RANN/",
-        "BugReports": "https://github.com/jefferislab/RANN/issues",
-        "Suggests": "testthat",
-        "Encoding": "UTF-8",
-        "RoxygenNote": "7.3.2",
-        "NeedsCompilation": "yes",
-        "Packaged": "2024-08-25 14:16:59 UTC; jefferis",
-        "Author": "Gregory Jefferis [aut, cre] (<https://orcid.org/0000-0002-0587-9355>),\n  Samuel E. Kemp [aut],\n  Kirill Müller [ctb] (<https://orcid.org/0000-0002-1416-3412>),\n  Sunil Arya [aut, cph] (<https://orcid.org/0000-0003-0939-4192>),\n  David Mount [aut, cph] (<https://orcid.org/0000-0002-3290-8932>),\n  University of Maryland [cph] (ANN library is copyright University of\n    Maryland and Sunil Arya and David Mount. See file COPYRIGHT for\n    details)",
-        "Maintainer": "Gregory Jefferis <jefferis@gmail.com>",
-        "Repository": "RSPM",
-        "Date/Publication": "2024-08-25 15:30:02 UTC",
-        "Built": "R 4.4.0; x86_64-pc-linux-gnu; 2024-08-26 04:03:05 UTC; unix"
-      }
-    },
     "RColorBrewer": {
       "Source": "CRAN",
       "Repository": "http://rspm/default/latest",
@@ -509,28 +485,6 @@
         "Date/Publication": "2022-04-03 19:20:13 UTC",
         "Encoding": "UTF-8",
         "Built": "R 4.4.0; ; 2024-04-25 19:38:20 UTC; unix"
-      }
-    },
-    "ROSE": {
-      "Source": "CRAN",
-      "Repository": "http://rspm/default/latest",
-      "description": {
-        "Package": "ROSE",
-        "Type": "Package",
-        "Title": "Random Over-Sampling Examples",
-        "Version": "0.0-4",
-        "Date": "2021-06-14",
-        "Author": "Nicola Lunardon, Giovanna Menardi, Nicola Torelli",
-        "Maintainer": "Nicola Lunardon <nicola.lunardon@unimib.it>",
-        "Suggests": "MASS, nnet, rpart, tree",
-        "Description": "Functions to deal with binary classification\n  problems in the presence of imbalanced classes. Synthetic balanced samples are  \n  generated according to ROSE (Menardi and Torelli, 2013).  \n  Functions that implement more traditional remedies to the class imbalance\n  are also provided, as well as different metrics to evaluate a learner accuracy.\n  These are estimated by holdout, bootstrap or cross-validation methods. ",
-        "License": "GPL-2",
-        "Packaged": "2021-06-14 07:29:48 UTC; nicola",
-        "NeedsCompilation": "no",
-        "Repository": "RSPM",
-        "Date/Publication": "2021-06-14 08:10:09 UTC",
-        "Encoding": "UTF-8",
-        "Built": "R 4.4.0; ; 2024-04-25 02:26:07 UTC; unix"
       }
     },
     "Rcpp": {
@@ -890,30 +844,6 @@
         "Repository": "RSPM",
         "Date/Publication": "2024-10-04 07:20:03 UTC",
         "Built": "R 4.4.0; x86_64-pc-linux-gnu; 2024-10-05 04:09:07 UTC; unix"
-      }
-    },
-    "assertthat": {
-      "Source": "CRAN",
-      "Repository": "http://rspm/default/latest",
-      "description": {
-        "Package": "assertthat",
-        "Title": "Easy Pre and Post Assertions",
-        "Version": "0.2.1",
-        "Authors@R": "\n  person(\"Hadley\", \"Wickham\", , \"hadley@rstudio.com\", c(\"aut\", \"cre\"))",
-        "Description": "An extension to stopifnot() that makes it easy to declare \n    the pre and post conditions that you code should satisfy, while also \n    producing friendly error messages so that your users know what's gone\n    wrong.",
-        "License": "GPL-3",
-        "Imports": "tools",
-        "Suggests": "testthat, covr",
-        "RoxygenNote": "6.0.1",
-        "Collate": "'assert-that.r' 'on-failure.r' 'assertions-file.r'\n'assertions-scalar.R' 'assertions.r' 'base.r'\n'base-comparison.r' 'base-is.r' 'base-logical.r' 'base-misc.r'\n'utils.r' 'validate-that.R'",
-        "NeedsCompilation": "no",
-        "Packaged": "2019-03-21 13:11:01 UTC; hadley",
-        "Author": "Hadley Wickham [aut, cre]",
-        "Maintainer": "Hadley Wickham <hadley@rstudio.com>",
-        "Repository": "RSPM",
-        "Date/Publication": "2019-03-21 14:53:46 UTC",
-        "Encoding": "UTF-8",
-        "Built": "R 4.4.0; ; 2024-04-25 19:42:56 UTC; unix"
       }
     },
     "backports": {
@@ -2741,35 +2671,6 @@
         "Built": "R 4.4.0; ; 2024-04-25 03:04:36 UTC; unix"
       }
     },
-    "ggfortify": {
-      "Source": "CRAN",
-      "Repository": "http://rspm/default/latest",
-      "description": {
-        "Package": "ggfortify",
-        "Type": "Package",
-        "Title": "Data Visualization Tools for Statistical Analysis Results",
-        "Version": "0.4.17",
-        "Date": "2024-04-16",
-        "Authors@R": "c(\n  person(\"Masaaki\", \"Horikoshi\", role = c(\"aut\"),\n         email = \"sinhrks@gmail.com\"),\n  person(\"Yuan\", \"Tang\", role = c(\"aut\", \"cre\"),\n         email = \"terrytangyuan@gmail.com\",\n         comment = c(ORCID = \"0000-0001-5243-233X\")),\n  person(\"Austin\", \"Dickey\", role = c(\"ctb\")),\n  person(\"Matthias\", \"Grenié\", role = c(\"ctb\")),\n  person(\"Ryan\", \"Thompson\", role = c(\"ctb\")),\n  person(\"Luciano\", \"Selzer\", role = c(\"ctb\")),\n  person(\"Dario\", \"Strbenac\", role = c(\"ctb\")),\n  person(\"Kirill\", \"Voronin\", role = c(\"ctb\")),\n  person(\"Damir\", \"Pulatov\", role = c(\"ctb\"))\n  )",
-        "Maintainer": "Yuan Tang <terrytangyuan@gmail.com>",
-        "URL": "https://github.com/sinhrks/ggfortify",
-        "BugReports": "https://github.com/sinhrks/ggfortify/issues",
-        "Encoding": "UTF-8",
-        "Description": "Unified plotting tools for statistics commonly used, such as GLM,\n    time series, PCA families, clustering and survival analysis. The package offers\n    a single plotting interface for these analysis results and plots in a unified\n    style using 'ggplot2'.",
-        "License": "MIT + file LICENSE",
-        "VignetteBuilder": "knitr",
-        "Depends": "methods, ggplot2 (>= 2.0.0)",
-        "Imports": "dplyr (>= 0.3), tidyr, gridExtra, grid, scales, stringr,\ntibble",
-        "Suggests": "testthat, cluster, changepoint, fGarch, forecast, ggrepel,\nglmnet, grDevices, KFAS, knitr, lintr, mapdata, markdown, MASS,\nMSwM, nlme, raster, ROCR, sp, stats, strucchange, survival,\ntimeSeries, tseries, utils, vars, xts, zoo, lfda",
-        "RoxygenNote": "7.3.1",
-        "NeedsCompilation": "no",
-        "Packaged": "2024-04-17 01:48:37 UTC; terrytangyuan",
-        "Author": "Masaaki Horikoshi [aut],\n  Yuan Tang [aut, cre] (<https://orcid.org/0000-0001-5243-233X>),\n  Austin Dickey [ctb],\n  Matthias Grenié [ctb],\n  Ryan Thompson [ctb],\n  Luciano Selzer [ctb],\n  Dario Strbenac [ctb],\n  Kirill Voronin [ctb],\n  Damir Pulatov [ctb]",
-        "Repository": "RSPM",
-        "Date/Publication": "2024-04-17 04:30:04 UTC",
-        "Built": "R 4.4.0; ; 2024-08-22 23:39:09 UTC; unix"
-      }
-    },
     "ggplot2": {
       "Source": "CRAN",
       "Repository": "http://rspm/default/latest",
@@ -2921,36 +2822,6 @@
         "Repository": "RSPM",
         "Date/Publication": "2024-12-04 15:10:02 UTC",
         "Built": "R 4.4.0; ; 2024-12-05 04:09:04 UTC; unix"
-      }
-    },
-    "glmnet": {
-      "Source": "CRAN",
-      "Repository": "http://rspm/default/latest",
-      "description": {
-        "Package": "glmnet",
-        "Type": "Package",
-        "Title": "Lasso and Elastic-Net Regularized Generalized Linear Models",
-        "Version": "4.1-8",
-        "Date": "2023-08-19",
-        "Authors@R": "c(person(\"Jerome\", \"Friedman\", role=c(\"aut\")),\n\t     person(\"Trevor\", \"Hastie\", role=c(\"aut\", \"cre\"), email = \"hastie@stanford.edu\"),\n\t     person(\"Rob\", \"Tibshirani\", role=c(\"aut\")),\n\t     person(\"Balasubramanian\", \"Narasimhan\", role=c(\"aut\")),\n\t     person(\"Kenneth\",\"Tay\",role=c(\"aut\")),\n\t     person(\"Noah\", \"Simon\", role=c(\"aut\")),\n\t     person(\"Junyang\", \"Qian\", role=c(\"ctb\")),\n\t     person(\"James\", \"Yang\", role=c(\"aut\")))",
-        "Depends": "R (>= 3.6.0), Matrix (>= 1.0-6)",
-        "Imports": "methods, utils, foreach, shape, survival, Rcpp",
-        "Suggests": "knitr, lars, testthat, xfun, rmarkdown",
-        "SystemRequirements": "C++17",
-        "Description": "Extremely efficient procedures for fitting the entire lasso or elastic-net regularization path for linear regression, logistic and multinomial regression models, Poisson regression, Cox model,  multiple-response Gaussian, and the grouped multinomial regression; see <doi:10.18637/jss.v033.i01> and <doi:10.18637/jss.v039.i05>. There are two new and important additions. The family argument can be a GLM family object, which opens the door to any programmed family (<doi:10.18637/jss.v106.i01>). This comes with a modest computational cost, so when the built-in families suffice, they should be used instead.  The other novelty is the relax option, which refits each of the active sets in the path unpenalized. The algorithm uses cyclical coordinate descent in a path-wise fashion, as described in the papers cited.",
-        "License": "GPL-2",
-        "VignetteBuilder": "knitr",
-        "Encoding": "UTF-8",
-        "URL": "https://glmnet.stanford.edu",
-        "RoxygenNote": "7.2.3",
-        "LinkingTo": "RcppEigen, Rcpp",
-        "NeedsCompilation": "yes",
-        "Packaged": "2023-08-20 00:30:42 UTC; hastie",
-        "Author": "Jerome Friedman [aut],\n  Trevor Hastie [aut, cre],\n  Rob Tibshirani [aut],\n  Balasubramanian Narasimhan [aut],\n  Kenneth Tay [aut],\n  Noah Simon [aut],\n  Junyang Qian [ctb],\n  James Yang [aut]",
-        "Maintainer": "Trevor Hastie <hastie@stanford.edu>",
-        "Repository": "RSPM",
-        "Date/Publication": "2023-08-22 03:10:09 UTC",
-        "Built": "R 4.4.0; x86_64-pc-linux-gnu; 2025-01-13 05:02:57 UTC; unix"
       }
     },
     "globals": {
@@ -3122,31 +2993,6 @@
         "Date/Publication": "2024-12-17 08:10:02 UTC",
         "Encoding": "UTF-8",
         "Built": "R 4.4.0; x86_64-pc-linux-gnu; 2024-12-18 04:09:59 UTC; unix"
-      }
-    },
-    "gridExtra": {
-      "Source": "CRAN",
-      "Repository": "http://rspm/default/latest",
-      "description": {
-        "Package": "gridExtra",
-        "Authors@R": "c(person(\"Baptiste\", \"Auguie\",\n    email = \"baptiste.auguie@gmail.com\",\n    role = c(\"aut\", \"cre\")), person(\"Anton\", \"Antonov\",\n    email = \"tonytonov@gmail.com\",\n    role = c(\"ctb\")))",
-        "License": "GPL (>= 2)",
-        "Title": "Miscellaneous Functions for \"Grid\" Graphics",
-        "Type": "Package",
-        "Description": "Provides a number of user-level functions to work with \"grid\"\n    graphics, notably to arrange multiple grid-based plots on a page, and draw\n    tables.",
-        "Version": "2.3",
-        "VignetteBuilder": "knitr",
-        "Imports": "gtable, grid, grDevices, graphics, utils",
-        "Suggests": "ggplot2, egg, lattice, knitr, testthat",
-        "RoxygenNote": "6.0.1",
-        "NeedsCompilation": "no",
-        "Packaged": "2017-09-08 22:52:09 UTC; baptiste",
-        "Author": "Baptiste Auguie [aut, cre],\n  Anton Antonov [ctb]",
-        "Maintainer": "Baptiste Auguie <baptiste.auguie@gmail.com>",
-        "Repository": "RSPM",
-        "Date/Publication": "2017-09-09 14:12:08 UTC",
-        "Encoding": "UTF-8",
-        "Built": "R 4.4.0; ; 2024-08-22 23:15:25 UTC; unix"
       }
     },
     "gt": {
@@ -4034,35 +3880,6 @@
         "Repository": "RSPM",
         "Date/Publication": "2023-11-07 10:10:10 UTC",
         "Built": "R 4.4.0; ; 2024-04-25 19:44:44 UTC; unix"
-      }
-    },
-    "lime": {
-      "Source": "CRAN",
-      "Repository": "http://rspm/default/latest",
-      "description": {
-        "Package": "lime",
-        "Type": "Package",
-        "Title": "Local Interpretable Model-Agnostic Explanations",
-        "Version": "0.5.3",
-        "Authors@R": "\n    c(person(given = \"Emil\",\n             family = \"Hvitfeldt\",\n             role = c(\"aut\", \"cre\"),\n             email = \"emilhhvitfeldt@gmail.com\",\n             comment = c(ORCID = \"0000-0002-0679-1945\")),\n      person(given = \"Thomas Lin\",\n             family = \"Pedersen\",\n             role = c(\"aut\"),\n             email = \"thomasp85@gmail.com\",\n             comment = c(ORCID = \"0000-0002-5147-4711\")),\n      person(given = 'Michaël', \n             family = 'Benesty', \n             role = c('aut'), \n             email = \"michael@benesty.fr\"))",
-        "Maintainer": "Emil Hvitfeldt <emilhhvitfeldt@gmail.com>",
-        "Description": "When building complex models, it is often difficult to explain why\n    the model should be trusted. While global measures such as accuracy are\n    useful, they cannot be used for explaining why a model made a specific\n    prediction. 'lime' (a port of the 'lime' 'Python' package) is a method for\n    explaining the outcome of black box models by fitting a local model around\n    the point in question an perturbations of this point. The approach is\n    described in more detail in the article by Ribeiro et al. (2016) \n    <arXiv:1602.04938>.",
-        "License": "MIT + file LICENSE",
-        "URL": "https://lime.data-imaginist.com, https://github.com/thomasp85/lime",
-        "BugReports": "https://github.com/thomasp85/lime/issues",
-        "Encoding": "UTF-8",
-        "LazyData": "true",
-        "RoxygenNote": "7.2.1",
-        "VignetteBuilder": "knitr",
-        "Imports": "glmnet, stats, ggplot2, tools, stringi, Matrix, Rcpp,\nassertthat, methods, grDevices, gower",
-        "Suggests": "xgboost, testthat, mlr, h2o, text2vec, MASS, covr, knitr,\nrmarkdown, sessioninfo, magick, keras, htmlwidgets, shiny,\nshinythemes, ranger",
-        "LinkingTo": "Rcpp, RcppEigen",
-        "NeedsCompilation": "yes",
-        "Packaged": "2022-08-18 12:46:04 UTC; thomas",
-        "Author": "Emil Hvitfeldt [aut, cre] (<https://orcid.org/0000-0002-0679-1945>),\n  Thomas Lin Pedersen [aut] (<https://orcid.org/0000-0002-5147-4711>),\n  Michaël Benesty [aut]",
-        "Repository": "RSPM",
-        "Date/Publication": "2022-08-19 08:50:06 UTC",
-        "Built": "R 4.4.0; x86_64-pc-linux-gnu; 2025-01-13 05:15:18 UTC; unix"
       }
     },
     "listenv": {
@@ -5060,38 +4877,6 @@
         "Repository": "RSPM",
         "Date/Publication": "2024-01-13 22:40:02 UTC",
         "Built": "R 4.4.0; ; 2024-08-22 23:45:48 UTC; unix"
-      }
-    },
-    "plumber": {
-      "Source": "CRAN",
-      "Repository": "http://rspm/default/latest",
-      "description": {
-        "Encoding": "UTF-8",
-        "Package": "plumber",
-        "Type": "Package",
-        "Title": "An API Generator for R",
-        "Version": "1.3.0",
-        "Authors@R": "c(\n  person(\"Barret\", \"Schloerke\", role = c(\"cre\", \"aut\"), email = \"barret@posit.co\", comment = c(ORCID = \"0000-0001-9986-114X\")),\n  person(\"Jeff\", \"Allen\", role = c(\"aut\", \"ccp\"), email = \"cran@trestletech.com\"),\n  person(\"Bruno\", \"Tremblay\", role = \"ctb\", email = \"cran@neoxone.com\"),\n  person(\"Frans\", \"van Dunné\", role = \"ctb\", email = \"frans@ixpantia.com\"),\n  person(\"Sebastiaan\", \"Vandewoude\", role=\"ctb\", email = \"sebastiaanvandewoude@gmail.com\"),\n  person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")))",
-        "License": "MIT + file LICENSE",
-        "BugReports": "https://github.com/rstudio/plumber/issues",
-        "URL": "https://www.rplumber.io, https://github.com/rstudio/plumber",
-        "Description": "Gives the ability to automatically generate and serve an HTTP API\n    from R functions using the annotations in the R documentation around your\n    functions.",
-        "Depends": "R (>= 3.0.0)",
-        "Imports": "R6 (>= 2.0.0), stringi (>= 0.3.0), jsonlite (>= 0.9.16),\nwebutils (>= 1.1), httpuv (>= 1.5.5), crayon, promises (>=\n1.1.0), sodium, swagger (>= 3.33.0), magrittr, mime, lifecycle\n(>= 1.0.0), rlang (>= 1.0.0)",
-        "ByteCompile": "TRUE",
-        "Suggests": "testthat (>= 0.11.0), rmarkdown, base64enc, htmlwidgets,\nvisNetwork, later, readr, yaml, arrow, future, coro,\nrstudioapi, spelling, mockery (>= 0.4.2), geojsonsf, redoc,\nrapidoc, sf, ragg, svglite, readxl, writexl, utils",
-        "RoxygenNote": "7.3.2",
-        "Collate": "'async.R' 'content-types.R' 'default-handlers.R' 'hookable.R'\n'shared-secret-filter.R' 'parser-cookie.R' 'parse-body.R'\n'parse-query.R' 'plumber.R' 'deprecated-R6.R' 'deprecated.R'\n'digital-ocean.R' 'find-port.R' 'globals.R' 'includes.R'\n'json.R' 'new-rstudio-project.R' 'openapi-spec.R'\n'openapi-types.R' 'options_plumber.R' 'paths.R' 'plumb-block.R'\n'plumb-globals.R' 'plumb.R' 'plumber-response.R'\n'plumber-static.R' 'plumber-step.R' 'pr.R' 'pr_set.R'\n'serializer.R' 'session-cookie.R' 'ui.R' 'utf8.R'\n'utils-pipe.R' 'utils.R' 'validate_api_spec.R' 'zzz.R'",
-        "Language": "en-US",
-        "Config/Needs/check": "Cairo",
-        "Config/Needs/website": "tidyverse/tidytemplate",
-        "NeedsCompilation": "no",
-        "Packaged": "2025-02-18 21:22:32 UTC; barret",
-        "Author": "Barret Schloerke [cre, aut] (<https://orcid.org/0000-0001-9986-114X>),\n  Jeff Allen [aut, ccp],\n  Bruno Tremblay [ctb],\n  Frans van Dunné [ctb],\n  Sebastiaan Vandewoude [ctb],\n  Posit Software, PBC [cph, fnd]",
-        "Maintainer": "Barret Schloerke <barret@posit.co>",
-        "Repository": "RSPM",
-        "Date/Publication": "2025-02-19 05:30:02 UTC",
-        "Built": "R 4.4.0; ; 2025-02-20 04:11:27 UTC; unix"
       }
     },
     "plyr": {
@@ -6105,32 +5890,6 @@
         "Built": "R 4.4.0; ; 2024-08-22 23:13:10 UTC; unix"
       }
     },
-    "settings": {
-      "Source": "CRAN",
-      "Repository": "http://rspm/default/latest",
-      "description": {
-        "Package": "settings",
-        "Type": "Package",
-        "Title": "Software Option Settings Manager for R",
-        "Version": "0.2.7",
-        "Author": "Mark van der Loo",
-        "Maintainer": "Mark van der Loo <mark.vanderloo@gmail.com>",
-        "Description": "Provides option settings management that goes\n    beyond R's default 'options' function. With this package, users can define\n    their own option settings manager holding option names, default values and \n    (if so desired) ranges or sets of allowed option values that will be \n    automatically checked. Settings can then be retrieved, altered and reset \n    to defaults with ease. For R programmers and package developers it offers \n    cloning and merging functionality which allows for conveniently defining \n    global and local options, possibly in a multilevel options hierarchy. See \n    the package vignette for some examples concerning functions, S4 classes, \n    and reference classes. There are convenience functions to reset par() \n    and options() to their 'factory defaults'.",
-        "URL": "https://github.com/markvanderloo/settings",
-        "BugReports": "https://github.com/markvanderloo/settings/issues",
-        "License": "GPL-3",
-        "VignetteBuilder": "knitr",
-        "Imports": "grDevices, graphics",
-        "Suggests": "knitr, rmarkdown, tinytest",
-        "RoxygenNote": "7.1.1",
-        "NeedsCompilation": "no",
-        "Packaged": "2021-05-07 14:50:47 UTC; mark",
-        "Repository": "RSPM",
-        "Date/Publication": "2021-05-07 15:50:02 UTC",
-        "Encoding": "UTF-8",
-        "Built": "R 4.4.0; ; 2024-08-22 23:02:22 UTC; unix"
-      }
-    },
     "sfd": {
       "Source": "CRAN",
       "Repository": "http://rspm/default/latest",
@@ -6210,33 +5969,6 @@
         "Repository": "RSPM",
         "Date/Publication": "2024-10-25 17:40:02 UTC",
         "Built": "R 4.4.0; x86_64-pc-linux-gnu; 2024-10-26 04:03:28 UTC; unix"
-      }
-    },
-    "sodium": {
-      "Source": "CRAN",
-      "Repository": "http://rspm/default/latest",
-      "description": {
-        "Package": "sodium",
-        "Type": "Package",
-        "Title": "A Modern and Easy-to-Use Crypto Library",
-        "Version": "1.4.0",
-        "Authors@R": "person(\"Jeroen\", \"Ooms\", role = c(\"aut\", \"cre\"), email = \"jeroenooms@gmail.com\",\n    comment = c(ORCID = \"0000-0002-4035-0289\"))",
-        "Description": "Bindings to 'libsodium' <https://doc.libsodium.org/>: a modern, \n    easy-to-use software library for encryption, decryption, signatures, password\n    hashing and more. Sodium uses curve25519, a state-of-the-art Diffie-Hellman \n    function by Daniel Bernstein, which has become very popular after it was \n    discovered that the NSA had backdoored Dual EC DRBG.",
-        "License": "MIT + file LICENSE",
-        "URL": "https://docs.ropensci.org/sodium/ https://github.com/r-lib/sodium",
-        "BugReports": "https://github.com/r-lib/sodium/issues",
-        "SystemRequirements": "libsodium (>= 1.0.3)",
-        "VignetteBuilder": "knitr",
-        "Suggests": "knitr, rmarkdown",
-        "RoxygenNote": "7.2.3",
-        "NeedsCompilation": "yes",
-        "Packaged": "2024-12-16 14:16:42 UTC; jeroen",
-        "Author": "Jeroen Ooms [aut, cre] (<https://orcid.org/0000-0002-4035-0289>)",
-        "Maintainer": "Jeroen Ooms <jeroenooms@gmail.com>",
-        "Repository": "RSPM",
-        "Date/Publication": "2024-12-16 15:00:05 UTC",
-        "Encoding": "UTF-8",
-        "Built": "R 4.4.0; x86_64-pc-linux-gnu; 2024-12-17 04:08:06 UTC; unix"
       }
     },
     "sparsevctrs": {
@@ -6388,31 +6120,6 @@
         "Built": "R 4.4.2; x86_64-pc-linux-gnu; 2024-11-07 07:17:27 UTC; unix"
       }
     },
-    "swagger": {
-      "Source": "CRAN",
-      "Repository": "http://rspm/default/latest",
-      "description": {
-        "Package": "swagger",
-        "Type": "Package",
-        "Title": "Dynamically Generates Documentation from a 'Swagger' Compliant\nAPI",
-        "Version": "5.17.14.1",
-        "Authors@R": "c(\n    person(\"Barret\", \"Schloerke\", role = \"aut\", email = \"barret@rstudio.com\", comment = c(ORCID = \"0000-0001-9986-114X\")),\n    person(\"Javier\", \"Luraschi\", role = \"aut\", email = \"javier@rstudio.com\"),\n    person(\"Bruno\", \"Tremblay\", role = c(\"cre\", \"ctb\"), email = \"cran@neoxone.com\"),\n    person(family = \"RStudio\", role = \"cph\"),\n    person(family = \"SmartBear Software\", role = c(\"aut\", \"cph\"))\n    )",
-        "Suggests": "jsonlite, plumber, testthat",
-        "Description": "A collection of 'HTML', 'JavaScript', and 'CSS' assets that\n  dynamically generate beautiful documentation from a 'Swagger' compliant API:\n  <https://swagger.io/specification/>.",
-        "License": "Apache License 2.0 | file LICENSE",
-        "Encoding": "UTF-8",
-        "URL": "https://rstudio.github.io/swagger/,\nhttps://github.com/rstudio/swagger",
-        "BugReports": "https://github.com/rstudio/swagger/issues",
-        "RoxygenNote": "7.3.1",
-        "NeedsCompilation": "no",
-        "Packaged": "2024-06-28 16:48:07 UTC; tremb",
-        "Author": "Barret Schloerke [aut] (<https://orcid.org/0000-0001-9986-114X>),\n  Javier Luraschi [aut],\n  Bruno Tremblay [cre, ctb],\n  RStudio [cph],\n  SmartBear Software [aut, cph]",
-        "Maintainer": "Bruno Tremblay <cran@neoxone.com>",
-        "Repository": "RSPM",
-        "Date/Publication": "2024-06-28 17:10:02 UTC",
-        "Built": "R 4.4.0; ; 2024-06-29 04:06:04 UTC; unix"
-      }
-    },
     "sys": {
       "Source": "CRAN",
       "Repository": "http://rspm/default/latest",
@@ -6500,35 +6207,6 @@
         "Repository": "RSPM",
         "Date/Publication": "2025-01-20 11:00:01 UTC",
         "Built": "R 4.4.0; x86_64-pc-linux-gnu; 2025-03-04 04:12:40 UTC; unix"
-      }
-    },
-    "themis": {
-      "Source": "CRAN",
-      "Repository": "http://rspm/default/latest",
-      "description": {
-        "Package": "themis",
-        "Title": "Extra Recipes Steps for Dealing with Unbalanced Data",
-        "Version": "1.0.3",
-        "Authors@R": "c(\n    person(\"Emil\", \"Hvitfeldt\", , \"emil.hvitfeldt@posit.co\", role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"0000-0002-0679-1945\")),\n    person(given = \"Posit Software, PBC\", role = c(\"cph\", \"fnd\"))\n  )",
-        "Description": "A dataset with an uneven number of cases in each class is\n    said to be unbalanced. Many models produce a subpar performance on\n    unbalanced datasets. A dataset can be balanced by increasing the\n    number of minority cases using SMOTE 2011 <doi:10.48550/arXiv.1106.1813>,\n    BorderlineSMOTE 2005 <doi:10.1007/11538059_91> and ADASYN 2008\n    <https://ieeexplore.ieee.org/document/4633969>. Or by decreasing the\n    number of majority cases using NearMiss 2003\n    <https://www.site.uottawa.ca/~nat/Workshop2003/jzhang.pdf> or Tomek\n    link removal 1976 <https://ieeexplore.ieee.org/document/4309452>.",
-        "License": "MIT + file LICENSE",
-        "URL": "https://github.com/tidymodels/themis,\nhttps://themis.tidymodels.org",
-        "BugReports": "https://github.com/tidymodels/themis/issues",
-        "Depends": "R (>= 3.6), recipes (>= 1.1.0)",
-        "Imports": "cli, gower, lifecycle (>= 1.0.3), dplyr, generics (>= 0.1.0),\npurrr, RANN, rlang (>= 1.1.0), ROSE, tibble, withr, glue,\nhardhat, vctrs",
-        "Suggests": "covr, dials (>= 1.2.0), ggplot2, modeldata, testthat (>=\n3.0.0)",
-        "Config/Needs/website": "tidyverse/tidytemplate",
-        "Config/testthat/edition": "3",
-        "Encoding": "UTF-8",
-        "LazyData": "true",
-        "RoxygenNote": "7.3.2",
-        "NeedsCompilation": "no",
-        "Packaged": "2025-01-22 23:40:53 UTC; emilhvitfeldt",
-        "Author": "Emil Hvitfeldt [aut, cre] (<https://orcid.org/0000-0002-0679-1945>),\n  Posit Software, PBC [cph, fnd]",
-        "Maintainer": "Emil Hvitfeldt <emil.hvitfeldt@posit.co>",
-        "Repository": "RSPM",
-        "Date/Publication": "2025-01-23 00:10:02 UTC",
-        "Built": "R 4.4.0; ; 2025-01-23 04:10:59 UTC; unix"
       }
     },
     "tibble": {
@@ -6871,37 +6549,6 @@
         "Built": "R 4.4.0; x86_64-pc-linux-gnu; 2024-07-30 04:06:44 UTC; unix"
       }
     },
-    "validate": {
-      "Source": "CRAN",
-      "Repository": "http://rspm/default/latest",
-      "description": {
-        "Package": "validate",
-        "Maintainer": "Mark van der Loo <mark.vanderloo@gmail.com>",
-        "License": "GPL-3",
-        "Title": "Data Validation Infrastructure",
-        "LazyData": "no",
-        "Type": "Package",
-        "LazyLoad": "yes",
-        "Authors@R": "c(person(\"Mark\", \"van der Loo\"\n                   , role   = c(\"cre\",\"aut\")\n                   , email  = \"mark.vanderloo@gmail.com\"\n                   , comment= c(ORCID=\"0000-0002-9807-4686\"))\n           , person(\"Edwin\", \"de Jonge\"\n                   , role = \"aut\"\n                   , comment=c(ORCID=\"0000-0002-6580-4718\"))\n           , person(\"Paul\",\"Hsieh\"\n                   , role = \"ctb\" ))",
-        "Description": "Declare data validation rules and data quality indicators;\n        confront data with them and analyze or visualize the results.\n        The package supports rules that are per-field, in-record,\n        cross-record or cross-dataset. Rules can be automatically\n        analyzed for rule type and connectivity. Supports checks implied\n        by an SDMX DSD file as well. See also Van der Loo\n        and De Jonge (2018) <doi:10.1002/9781118897126>, Chapter 6\n        and the JSS paper (2021) <doi:10.18637/jss.v097.i10>.",
-        "Version": "1.1.5",
-        "Depends": "R (>= 3.5.0), methods",
-        "URL": "https://github.com/data-cleaning/validate",
-        "BugReports": "https://github.com/data-cleaning/validate/issues",
-        "Imports": "stats, graphics, grid, settings, yaml",
-        "Suggests": "rsdmx, tinytest (>= 0.9.6), knitr, bookdown, lumberjack,\nrmarkdown",
-        "VignetteBuilder": "knitr",
-        "Collate": "'rule.R' 'sugar.R' 'validate_pkg.R' 'parse.R'\n'expressionset.R' 'indicator.R' 'validator.R' 'confrontation.R'\n'compare.R' 'factory.R' 'genericrules.R' 'lumberjack.R'\n'plot.R' 'retailers.R' 'run_validation.R' 'sdmx.R' 'syntax.R'\n'utils.R' 'yaml.R'",
-        "RoxygenNote": "7.3.1",
-        "Encoding": "UTF-8",
-        "NeedsCompilation": "yes",
-        "Packaged": "2024-02-13 12:49:37 UTC; mark",
-        "Author": "Mark van der Loo [cre, aut] (<https://orcid.org/0000-0002-9807-4686>),\n  Edwin de Jonge [aut] (<https://orcid.org/0000-0002-6580-4718>),\n  Paul Hsieh [ctb]",
-        "Repository": "RSPM",
-        "Date/Publication": "2024-02-14 10:30:44 UTC",
-        "Built": "R 4.4.0; x86_64-pc-linux-gnu; 2024-04-25 02:32:41 UTC; unix"
-      }
-    },
     "vctrs": {
       "Source": "CRAN",
       "Repository": "http://rspm/default/latest",
@@ -6930,36 +6577,6 @@
         "Repository": "RSPM",
         "Date/Publication": "2023-12-01 23:50:02 UTC",
         "Built": "R 4.4.0; x86_64-pc-linux-gnu; 2024-04-25 19:46:49 UTC; unix"
-      }
-    },
-    "vip": {
-      "Source": "CRAN",
-      "Repository": "http://rspm/default/latest",
-      "description": {
-        "Package": "vip",
-        "Type": "Package",
-        "Title": "Variable Importance Plots",
-        "Version": "0.4.1",
-        "Authors@R": "c(\n  person(c(\"Brandon\", \"M.\"), family = \"Greenwell\", \n         email = \"greenwell.brandon@gmail.com\",\n         role = c(\"aut\", \"cre\"), \n         comment = c(ORCID = \"0000-0002-8120-0084\")),\n  person(\"Brad\", \"Boehmke\",\n         email = \"bradleyboehmke@gmail.com\",\n         role = c(\"aut\"),\n         comment = c(ORCID = \"0000-0002-3611-8516\"))\n  )",
-        "Description": "A general framework for constructing variable importance plots from \n  various types of machine learning models in R. Aside from some standard model-\n  specific variable importance measures, this package also provides model-\n  agnostic approaches that can be applied to any supervised learning algorithm.\n  These include 1) an efficient permutation-based variable importance measure, \n  2) variable importance based on Shapley values (Strumbelj and Kononenko, \n  2014) <doi:10.1007/s10115-013-0679-x>, and 3) the variance-based \n  approach described in Greenwell et al. (2018) <arXiv:1805.04755>. A \n  variance-based method for quantifying the relative strength of interaction \n  effects is also included (see the previous reference for details).",
-        "License": "GPL (>= 2)",
-        "URL": "https://github.com/koalaverse/vip/,\nhttps://koalaverse.github.io/vip/",
-        "BugReports": "https://github.com/koalaverse/vip/issues",
-        "Encoding": "UTF-8",
-        "VignetteBuilder": "knitr",
-        "Depends": "R (>= 4.1.0)",
-        "Imports": "foreach, ggplot2 (>= 0.9.0), stats, tibble, utils, yardstick",
-        "Suggests": "bookdown, DT, covr, doParallel, dplyr, fastshap (>= 0.1.0),\nknitr, lattice, mlbench, modeldata, NeuralNetTools, pdp,\nrmarkdown, tinytest (>= 1.4.1), varImp",
-        "Enhances": "C50, caret, Cubist, earth, gbm, glmnet, h2o, lightgbm,\nmixOmics, mlr, mlr3, neuralnet, nnet, parsnip (>= 0.1.7),\nparty, partykit, pls, randomForest, ranger, rpart, RSNNS,\nsparklyr (>= 0.8.0), tidymodels, workflows (>= 0.2.3), xgboost",
-        "LazyData": "true",
-        "RoxygenNote": "7.2.3",
-        "NeedsCompilation": "no",
-        "Packaged": "2023-08-18 21:16:45 UTC; bgreenwell",
-        "Author": "Brandon M. Greenwell [aut, cre]\n    (<https://orcid.org/0000-0002-8120-0084>),\n  Brad Boehmke [aut] (<https://orcid.org/0000-0002-3611-8516>)",
-        "Maintainer": "Brandon M. Greenwell <greenwell.brandon@gmail.com>",
-        "Repository": "RSPM",
-        "Date/Publication": "2023-08-21 09:20:02 UTC",
-        "Built": "R 4.4.0; ; 2024-04-25 03:32:30 UTC; unix"
       }
     },
     "viridisLite": {
@@ -7047,33 +6664,6 @@
         "Repository": "RSPM",
         "Date/Publication": "2023-11-02 17:40:02 UTC",
         "Built": "R 4.4.0; x86_64-pc-linux-gnu; 2024-08-22 23:03:46 UTC; unix"
-      }
-    },
-    "webutils": {
-      "Source": "CRAN",
-      "Repository": "http://rspm/default/latest",
-      "description": {
-        "Package": "webutils",
-        "Type": "Package",
-        "Title": "Utility Functions for Developing Web Applications",
-        "Version": "1.2.2",
-        "Authors@R": "person(\"Jeroen\", \"Ooms\", role = c(\"aut\", \"cre\"), email = \"jeroenooms@gmail.com\",\n      comment = c(ORCID = \"0000-0002-4035-0289\"))",
-        "Description": "Parses http request data in application/json, multipart/form-data, \n    or application/x-www-form-urlencoded format. Includes example of hosting\n    and parsing html form data in R using either 'httpuv' or 'Rhttpd'.",
-        "License": "MIT + file LICENSE",
-        "URL": "https://jeroen.r-universe.dev/webutils",
-        "BugReports": "https://github.com/jeroen/webutils/issues",
-        "Imports": "curl (>= 2.5), jsonlite",
-        "Suggests": "httpuv, testthat",
-        "RoxygenNote": "7.3.2.9000",
-        "Language": "en-US",
-        "Encoding": "UTF-8",
-        "NeedsCompilation": "yes",
-        "Packaged": "2024-10-03 14:13:23 UTC; jeroen",
-        "Author": "Jeroen Ooms [aut, cre] (<https://orcid.org/0000-0002-4035-0289>)",
-        "Maintainer": "Jeroen Ooms <jeroenooms@gmail.com>",
-        "Repository": "RSPM",
-        "Date/Publication": "2024-10-04 09:00:05 UTC",
-        "Built": "R 4.4.0; x86_64-pc-linux-gnu; 2024-10-05 04:08:23 UTC; unix"
       }
     },
     "withr": {
@@ -7525,15 +7115,6 @@
     },
     "source/fit.qmd": {
       "checksum": "d7444f343cbf5c98bda9e1085df1793b"
-    },
-    "source/Model-Template.qmd": {
-      "checksum": "ee5cfa5da1b977e7f2a0e8229afef95d"
-    },
-    "source/slides.qmd": {
-      "checksum": "9e20ea271e6fe4f02088b8d1fba74ca2"
-    },
-    "source/tidymode.css": {
-      "checksum": "337b7e7dc07b93eec2f83f48926297ca"
     }
   },
   "users": null
