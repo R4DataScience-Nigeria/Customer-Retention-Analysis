@@ -43,14 +43,18 @@ ul.task-list li input[type="checkbox"] {
 <link href="bank-customer-retention_files/libs/quarto-dashboard/datatables.min.css" rel="stylesheet" kdttablesentinel="true">
 <link href="bank-customer-retention_files/libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
 <script src="bank-customer-retention_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="bank-customer-retention_files/libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="bank-customer-retention_files/libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="bank-customer-retention_files/libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="bank-customer-retention_files/libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="bank-customer-retention_files/libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="bank-customer-retention_files/libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="bank-customer-retention_files/libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <link href="bank-customer-retention_files/libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
 <script src="bank-customer-retention_files/libs/datatables-binding-0.33/datatables.js"></script>
-<script src="bank-customer-retention_files/libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="bank-customer-retention_files/libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="bank-customer-retention_files/libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
 <script src="bank-customer-retention_files/libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
-<link href="bank-customer-retention_files/libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
-<script src="bank-customer-retention_files/libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 
 
 </head>
@@ -142,7 +146,8 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<img src="bank-customer-retention_files/figure-html/customers%20loyalty%20over%20time-1.png" class="img-fluid quarto-dashboard-img-contain">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-e5fb5c05ed2b8af8569b" style="width:100%;height:401px;"></div>
+<script type="application/json" data-for="htmlwidget-e5fb5c05ed2b8af8569b">{"x":{"data":[{"x":[0,1,2,3,4,5,6,7,8,9,10,11,12],"y":[90.710186513629836,46.458859690059704,63.866768000528694,61.340979267754747,58.519095363249939,42.459331677217726,46.319523918516822,40.425332144030797,44.893311376616097,41.93218322427127,44.777315977130321,51.377164115037921,59.454796411318156],"text":["years:  0<br />values: 90.710187<br />rate: churn_rate","years:  1<br />values: 46.458860<br />rate: churn_rate","years:  2<br />values: 63.866768<br />rate: churn_rate","years:  3<br />values: 61.340979<br />rate: churn_rate","years:  4<br />values: 58.519095<br />rate: churn_rate","years:  5<br />values: 42.459332<br />rate: churn_rate","years:  6<br />values: 46.319524<br />rate: churn_rate","years:  7<br />values: 40.425332<br />rate: churn_rate","years:  8<br />values: 44.893311<br />rate: churn_rate","years:  9<br />values: 41.932183<br />rate: churn_rate","years: 10<br />values: 44.777316<br />rate: churn_rate","years: 11<br />values: 51.377164<br />rate: churn_rate","years: 12<br />values: 59.454796<br />rate: churn_rate"],"type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(139,0,0,1)","dash":"solid"},"hoveron":"points","name":"churn_rate","legendgroup":"churn_rate","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[0,1,2,3,4,5,6,7,8,9,10,11,12],"y":[9.2898134863701571,53.541140309940296,36.133231999471299,38.65902073224526,41.480904636750054,57.540668322782274,53.680476081483178,59.574667855969196,55.106688623383903,58.06781677572873,55.222684022869686,48.622835884962086,40.545203588681851],"text":["years:  0<br />values:  9.289813<br />rate: not_churn_rate","years:  1<br />values: 53.541140<br />rate: not_churn_rate","years:  2<br />values: 36.133232<br />rate: not_churn_rate","years:  3<br />values: 38.659021<br />rate: not_churn_rate","years:  4<br />values: 41.480905<br />rate: not_churn_rate","years:  5<br />values: 57.540668<br />rate: not_churn_rate","years:  6<br />values: 53.680476<br />rate: not_churn_rate","years:  7<br />values: 59.574668<br />rate: not_churn_rate","years:  8<br />values: 55.106689<br />rate: not_churn_rate","years:  9<br />values: 58.067817<br />rate: not_churn_rate","years: 10<br />values: 55.222684<br />rate: not_churn_rate","years: 11<br />values: 48.622836<br />rate: not_churn_rate","years: 12<br />values: 40.545204<br />rate: not_churn_rate"],"type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(0,100,0,1)","dash":"solid"},"hoveron":"points","name":"not_churn_rate","legendgroup":"not_churn_rate","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1],"y":[10],"text":"Not Churn","hovertext":"x: 1<br />y: 10","textfont":{"size":14.66456692913386,"color":"rgba(0,100,0,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[0],"y":[90],"text":"Churn","hovertext":"x: 0<br />y: 90","textfont":{"size":14.66456692913386,"color":"rgba(139,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.767709201791767,"r":7.3059360730593621,"b":40.453470928649388,"l":35.931921959319219},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"<b> Customer Loyalty Over Time: <\/b>","font":{"color":"rgba(51,51,51,1)","family":"","size":15.940224159402243},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.60000000000000009,12.6],"tickmode":"array","ticktext":["0","2","4","6","8","10","12"],"tickvals":[0,2,3.9999999999999996,6,8,10,12],"categoryorder":"array","categoryarray":["0","2","4","6","8","10","12"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"<b> <i> Years with Bank <\/i> <\/b>","font":{"color":"rgba(51,51,51,1)","family":"","size":13.283520132835205}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[5.2187948350071736,94.781205164992826],"tickmode":"array","ticktext":["10","20","30","40","50","60","70","80","90"],"tickvals":[10,20,30.000000000000004,40,50,60,70,80,90],"categoryorder":"array","categoryarray":["10","20","30","40","50","60","70","80","90"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"<b> <i> Number of Customers <\/i> <\/b>","font":{"color":"rgba(51,51,51,1)","family":"","size":13.283520132835205}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"Rate","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"24f7853efb4":{"x":{},"y":{},"colour":{},"type":"scatter"},"24ffe0946d":{"x":{},"y":{}},"24f4d128c6b":{"x":{},"y":{}}},"cur_data":"24f7853efb4","visdat":{"24f7853efb4":["function (y) ","x"],"24ffe0946d":["function (y) ","x"],"24f4d128c6b":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -155,7 +160,8 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<img src="bank-customer-retention_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-dashboard-img-contain">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-35c6156613162fbc5a16" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-35c6156613162fbc5a16">{"x":{"data":[{"orientation":"v","width":[0.44999999999999996,0.45000000000000018,0.45000000000000018],"base":[0,0,0],"x":[0.77500000000000002,1.7749999999999999,2.7749999999999999],"y":[117226,135790,4545],"text":["count: 117226<br />fct_relevel(risk, c(\"LOW\", \"MEDIUM\", \"HIGH\")): LOW<br />churn_status: churned","count: 135790<br />fct_relevel(risk, c(\"LOW\", \"MEDIUM\", \"HIGH\")): MEDIUM<br />churn_status: churned","count:   4545<br />fct_relevel(risk, c(\"LOW\", \"MEDIUM\", \"HIGH\")): HIGH<br />churn_status: churned"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(139,0,0,0.5)","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"}},"name":"churned","legendgroup":"churned","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.45000000000000018,0.45000000000000018,0.45000000000000018],"base":[0,0,0],"x":[1.2250000000000001,2.2250000000000001,3.2250000000000001],"y":[110119,129809,1663],"text":["count: 110119<br />fct_relevel(risk, c(\"LOW\", \"MEDIUM\", \"HIGH\")): LOW<br />churn_status: not churned","count: 129809<br />fct_relevel(risk, c(\"LOW\", \"MEDIUM\", \"HIGH\")): MEDIUM<br />churn_status: not churned","count:   1663<br />fct_relevel(risk, c(\"LOW\", \"MEDIUM\", \"HIGH\")): HIGH<br />churn_status: not churned"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,100,0,0.5)","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"}},"name":"not churned","legendgroup":"not churned","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.629721876297225,"r":7.3059360730593621,"b":40.315483603154838,"l":65.155666251556696},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"<b> Customer's Risk Churn Rate <\/b>","font":{"color":"rgba(51,51,51,1)","family":"","size":15.940224159402243},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,3.6000000000000001],"tickmode":"array","ticktext":["LOW","MEDIUM","HIGH"],"tickvals":[1,2,3],"categoryorder":"array","categoryarray":["LOW","MEDIUM","HIGH"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"<b> <i> Customer's Risk Profile <\/i> <\/b>","font":{"color":"rgba(51,51,51,1)","family":"","size":13.283520132835198}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-6789.5,142579.5],"tickmode":"array","ticktext":["0","20,000","40,000","60,000","80,000","100,000","120,000","140,000"],"tickvals":[0,20000,40000,60000,80000,100000,120000,140000],"categoryorder":"array","categoryarray":["0","20,000","40,000","60,000","80,000","100,000","120,000","140,000"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716894984},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"<b> <i> Frequency of Churn Status <\/i> <\/b>","font":{"color":"rgba(51,51,51,1)","family":"","size":13.283520132835198}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"churn_status","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"24f7cd605c5":{"x":{},"fill":{},"type":"bar"}},"cur_data":"24f7cd605c5","visdat":{"24f7cd605c5":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -175,23 +181,23 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="tab-content html-fill-item html-fill-container" data-tabset-id="card-tabset-6"><div class="tab-pane active show html-fill-item html-fill-container" role="tabpanel" id="card-tabset-6-1"><div class="card-body html-fill-item html-fill-container" data-title="Top 10 products">
 <p>Product sorted in descending order of churn rates.</p>
 <div class="cell-output-display html-fill-item html-fill-container">
-<div id="uiwaavjqej" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;" class="html-fill-item html-fill-container">
-<style>#uiwaavjqej table {
+<div id="fbimlpngsv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;" class="html-fill-item html-fill-container">
+<style>#fbimlpngsv table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#uiwaavjqej thead, #uiwaavjqej tbody, #uiwaavjqej tfoot, #uiwaavjqej tr, #uiwaavjqej td, #uiwaavjqej th {
+#fbimlpngsv thead, #fbimlpngsv tbody, #fbimlpngsv tfoot, #fbimlpngsv tr, #fbimlpngsv td, #fbimlpngsv th {
   border-style: none;
 }
 
-#uiwaavjqej p {
+#fbimlpngsv p {
   margin: 0;
   padding: 0;
 }
 
-#uiwaavjqej .gt_table {
+#fbimlpngsv .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -217,12 +223,12 @@ grid-auto-rows: minmax(0, 1fr);">
   border-left-color: #D3D3D3;
 }
 
-#uiwaavjqej .gt_caption {
+#fbimlpngsv .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#uiwaavjqej .gt_title {
+#fbimlpngsv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -234,7 +240,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-bottom-width: 0;
 }
 
-#uiwaavjqej .gt_subtitle {
+#fbimlpngsv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -246,7 +252,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-top-width: 0;
 }
 
-#uiwaavjqej .gt_heading {
+#fbimlpngsv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -258,13 +264,13 @@ grid-auto-rows: minmax(0, 1fr);">
   border-right-color: #D3D3D3;
 }
 
-#uiwaavjqej .gt_bottom_border {
+#fbimlpngsv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#uiwaavjqej .gt_col_headings {
+#fbimlpngsv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -279,7 +285,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-right-color: #D3D3D3;
 }
 
-#uiwaavjqej .gt_col_heading {
+#fbimlpngsv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -299,7 +305,7 @@ grid-auto-rows: minmax(0, 1fr);">
   overflow-x: hidden;
 }
 
-#uiwaavjqej .gt_column_spanner_outer {
+#fbimlpngsv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -311,15 +317,15 @@ grid-auto-rows: minmax(0, 1fr);">
   padding-right: 4px;
 }
 
-#uiwaavjqej .gt_column_spanner_outer:first-child {
+#fbimlpngsv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#uiwaavjqej .gt_column_spanner_outer:last-child {
+#fbimlpngsv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#uiwaavjqej .gt_column_spanner {
+#fbimlpngsv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -331,11 +337,11 @@ grid-auto-rows: minmax(0, 1fr);">
   width: 100%;
 }
 
-#uiwaavjqej .gt_spanner_row {
+#fbimlpngsv .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#uiwaavjqej .gt_group_heading {
+#fbimlpngsv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -361,7 +367,7 @@ grid-auto-rows: minmax(0, 1fr);">
   text-align: left;
 }
 
-#uiwaavjqej .gt_empty_group_heading {
+#fbimlpngsv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -376,15 +382,15 @@ grid-auto-rows: minmax(0, 1fr);">
   vertical-align: middle;
 }
 
-#uiwaavjqej .gt_from_md > :first-child {
+#fbimlpngsv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#uiwaavjqej .gt_from_md > :last-child {
+#fbimlpngsv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#uiwaavjqej .gt_row {
+#fbimlpngsv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -403,7 +409,7 @@ grid-auto-rows: minmax(0, 1fr);">
   overflow-x: hidden;
 }
 
-#uiwaavjqej .gt_stub {
+#fbimlpngsv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -416,7 +422,7 @@ grid-auto-rows: minmax(0, 1fr);">
   padding-right: 5px;
 }
 
-#uiwaavjqej .gt_stub_row_group {
+#fbimlpngsv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -430,15 +436,15 @@ grid-auto-rows: minmax(0, 1fr);">
   vertical-align: top;
 }
 
-#uiwaavjqej .gt_row_group_first td {
+#fbimlpngsv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#uiwaavjqej .gt_row_group_first th {
+#fbimlpngsv .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#uiwaavjqej .gt_summary_row {
+#fbimlpngsv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -448,16 +454,16 @@ grid-auto-rows: minmax(0, 1fr);">
   padding-right: 5px;
 }
 
-#uiwaavjqej .gt_first_summary_row {
+#fbimlpngsv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#uiwaavjqej .gt_first_summary_row.thick {
+#fbimlpngsv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#uiwaavjqej .gt_last_summary_row {
+#fbimlpngsv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -467,7 +473,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-bottom-color: #D3D3D3;
 }
 
-#uiwaavjqej .gt_grand_summary_row {
+#fbimlpngsv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -477,7 +483,7 @@ grid-auto-rows: minmax(0, 1fr);">
   padding-right: 5px;
 }
 
-#uiwaavjqej .gt_first_grand_summary_row {
+#fbimlpngsv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -487,7 +493,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-top-color: #D3D3D3;
 }
 
-#uiwaavjqej .gt_last_grand_summary_row_top {
+#fbimlpngsv .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -497,11 +503,11 @@ grid-auto-rows: minmax(0, 1fr);">
   border-bottom-color: #D3D3D3;
 }
 
-#uiwaavjqej .gt_striped {
+#fbimlpngsv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#uiwaavjqej .gt_table_body {
+#fbimlpngsv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -510,7 +516,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-bottom-color: #D3D3D3;
 }
 
-#uiwaavjqej .gt_footnotes {
+#fbimlpngsv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -524,7 +530,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-right-color: #D3D3D3;
 }
 
-#uiwaavjqej .gt_footnote {
+#fbimlpngsv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -533,7 +539,7 @@ grid-auto-rows: minmax(0, 1fr);">
   padding-right: 5px;
 }
 
-#uiwaavjqej .gt_sourcenotes {
+#fbimlpngsv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -547,7 +553,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-right-color: #D3D3D3;
 }
 
-#uiwaavjqej .gt_sourcenote {
+#fbimlpngsv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -555,72 +561,72 @@ grid-auto-rows: minmax(0, 1fr);">
   padding-right: 5px;
 }
 
-#uiwaavjqej .gt_left {
+#fbimlpngsv .gt_left {
   text-align: left;
 }
 
-#uiwaavjqej .gt_center {
+#fbimlpngsv .gt_center {
   text-align: center;
 }
 
-#uiwaavjqej .gt_right {
+#fbimlpngsv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#uiwaavjqej .gt_font_normal {
+#fbimlpngsv .gt_font_normal {
   font-weight: normal;
 }
 
-#uiwaavjqej .gt_font_bold {
+#fbimlpngsv .gt_font_bold {
   font-weight: bold;
 }
 
-#uiwaavjqej .gt_font_italic {
+#fbimlpngsv .gt_font_italic {
   font-style: italic;
 }
 
-#uiwaavjqej .gt_super {
+#fbimlpngsv .gt_super {
   font-size: 65%;
 }
 
-#uiwaavjqej .gt_footnote_marks {
+#fbimlpngsv .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#uiwaavjqej .gt_asterisk {
+#fbimlpngsv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#uiwaavjqej .gt_indent_1 {
+#fbimlpngsv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#uiwaavjqej .gt_indent_2 {
+#fbimlpngsv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#uiwaavjqej .gt_indent_3 {
+#fbimlpngsv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#uiwaavjqej .gt_indent_4 {
+#fbimlpngsv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#uiwaavjqej .gt_indent_5 {
+#fbimlpngsv .gt_indent_5 {
   text-indent: 25px;
 }
 
-#uiwaavjqej .katex-display {
+#fbimlpngsv .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#uiwaavjqej div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#fbimlpngsv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -697,23 +703,23 @@ grid-auto-rows: minmax(0, 1fr);">
 </div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-6-2"><div class="card-body html-fill-item html-fill-container" data-title="Bottom 10 products">
 <p>Product sorted in ascending order of churn rates.</p>
 <div class="cell-output-display html-fill-item html-fill-container">
-<div id="nnxnlcqqsp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;" class="html-fill-item html-fill-container">
-<style>#nnxnlcqqsp table {
+<div id="kobtuscktc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;" class="html-fill-item html-fill-container">
+<style>#kobtuscktc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#nnxnlcqqsp thead, #nnxnlcqqsp tbody, #nnxnlcqqsp tfoot, #nnxnlcqqsp tr, #nnxnlcqqsp td, #nnxnlcqqsp th {
+#kobtuscktc thead, #kobtuscktc tbody, #kobtuscktc tfoot, #kobtuscktc tr, #kobtuscktc td, #kobtuscktc th {
   border-style: none;
 }
 
-#nnxnlcqqsp p {
+#kobtuscktc p {
   margin: 0;
   padding: 0;
 }
 
-#nnxnlcqqsp .gt_table {
+#kobtuscktc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -739,12 +745,12 @@ grid-auto-rows: minmax(0, 1fr);">
   border-left-color: #D3D3D3;
 }
 
-#nnxnlcqqsp .gt_caption {
+#kobtuscktc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#nnxnlcqqsp .gt_title {
+#kobtuscktc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -756,7 +762,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-bottom-width: 0;
 }
 
-#nnxnlcqqsp .gt_subtitle {
+#kobtuscktc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -768,7 +774,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-top-width: 0;
 }
 
-#nnxnlcqqsp .gt_heading {
+#kobtuscktc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -780,13 +786,13 @@ grid-auto-rows: minmax(0, 1fr);">
   border-right-color: #D3D3D3;
 }
 
-#nnxnlcqqsp .gt_bottom_border {
+#kobtuscktc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#nnxnlcqqsp .gt_col_headings {
+#kobtuscktc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -801,7 +807,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-right-color: #D3D3D3;
 }
 
-#nnxnlcqqsp .gt_col_heading {
+#kobtuscktc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -821,7 +827,7 @@ grid-auto-rows: minmax(0, 1fr);">
   overflow-x: hidden;
 }
 
-#nnxnlcqqsp .gt_column_spanner_outer {
+#kobtuscktc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -833,15 +839,15 @@ grid-auto-rows: minmax(0, 1fr);">
   padding-right: 4px;
 }
 
-#nnxnlcqqsp .gt_column_spanner_outer:first-child {
+#kobtuscktc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#nnxnlcqqsp .gt_column_spanner_outer:last-child {
+#kobtuscktc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#nnxnlcqqsp .gt_column_spanner {
+#kobtuscktc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -853,11 +859,11 @@ grid-auto-rows: minmax(0, 1fr);">
   width: 100%;
 }
 
-#nnxnlcqqsp .gt_spanner_row {
+#kobtuscktc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#nnxnlcqqsp .gt_group_heading {
+#kobtuscktc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -883,7 +889,7 @@ grid-auto-rows: minmax(0, 1fr);">
   text-align: left;
 }
 
-#nnxnlcqqsp .gt_empty_group_heading {
+#kobtuscktc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -898,15 +904,15 @@ grid-auto-rows: minmax(0, 1fr);">
   vertical-align: middle;
 }
 
-#nnxnlcqqsp .gt_from_md > :first-child {
+#kobtuscktc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nnxnlcqqsp .gt_from_md > :last-child {
+#kobtuscktc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nnxnlcqqsp .gt_row {
+#kobtuscktc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -925,7 +931,7 @@ grid-auto-rows: minmax(0, 1fr);">
   overflow-x: hidden;
 }
 
-#nnxnlcqqsp .gt_stub {
+#kobtuscktc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -938,7 +944,7 @@ grid-auto-rows: minmax(0, 1fr);">
   padding-right: 5px;
 }
 
-#nnxnlcqqsp .gt_stub_row_group {
+#kobtuscktc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -952,15 +958,15 @@ grid-auto-rows: minmax(0, 1fr);">
   vertical-align: top;
 }
 
-#nnxnlcqqsp .gt_row_group_first td {
+#kobtuscktc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#nnxnlcqqsp .gt_row_group_first th {
+#kobtuscktc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#nnxnlcqqsp .gt_summary_row {
+#kobtuscktc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -970,16 +976,16 @@ grid-auto-rows: minmax(0, 1fr);">
   padding-right: 5px;
 }
 
-#nnxnlcqqsp .gt_first_summary_row {
+#kobtuscktc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#nnxnlcqqsp .gt_first_summary_row.thick {
+#kobtuscktc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#nnxnlcqqsp .gt_last_summary_row {
+#kobtuscktc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -989,7 +995,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-bottom-color: #D3D3D3;
 }
 
-#nnxnlcqqsp .gt_grand_summary_row {
+#kobtuscktc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -999,7 +1005,7 @@ grid-auto-rows: minmax(0, 1fr);">
   padding-right: 5px;
 }
 
-#nnxnlcqqsp .gt_first_grand_summary_row {
+#kobtuscktc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1009,7 +1015,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-top-color: #D3D3D3;
 }
 
-#nnxnlcqqsp .gt_last_grand_summary_row_top {
+#kobtuscktc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1019,11 +1025,11 @@ grid-auto-rows: minmax(0, 1fr);">
   border-bottom-color: #D3D3D3;
 }
 
-#nnxnlcqqsp .gt_striped {
+#kobtuscktc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nnxnlcqqsp .gt_table_body {
+#kobtuscktc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1032,7 +1038,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-bottom-color: #D3D3D3;
 }
 
-#nnxnlcqqsp .gt_footnotes {
+#kobtuscktc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1046,7 +1052,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-right-color: #D3D3D3;
 }
 
-#nnxnlcqqsp .gt_footnote {
+#kobtuscktc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1055,7 +1061,7 @@ grid-auto-rows: minmax(0, 1fr);">
   padding-right: 5px;
 }
 
-#nnxnlcqqsp .gt_sourcenotes {
+#kobtuscktc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1069,7 +1075,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-right-color: #D3D3D3;
 }
 
-#nnxnlcqqsp .gt_sourcenote {
+#kobtuscktc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1077,72 +1083,72 @@ grid-auto-rows: minmax(0, 1fr);">
   padding-right: 5px;
 }
 
-#nnxnlcqqsp .gt_left {
+#kobtuscktc .gt_left {
   text-align: left;
 }
 
-#nnxnlcqqsp .gt_center {
+#kobtuscktc .gt_center {
   text-align: center;
 }
 
-#nnxnlcqqsp .gt_right {
+#kobtuscktc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nnxnlcqqsp .gt_font_normal {
+#kobtuscktc .gt_font_normal {
   font-weight: normal;
 }
 
-#nnxnlcqqsp .gt_font_bold {
+#kobtuscktc .gt_font_bold {
   font-weight: bold;
 }
 
-#nnxnlcqqsp .gt_font_italic {
+#kobtuscktc .gt_font_italic {
   font-style: italic;
 }
 
-#nnxnlcqqsp .gt_super {
+#kobtuscktc .gt_super {
   font-size: 65%;
 }
 
-#nnxnlcqqsp .gt_footnote_marks {
+#kobtuscktc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#nnxnlcqqsp .gt_asterisk {
+#kobtuscktc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#nnxnlcqqsp .gt_indent_1 {
+#kobtuscktc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#nnxnlcqqsp .gt_indent_2 {
+#kobtuscktc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#nnxnlcqqsp .gt_indent_3 {
+#kobtuscktc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#nnxnlcqqsp .gt_indent_4 {
+#kobtuscktc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#nnxnlcqqsp .gt_indent_5 {
+#kobtuscktc .gt_indent_5 {
   text-indent: 25px;
 }
 
-#nnxnlcqqsp .katex-display {
+#kobtuscktc .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#nnxnlcqqsp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#kobtuscktc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1236,8 +1242,8 @@ Data
 </span></div></div>
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-4510d5658fa0190bccd6" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-4510d5658fa0190bccd6">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161","162","163","164","165","166","167","168","169","170","171","172","173","174","175","176","177","178","179","180","181","182","183","184","185","186","187","188","189","190","191","192","193","194","195","196","197","198","199","200"],["Account_420968","Account_119984","Account_173959","Account_190575","Account_6739","Account_195888","Account_265076","Account_449172","Account_274792","Account_15699","Account_399148","Account_375884","Account_113654","Account_325897","Account_323841","Account_61666","Account_328887","Account_82493","Account_333413","Account_202979","Account_428976","Account_56096","Account_171546","Account_325347","Account_418073","Account_73065","Account_458529","Account_95108","Account_475905","Account_471221","Account_476506","Account_111753","Account_37882","Account_206189","Account_85372","Account_299228","Account_99912","Account_306316","Account_451556","Account_367944","Account_218383","Account_75046","Account_304372","Account_167641","Account_102754","Account_316979","Account_125416","Account_303682","Account_258764","Account_371238","Account_274565","Account_381230","Account_399282","Account_135393","Account_405931","Account_371722","Account_73645","Account_177234","Account_268609","Account_245838","Account_89075","Account_178043","Account_313167","Account_80945","Account_33818","Account_273710","Account_4882","Account_293006","Account_190873","Account_195811","Account_49379","Account_144075","Account_450208","Account_351978","Account_177613","Account_379456","Account_117576","Account_154524","Account_352941","Account_35498","Account_440081","Account_220850","Account_87642","Account_336830","Account_271887","Account_467817","Account_471428","Account_69827","Account_48069","Account_180080","Account_136596","Account_99429","Account_156056","Account_462855","Account_98906","Account_434186","Account_461279","Account_190860","Account_99722","Account_269779","Account_214395","Account_285588","Account_311140","Account_394680","Account_453913","Account_358211","Account_310241","Account_442396","Account_455686","Account_111219","Account_283200","Account_126970","Account_307440","Account_193402","Account_224520","Account_181161","Account_212529","Account_157887","Account_416147","Account_151640","Account_477307","Account_367842","Account_5557","Account_430822","Account_463604","Account_219036","Account_24005","Account_394171","Account_293053","Account_175893","Account_249967","Account_215952","Account_198520","Account_400357","Account_83104","Account_95965","Account_357373","Account_292287","Account_362570","Account_334463","Account_391072","Account_153158","Account_172571","Account_461109","Account_174537","Account_225147","Account_36189","Account_142410","Account_113046","Account_188393","Account_197030","Account_357346","Account_100682","Account_267283","Account_386755","Account_178093","Account_93104","Account_323867","Account_47407","Account_470593","Account_76006","Account_262303","Account_363283","Account_272636","Account_435479","Account_464689","Account_315821","Account_322210","Account_276612","Account_379471","Account_413591","Account_393227","Account_325924","Account_42084","Account_268683","Account_465041","Account_281357","Account_262976","Account_93553","Account_98359","Account_440092","Account_251253","Account_206090","Account_446756","Account_65694","Account_306326","Account_311578","Account_80172","Account_257397","Account_279689","Account_45421","Account_36681","Account_304850","Account_196168","Account_488387","Account_261453","Account_440820","Account_18744","Account_140755","Account_280771"],[7,6,3,12,12,1,10,7,12,12,4,0,6,6,1,5,5,0,12,1,9,9,1,6,1,5,1,10,7,1,1,0,8,8,1,7,4,0,3,1,11,0,8,6,2,4,3,12,7,10,11,12,5,6,3,0,7,10,5,6,0,1,8,12,6,11,1,9,9,0,1,9,10,3,5,6,7,9,9,10,9,9,3,1,1,7,2,12,1,2,11,5,2,6,6,4,5,6,7,1,1,8,5,10,8,6,1,9,7,4,5,9,12,12,9,5,5,1,1,0,5,1,1,1,10,11,12,5,8,6,5,10,0,5,0,10,12,12,5,12,6,2,8,9,5,2,0,2,7,12,4,10,5,7,0,12,10,0,12,9,10,4,2,5,7,7,6,5,1,1,2,5,3,8,7,2,8,6,1,7,3,0,6,1,10,1,1,10,2,9,8,9,12,1,9,5,6,7,8,7],["churned","churned","churned","churned","not churned","churned","not churned","churned","not churned","churned","not churned","churned","not churned","not churned","not churned","churned","not churned","churned","churned","not churned","churned","not churned","not churned","not churned","churned","not churned","churned","not churned","not churned","churned","not churned","churned","churned","churned","not churned","not churned","not churned","churned","not churned","churned","not churned","churned","churned","churned","churned","not churned","churned","churned","not churned","not churned","churned","churned","churned","not churned","churned","churned","churned","churned","churned","not churned","churned","churned","not churned","churned","churned","churned","churned","not churned","churned","churned","not churned","not churned","churned","not churned","not churned","churned","not churned","not churned","not churned","not churned","not churned","churned","churned","not churned","churned","churned","not churned","not churned","not churned","not churned","not churned","not churned","churned","churned","not churned","not churned","churned","churned","not churned","churned","churned","not churned","not churned","not churned","churned","not churned","churned","churned","not churned","churned","not churned","not churned","churned","churned","churned","churned","churned","churned","not churned","churned","churned","not churned","churned","churned","churned","not churned","churned","not churned","churned","not churned","churned","not churned","churned","churned","churned","churned","not churned","churned","not churned","not churned","churned","churned","not churned","not churned","churned","not churned","not churned","not churned","not churned","not churned","churned","not churned","not churned","not churned","churned","churned","churned","churned","not churned","churned","not churned","churned","churned","churned","not churned","churned","churned","churned","churned","not churned","churned","not churned","not churned","churned","churned","churned","not churned","churned","not churned","not churned","churned","churned","not churned","not churned","not churned","churned","churned","not churned","churned","not churned","not churned","not churned","not churned","not churned","churned","churned","not churned","churned","churned","churned"],["LOW","LOW","MEDIUM","MEDIUM","MEDIUM","MEDIUM","LOW","LOW","MEDIUM","LOW","LOW","MEDIUM","LOW","LOW","LOW","HIGH","MEDIUM","LOW","HIGH","MEDIUM","MEDIUM","LOW","MEDIUM","LOW","MEDIUM","LOW","MEDIUM","LOW","MEDIUM","LOW","MEDIUM","MEDIUM","MEDIUM","LOW","MEDIUM","MEDIUM","MEDIUM","MEDIUM","LOW","LOW","LOW","MEDIUM","MEDIUM","MEDIUM","MEDIUM","MEDIUM","MEDIUM","MEDIUM","MEDIUM","LOW","MEDIUM","MEDIUM","MEDIUM","MEDIUM","LOW","MEDIUM","MEDIUM","LOW","MEDIUM","MEDIUM","LOW","MEDIUM","LOW","MEDIUM","MEDIUM","LOW","LOW","MEDIUM","MEDIUM","MEDIUM","MEDIUM","MEDIUM","LOW","LOW","MEDIUM","LOW","MEDIUM","MEDIUM","MEDIUM","LOW","LOW","LOW","MEDIUM","MEDIUM","MEDIUM","LOW","MEDIUM","MEDIUM","MEDIUM","LOW","MEDIUM","MEDIUM","LOW","MEDIUM","MEDIUM","LOW","MEDIUM","LOW","LOW","MEDIUM","MEDIUM","LOW","MEDIUM","LOW","MEDIUM","LOW","MEDIUM","LOW","MEDIUM","LOW","MEDIUM","MEDIUM","MEDIUM","LOW","LOW","LOW","LOW","LOW","MEDIUM","MEDIUM","LOW","MEDIUM","MEDIUM","MEDIUM","LOW","MEDIUM","LOW","MEDIUM","LOW","MEDIUM","MEDIUM","MEDIUM","MEDIUM","LOW","MEDIUM","MEDIUM","MEDIUM","MEDIUM","MEDIUM","MEDIUM","LOW","MEDIUM","LOW","LOW","MEDIUM","MEDIUM","LOW","HIGH","MEDIUM","LOW","LOW","LOW","MEDIUM","LOW","MEDIUM","MEDIUM","LOW","MEDIUM","MEDIUM","LOW","LOW","LOW","MEDIUM","LOW","LOW","LOW","MEDIUM","MEDIUM","MEDIUM","MEDIUM","LOW","LOW","MEDIUM","LOW","LOW","LOW","LOW","MEDIUM","MEDIUM","LOW","LOW","LOW","MEDIUM","LOW","MEDIUM","MEDIUM","HIGH","MEDIUM","LOW","LOW","LOW","MEDIUM","LOW","MEDIUM","MEDIUM","LOW","MEDIUM","MEDIUM","LOW","MEDIUM"],["NGN","NGN","NGN","USD","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","USD","NGN","NGN","NGN","NGN","EUR","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","EUR","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","USD","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","GBP","NGN","NGN"],[22121.14,0,13.72,1833807.45,805.8299999999999,320.63,0,39478.45,27604.4,361.3,6856066.7,650.6800000000001,789.7,5.79,1556.58,9304566.09,0,195000,9259049.279999999,0,327.67,333.72,0,5604.35,390895.31,956.1900000000001,75.97,390,2766.08,64960.03,2152.29,33023.58,829.05,86892.33,0,706.7800000000001,799.75,0,2799.98,776.5,1246.45,132.16,292726.03,64994.71,0,3676.04,98.36,9235.32,1405.5,13,27094.68,1300415.32,1079.69,48150.06,751187.62,350.45,3012.83,366132.34,78512.36,1300,156.21,1855.79,5134.68,37137.32,5876.7,21120.93,870.6900000000001,1466.13,1524.04,0,0,1180.66,16376,0.8200000000000001,3066.25,10774.44,3458.61,155.97,136.46,1479.87,1412.68,29530.31,3471.4,0,0.7,696.74,0,360.17,1300,2340,14817.56,0,671.75,18698,490.3,12051.09,1197517.28,130427.9,1459.19,151.24,133.54,0,4795.620000000001,6.659999999999999,1887.86,32.21,1358.2,14134.26,4345.150000000001,634450.4,0,0.64,646.0700000000001,16696.07,27249.85,67.99000000000001,34839.14,1365.65,23.39,21484.16,3087.96,3996.75,6074.54,992.11,273306.19,0,16284.23,0,0,17.24,79473.86,364.21,502.35,39516.36,0,1727.77,1125.07,9353441.029999999,0,30.78,2782.87,2517.2,75.34999999999999,49.04,95329.2,2765.79,0,0,686.3599999999999,312.66,10199.24,26.88,140.19,82.36999999999999,101.05,19274.59,1208.61,23.02,42.06,1472078.5,22.8,2538.41,71768.18000000001,108838.56,24984.04,1752.82,9128.51,3.42,53320.16,546.0700000000001,2618.85,512.7700000000001,675.3199999999999,65,13895.91,1693.52,2301.7,1318.47,36.76000000000001,744.89,99219.98,0,0,0,1630.06,132,78073.19,227.86,32860.19,784.1,1481.43,483.26,19505.53,0,256.91,465.66,32.1,0,322.14,11869.56],["SBA","SBA","SBA","ODA","SBA","SBA","ODA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","LAA","ODA","SBA","ODA","SBA","SBA","SBA","SBA","SBA","SBA","ODA","ODA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","ODA","SBA","SBA","SBA","SBA","SBA","SBA","ODA","SBA","SBA","SBA","SBA","LAA","SBA","SBA","ODA","SBA","ODA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","ODA","SBA","SBA","SBA","ODA","SBA","SBA","SBA","SBA","SBA","ODA","ODA","ODA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","ODA","SBA","SBA","SBA","SBA","SBA","LAA","SBA","SBA","SBA","SBA","SBA","ODA","ODA","SBA","SBA","SBA","ODA","SBA","SBA","SBA","ODA","SBA","ODA","ODA","SBA","SBA","SBA","SBA","SBA","ODA","SBA","SBA","SBA","ODA","ODA","ODA","SBA","SBA","ODA","LAA","ODA","SBA","SBA","SBA","ODA","SBA","SBA","SBA","ODA","SBA","ODA","SBA","ODA","ODA","SBA","SBA","SBA","SBA","ODA","SBA","ODA","SBA","ODA","SBA","ODA","ODA","SBA","SBA","SBA","ODA","SBA","SBA","SBA","SBA","SBA","ODA","SBA","SBA","SBA","SBA","SBA","SBA","ODA","SBA","SBA","SBA","ODA","SBA","SBA","LAA","SBA","SBA","SBA","ODA","SBA","SBA","SBA","SBA","SBA","SBA","ODA","ODA","SBA","ODA","SBA","SBA","SBA","ODA","SBA"],["N","Y","Y","N","N","N","N","N","Y","Y","N","N","N","N","N","Y","N","Y","Y","N","Y","N","Y","N","N","N","N","N","N","N","N","Y","Y","N","N","N","Y","Y","N","N","N","Y","N","Y","N","N","Y","Y","N","N","N","Y","Y","N","Y","N","Y","Y","N","N","N","N","Y","Y","Y","Y","N","N","N","N","N","N","Y","Y","N","Y","N","N","N","N","N","Y","N","N","Y","Y","N","N","Y","N","N","N","N","N","N","N","Y","Y","N","Y","Y","Y","Y","N","N","N","Y","Y","N","Y","N","N","N","N","N","Y","N","N","N","N","Y","N","N","N","Y","N","N","N","Y","Y","N","N","Y","N","N","Y","N","Y","N","N","N","Y","N","N","N","N","Y","N","N","N","Y","N","N","N","N","Y","Y","N","N","Y","N","N","Y","N","Y","N","Y","Y","N","Y","N","N","Y","Y","N","Y","N","N","N","N","N","N","N","N","N","Y","N","N","Y","N","N","N","N","N","Y","N","N","Y","Y","Y"],["N","Y","Y","N","N","N","N","Y","Y","Y","N","N","N","N","N","Y","N","Y","Y","N","Y","N","Y","N","N","N","N","N","N","Y","N","Y","Y","Y","N","N","Y","Y","N","N","N","Y","Y","Y","N","N","Y","Y","N","N","Y","Y","Y","N","Y","N","Y","Y","Y","N","Y","N","Y","Y","Y","Y","N","N","N","N","N","N","Y","Y","N","Y","Y","Y","N","N","N","Y","N","N","Y","Y","N","N","Y","N","N","N","N","N","N","N","Y","Y","N","Y","Y","Y","Y","N","N","N","Y","Y","N","Y","N","N","Y","Y","N","Y","N","N","N","N","Y","N","N","N","Y","N","N","N","Y","Y","N","N","Y","N","N","Y","N","Y","N","N","N","Y","N","N","N","N","Y","Y","N","N","Y","N","N","N","N","Y","Y","N","N","Y","N","N","Y","N","Y","N","Y","Y","Y","Y","N","N","Y","Y","N","Y","N","N","N","N","N","N","N","N","N","Y","Y","N","Y","N","N","N","N","N","Y","N","N","Y","Y","Y"],["Y","Y","Y","N","N","N","N","Y","Y","N","N","N","N","Y","N","N","N","Y","N","Y","Y","N","N","N","N","N","Y","N","N","Y","N","Y","Y","N","N","N","Y","N","N","N","N","Y","Y","N","N","N","Y","Y","N","N","Y","Y","Y","N","Y","N","Y","Y","Y","N","Y","N","N","Y","Y","N","N","N","Y","N","N","N","Y","Y","N","Y","N","Y","N","N","N","N","Y","N","Y","Y","N","N","Y","Y","N","N","Y","N","N","N","N","Y","N","Y","Y","Y","Y","N","Y","N","Y","Y","N","Y","N","N","Y","Y","Y","Y","Y","N","Y","N","Y","N","Y","N","Y","N","Y","N","Y","N","Y","N","Y","Y","N","Y","N","Y","N","N","Y","Y","N","N","Y","N","N","N","N","N","Y","N","Y","N","N","N","Y","Y","N","N","N","N","Y","Y","N","N","Y","Y","N","Y","N","N","Y","Y","N","N","N","Y","N","N","N","Y","N","N","N","Y","N","N","Y","N","N","N","N","N","Y","Y","N","Y","Y","Y"],["N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","Y","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","Y","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","Y","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","Y","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N"],["N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N"],["N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N"],["N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N"],["product5","product8","product8","product7","product6","product6","product7","product7","product5","product7","product6","product7","product5","product5","product8","product4","product5","product7","product7","product7","product6","product7","product5","product5","product8","product5","product7","product7","product7","product7","product8","product7","product6","product8","product8","product7","product5","product5","product5","product8","product7","product7","product8","product5","product7","product5","product5","product8","product5","product7","product6","product5","product5","product6","product7","product8","product7","product8","product7","product7","product8","product8","product7","product6","product7","product5","product5","product7","product8","product8","product8","product6","product5","product5","product7","product8","product6","product8","product8","product7","product6","product7","product5","product8","product5","product7","product7","product5","product7","product7","product6","product5","product5","product5","product5","product5","product8","product8","product6","product7","product7","product8","product6","product7","product7","product5","product8","product8","product7","product8","product5","product7","product6","product6","product7","product8","product7","product7","product8","product9","product8","product8","product6","product8","product5","product5","product5","product5","product7","product8","product5","product6","product7","product5","product7","product5","product5","product7","product5","product5","product5","product7","product6","product6","product8","product5","product5","product4","product7","product7","product5","product7","product5","product8","product8","product6","product7","product7","product5","product7","product6","product5","product8","product5","product5","product5","product5","product5","product8","product8","product5","product5","product7","product7","product6","product7","product7","product6","product7","product5","product5","product5","product5","product5","product7","product9","product4","product5","product7","product5","product5","product6","product7","product7","product6","product8","product5","product2","product7","product7"],[224,9,37,17,0,36,0,20,29,277,0,6,0,0,0,32,0,111,69,0,89,0,0,1,27,0,10,0,0,33,5,222,5,98,0,0,0,0,0,2,0,1,38,58,0,0,24,2557,0,0,46,49,131,0,23,1,196,48,32,0,35,2,0,22,304,18,3,0,1,0,0,0,131,0,0,18,0,0,0,0,0,53,2,0,28,51,0,0,1,0,0,0,61,1,0,0,31,133,0,30,71,1,0,0,36,0,74,74,0,22,0,0,121,29,292,25,102,0,13,5,109,0,25,6,348,0,220,0,22,0,99,0,115,130,0,70,0,61,0,0,1,30,0,0,375,0,0,0,0,0,225,0,0,0,9,22,34,13,1,37,0,25,60,13,0,136,54,19,31,2,37,0,78,172,1,149,0,16,4,0,13,0,0,0,0,28,17,1,93,0,0,0,0,0,11,34,0,336,38,84],[785,60,131,66,0,85,0,53,3,912,1,7,0,0,0,41,0,494,149,0,208,0,0,0,108,0,26,0,0,137,3,292,43,55,0,0,0,0,0,0,0,0,123,204,0,0,49,421,0,0,64,101,307,0,80,3,339,126,96,0,41,0,0,80,685,6,0,0,1,0,0,0,313,0,0,14,0,0,0,0,0,523,0,0,60,577,0,0,0,0,0,0,22,0,0,0,423,522,0,49,148,1,0,0,27,0,103,647,0,175,0,0,112,79,921,22,88,0,13,1,136,0,9,9,1067,0,277,0,18,0,450,0,51,200,0,95,0,25,0,0,0,76,0,0,868,0,0,0,0,0,352,0,0,0,27,14,91,17,1,77,0,18,84,11,0,141,147,34,3,9,50,0,186,876,0,684,0,16,5,0,5,0,0,0,0,52,13,0,243,0,0,0,0,0,28,136,0,2848,46,533],[2937195.29,393692,123138.6,5424951.819999999,0,311194,0,572130,4225000,38267098.82,13000,30595.5,0,0,0,2067694.02,0,2519961.05,11364340,0,694788.25,0,0,0,1006723.25,0,63515.4,0,0,2820389,17290,4110808,365560,1132833,0,0,0,0,0,0,0,0,247455,2918251.73,0,0,408005,22516318.5,0,0,1292850,4697611.1,2558270,0,785761.38,6207.5,1519042.2,1610818.48,756502.5,0,634300.38,0,0,3171805,3377395.13,478842,0,0,7800,0,0,0,1581441.88,0,0,102101.03,0,0,0,0,0,16205884.02,0,0,176501,11882422.5,0,0,0,0,0,0,88644.39999999999,0,0,0,6970693.21,3721289,0,144703.78,390052,65000,0,0,169390,0,612690,7433372.38,0,8372002.6,0,0,290290,977372.5,4976153,19110,1930712.55,0,145957.5,4030,1389050,0,122200,64038,7235687.13,0,2969725.04,0,6877000,0,2077486.41,0,16939240.5,1372905.63,0,5194135.689999999,0,2624981.84,0,0,0,26494996.5,0,0,5700784.05,0,0,0,0,0,1990418.3,0,0,0,86164.33,1312768.64,1999649.6,230086.03,7800,15098200,0,102543.03,1456390,100490,0,849796.03,1740209.45,233090,196300,50180,272647.05,0,4089088.06,21482914.78,0,4044950.91,0,104650,21242.65,0,148762.45,0,0,0,0,72874.10000000001,36805457.96,0,3423677.57,0,0,0,0,0,425256,972257.75,0,226886979.92,585287.47,240327848.49],[3233293.36,389528.88,131809.6,4801604.07,0,313690,0,632450,3489850,38444965.66,0,31265,0,0,0,62791106.46,0,2361932.76,12448339.09,0,685425,0,0,5200,1218102.6,0,63739,0,0,2881710,17160,4147312,367900,1020110,0,0,0,0,0,780,0,130,369330,2741180,0,0,407680,22247327.83,0,0,1049490,4738695,2291643.42,0,913112.4300000001,6500,1437285.2,1720558.96,839185.92,0,609430.9,1820,0,3162671.2,3417493.14,546650,130,0,7800,0,0,0,1512875,0,0,111930,0,0,0,0,0,15940827.5,3900,0,137197.78,11750527.63,0,0,1300,0,0,0,92365,18749.41,0,0,5718476.87,3724792.37,0,141029.2,382552.95,65000,0,0,170300,0,617760,4803129.1,0,8998730,0,0,292825,960996.66,4929795.98,20995,1779960,0,146055,25064,1345045,0,128333.35,64610,7153122.31,0,2900377.55,0,14156404.47,0,2020094.93,0,16945890,1288027,0,4833221.03,0,7136350,0,0,650,26557280.1,0,0,5658694.55,0,0,0,0,0,2034864.98,0,0,0,86580,2612768.64,1967604.85,226200,7800,11828022.12,0,106210,1398930,168350,0,802490,1461316.19,230347,247975,4030,275873,0,3908174.96,16956359.3,1300,3727185.8,0,102700,21320,0,112917.27,0,0,0,0,74618.7,48872863.04,0,3374885.44,0,0,0,0,0,426766.82,929240,0,237320102.88,753148.8500000001,239023880.89]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>acct_id<\/th>\n      <th>years<\/th>\n      <th>churn_status<\/th>\n      <th>risk<\/th>\n      <th>currency<\/th>\n      <th>ave<\/th>\n      <th>bal<\/th>\n      <th>scheme<\/th>\n      <th>mobile_app<\/th>\n      <th>internet_banking<\/th>\n      <th>ussd_banking<\/th>\n      <th>digital_loan<\/th>\n      <th>unsecured_loan<\/th>\n      <th>termloan<\/th>\n      <th>credit_card<\/th>\n      <th>subsegment<\/th>\n      <th>credit_vol<\/th>\n      <th>debit_vol<\/th>\n      <th>debit_val<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"ftp","language":{"info":"Showing _TOTAL_ entries"},"paging":true,"columnDefs":[{"className":"dt-right","targets":[2,6,16,17,18,19]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"acct_id","targets":1},{"name":"years","targets":2},{"name":"churn_status","targets":3},{"name":"risk","targets":4},{"name":"currency","targets":5},{"name":"ave","targets":6},{"name":"bal","targets":7},{"name":"scheme","targets":8},{"name":"mobile_app","targets":9},{"name":"internet_banking","targets":10},{"name":"ussd_banking","targets":11},{"name":"digital_loan","targets":12},{"name":"unsecured_loan","targets":13},{"name":"termloan","targets":14},{"name":"credit_card","targets":15},{"name":"subsegment","targets":16},{"name":"credit_vol","targets":17},{"name":"debit_vol","targets":18},{"name":"debit_val","targets":19}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-8be0e2155e78c27a5267" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-8be0e2155e78c27a5267">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161","162","163","164","165","166","167","168","169","170","171","172","173","174","175","176","177","178","179","180","181","182","183","184","185","186","187","188","189","190","191","192","193","194","195","196","197","198","199","200"],["Account_415295","Account_213657","Account_110472","Account_219198","Account_46207","Account_376872","Account_18446","Account_244326","Account_25229","Account_24068","Account_125384","Account_453539","Account_235890","Account_426126","Account_302257","Account_351518","Account_365060","Account_77007","Account_399757","Account_324661","Account_261258","Account_318109","Account_102846","Account_371466","Account_344901","Account_383991","Account_267898","Account_462230","Account_19302","Account_292722","Account_126509","Account_408679","Account_485456","Account_223115","Account_190237","Account_300030","Account_167161","Account_73705","Account_239764","Account_159886","Account_15426","Account_262351","Account_293976","Account_73048","Account_116828","Account_260356","Account_128204","Account_167875","Account_228422","Account_317043","Account_1986","Account_4508","Account_174586","Account_405229","Account_424250","Account_413416","Account_450743","Account_205296","Account_54819","Account_434560","Account_65099","Account_309588","Account_444835","Account_89489","Account_355971","Account_314813","Account_95399","Account_297999","Account_474094","Account_282940","Account_381802","Account_107502","Account_97495","Account_330062","Account_86170","Account_21592","Account_362930","Account_450884","Account_212257","Account_338151","Account_432778","Account_219423","Account_338428","Account_38767","Account_417396","Account_68356","Account_295671","Account_277814","Account_214","Account_281362","Account_431847","Account_323083","Account_128196","Account_22310","Account_219489","Account_476009","Account_163045","Account_264572","Account_252853","Account_33923","Account_110552","Account_51279","Account_126994","Account_407671","Account_215917","Account_205093","Account_438667","Account_37567","Account_266070","Account_370699","Account_313016","Account_142446","Account_247326","Account_150210","Account_219806","Account_332065","Account_443623","Account_163105","Account_389915","Account_484389","Account_349811","Account_287026","Account_165116","Account_93568","Account_311599","Account_353314","Account_213788","Account_29902","Account_229748","Account_113348","Account_47909","Account_206025","Account_144104","Account_389015","Account_44459","Account_110269","Account_35496","Account_115469","Account_464229","Account_310620","Account_216998","Account_215188","Account_286297","Account_485947","Account_169996","Account_49040","Account_278207","Account_327833","Account_316365","Account_15925","Account_255920","Account_228757","Account_364744","Account_458324","Account_171135","Account_332050","Account_30718","Account_147197","Account_38255","Account_23946","Account_192921","Account_484343","Account_320052","Account_148365","Account_183921","Account_402956","Account_6781","Account_200647","Account_147707","Account_31604","Account_348766","Account_111933","Account_301497","Account_153156","Account_253898","Account_260020","Account_193420","Account_431135","Account_439867","Account_260954","Account_272336","Account_300214","Account_269511","Account_210604","Account_399382","Account_474509","Account_198968","Account_319837","Account_182116","Account_187177","Account_371592","Account_158808","Account_274680","Account_346602","Account_302024","Account_236734","Account_360307","Account_85394","Account_409118","Account_337110"],[7,4,5,6,6,5,5,10,11,7,12,11,3,7,4,2,10,5,9,9,2,8,0,5,5,6,7,1,2,9,4,7,1,11,12,1,12,7,9,9,11,4,8,4,4,1,6,9,12,6,4,10,1,9,8,4,10,10,0,6,1,5,4,8,12,6,10,1,8,12,4,1,3,11,9,12,7,12,5,6,5,0,3,3,10,12,4,4,7,1,1,6,12,12,5,4,9,12,4,12,6,8,11,9,4,9,3,6,4,7,7,2,10,1,11,4,4,8,4,8,5,10,2,5,5,12,3,2,6,9,1,12,8,9,6,9,0,6,10,11,10,0,9,6,8,2,9,7,5,5,9,9,7,6,2,3,5,10,8,4,0,12,1,5,8,6,1,4,6,4,8,8,1,5,5,6,0,10,10,1,9,1,3,4,10,10,5,8,1,12,12,11,6,8,10,2,8,7,8,1],["churned","not churned","not churned","churned","not churned","not churned","churned","churned","churned","not churned","churned","churned","churned","not churned","churned","churned","not churned","not churned","not churned","churned","churned","not churned","churned","churned","churned","churned","not churned","not churned","churned","not churned","not churned","churned","not churned","not churned","churned","churned","churned","not churned","churned","not churned","not churned","churned","not churned","churned","not churned","churned","not churned","churned","churned","churned","churned","churned","not churned","not churned","not churned","churned","not churned","not churned","churned","not churned","churned","churned","churned","churned","not churned","not churned","not churned","churned","not churned","not churned","not churned","churned","churned","churned","not churned","churned","not churned","churned","churned","churned","not churned","churned","not churned","not churned","churned","not churned","churned","churned","churned","not churned","not churned","churned","churned","churned","churned","not churned","not churned","not churned","churned","not churned","not churned","churned","not churned","not churned","churned","churned","churned","churned","not churned","churned","churned","churned","churned","not churned","churned","churned","not churned","not churned","churned","churned","not churned","churned","not churned","churned","not churned","not churned","not churned","churned","churned","not churned","not churned","churned","churned","not churned","churned","churned","churned","churned","not churned","churned","churned","churned","churned","churned","not churned","not churned","not churned","churned","churned","not churned","not churned","not churned","churned","churned","churned","churned","not churned","churned","churned","not churned","churned","not churned","churned","not churned","churned","churned","churned","churned","not churned","not churned","churned","churned","churned","not churned","not churned","churned","churned","churned","churned","not churned","not churned","churned","not churned","churned","not churned","not churned","churned","churned","not churned","churned","not churned","churned","not churned","churned","churned","not churned","churned","churned","churned","churned"],["LOW","LOW","LOW","MEDIUM","LOW","LOW","LOW","LOW","LOW","LOW","MEDIUM","MEDIUM","LOW","LOW","MEDIUM","MEDIUM","LOW","MEDIUM","LOW","MEDIUM","MEDIUM","LOW","LOW","MEDIUM","MEDIUM","MEDIUM","MEDIUM","LOW","MEDIUM","MEDIUM","LOW","LOW","MEDIUM","LOW","MEDIUM","LOW","LOW","MEDIUM","LOW","MEDIUM","LOW","MEDIUM","MEDIUM","LOW","LOW","LOW","LOW","LOW","MEDIUM","MEDIUM","LOW","MEDIUM","LOW","MEDIUM","MEDIUM","LOW","MEDIUM","LOW","MEDIUM","MEDIUM","MEDIUM","MEDIUM","LOW","MEDIUM","MEDIUM","LOW","LOW","MEDIUM","MEDIUM","MEDIUM","LOW","LOW","LOW","MEDIUM","MEDIUM","MEDIUM","MEDIUM","MEDIUM","LOW","LOW","MEDIUM","LOW","LOW","LOW","LOW","MEDIUM","LOW","LOW","MEDIUM","MEDIUM","MEDIUM","LOW","LOW","MEDIUM","MEDIUM","LOW","MEDIUM","MEDIUM","MEDIUM","LOW","HIGH","MEDIUM","LOW","MEDIUM","MEDIUM","MEDIUM","MEDIUM","MEDIUM","MEDIUM","LOW","LOW","LOW","LOW","MEDIUM","MEDIUM","LOW","LOW","MEDIUM","LOW","MEDIUM","MEDIUM","LOW","MEDIUM","LOW","MEDIUM","MEDIUM","LOW","LOW","MEDIUM","MEDIUM","LOW","MEDIUM","LOW","LOW","LOW","LOW","LOW","LOW","MEDIUM","MEDIUM","LOW","MEDIUM","MEDIUM","MEDIUM","MEDIUM","MEDIUM","MEDIUM","LOW","LOW","LOW","MEDIUM","LOW","LOW","LOW","MEDIUM","LOW","MEDIUM","LOW","LOW","LOW","MEDIUM","LOW","LOW","LOW","LOW","LOW","MEDIUM","MEDIUM","LOW","LOW","LOW","MEDIUM","MEDIUM","LOW","LOW","LOW","MEDIUM","LOW","LOW","MEDIUM","MEDIUM","MEDIUM","MEDIUM","LOW","LOW","MEDIUM","LOW","MEDIUM","MEDIUM","MEDIUM","LOW","LOW","LOW","LOW","MEDIUM","LOW","MEDIUM","MEDIUM","MEDIUM","LOW"],["NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","USD","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","USD","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","USD","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","USD","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN","NGN"],[105675.45,149.21,416.4299999999999,938.6900000000001,2338.67,2.46,198531.19,362.7,1365,83.02,108966.05,58977.59,20991.7,4459.33,2009.27,5429.610000000001,943.38,762.91,221.22,42425.57,136.47,3924.91,180.84,117428.18,10.1,231.74,1335.1,130,259.79,1634.48,7389.28,49391.62,0,1446.08,3753703.66,227.27,0,42.78,183984.03,0,826.9599999999999,959.9599999999999,2152.38,4566.87,1808.24,0,64.61,1979.93,26598.55,192.04,9928.230000000001,67,0,180.05,25.99,398766.16,50.15,201.53,85.31,4030,188.27,5094.08,23745.85,6737.28,421.25,3115.58,77.09,12022.37,1235,16501.19,1334.59,16.86,394.2,53422.51,0,5400.820000000001,130,3984.85,142.06,0,775.4499999999999,23.87,4942.650000000001,2863.34,322427.11,166.88,1866862.92,1168.12,0,214.86,0,2388.36,1070.71,902.2800000000001,19179.98,146.98,257.15,365.47,522.05,3354.3,54333.78,172.29,5936.92,1063.32,7750.51,5775058.37,417.55,2612.4,734.2,38522.19,35314.75,10433.05,1882315.28,0,2196848.08,41431.85000000001,12.31,7055.63,136482.32,291.79,517.24,2066.34,63.92,2714940.77,0,1708.62,2810.89,148.72,10742.06,1895.93,225.16,257903.36,199.97,1294.8,31362311.6,993.11,6596850,40366.25,0,4330358.68,78.83,1199.08,284.18,20.16,2639.74,611.65,4.46,1568154.55,165.52,4047.91,952.99,818.3399999999999,55039.17,2935.08,26594.3,406.15,63.77,423845.68,132.24,62.83,200406.52,478.73,13567.74,3012.63,641.2900000000001,5373.07,195,332.32,159.76,2877.24,2683.5,1184.69,53378.77,896.3599999999999,1862.68,9945.559999999999,85513.61,35979.2,208.77,2046.54,606.05,50.09,6342.92,225.33,905.8499999999999,459.84,635.39,159872.61,0,5406.84,0,806433.39,1.08,13.1,570967.4600000001,10.41,471.24,3473.12,1443.78,6808.63],["SBA","SBA","SBA","SBA","ODA","SBA","LAA","ODA","CAA","SBA","ODA","SBA","SBA","SBA","SBA","SBA","ODA","SBA","SBA","ODA","SBA","SBA","ODA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","ODA","ODA","ODA","SBA","SBA","ODA","ODA","ODA","ODA","SBA","SBA","ODA","SBA","SBA","SBA","SBA","ODA","SBA","SBA","SBA","SBA","SBA","ODA","ODA","SBA","ODA","ODA","SBA","ODA","SBA","SBA","SBA","ODA","ODA","SBA","ODA","SBA","CAA","SBA","SBA","SBA","SBA","LAA","ODA","SBA","ODA","SBA","SBA","CAA","SBA","SBA","SBA","SBA","ODA","SBA","SBA","SBA","SBA","SBA","SBA","ODA","ODA","ODA","SBA","SBA","ODA","SBA","SBA","SBA","ODA","ODA","SBA","ODA","SBA","ODA","SBA","ODA","SBA","SBA","ODA","SBA","SBA","SBA","LAA","SBA","ODA","ODA","SBA","SBA","SBA","ODA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","LAA","ODA","ODA","SBA","ODA","ODA","SBA","ODA","SBA","ODA","SBA","ODA","SBA","ODA","SBA","ODA","LAA","SBA","SBA","SBA","SBA","SBA","ODA","SBA","SBA","SBA","LAA","SBA","SBA","LAA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","SBA","ODA","LAA","SBA","SBA","SBA","LAA","ODA","ODA","SBA","ODA","SBA","SBA","SBA","ODA","SBA","SBA","LAA","SBA","SBA","ODA","LAA","SBA","ODA","ODA","SBA","SBA","SBA","SBA","SBA"],["Y","N","N","N","Y","N","N","Y","N","Y","N","Y","Y","N","N","Y","N","N","N","N","N","N","N","Y","N","Y","N","N","N","N","N","Y","N","N","N","N","N","N","N","N","N","Y","N","Y","N","Y","N","Y","Y","N","N","N","N","N","N","Y","N","N","N","N","N","N","Y","Y","N","N","N","N","N","N","Y","Y","Y","N","N","N","N","N","Y","Y","N","Y","N","N","Y","N","Y","N","N","N","N","Y","Y","Y","Y","N","N","Y","N","N","Y","Y","N","N","Y","Y","Y","Y","N","N","Y","N","Y","N","N","Y","N","Y","Y","Y","Y","Y","N","Y","N","N","N","N","Y","N","N","Y","Y","N","N","Y","Y","Y","N","Y","N","N","N","N","N","Y","N","Y","N","Y","N","Y","N","Y","Y","N","N","Y","N","Y","N","N","N","N","Y","N","N","N","N","N","Y","N","N","N","N","N","N","N","Y","N","N","Y","N","N","N","N","Y","N","N","Y","N","N","N","Y","Y","N","N","Y","Y","N"],["Y","N","N","Y","Y","N","N","Y","N","Y","Y","Y","Y","N","N","Y","N","N","N","N","N","N","N","Y","N","Y","N","N","N","N","N","Y","N","N","N","N","N","N","N","Y","N","Y","N","Y","N","Y","N","Y","Y","Y","N","N","N","N","N","Y","N","N","Y","N","N","N","Y","Y","N","N","N","N","N","N","Y","Y","Y","Y","N","Y","N","N","Y","Y","N","Y","N","N","Y","N","Y","N","Y","N","N","Y","Y","Y","Y","N","N","Y","N","N","Y","Y","N","N","Y","Y","Y","Y","N","N","Y","N","Y","N","Y","Y","Y","Y","Y","Y","Y","Y","Y","Y","N","N","N","N","Y","N","N","Y","Y","N","N","Y","Y","Y","N","Y","N","N","N","N","N","Y","N","Y","N","Y","N","Y","Y","Y","Y","N","N","Y","N","Y","N","N","N","N","Y","Y","N","N","N","N","Y","N","N","Y","N","N","N","N","Y","N","N","Y","N","N","N","Y","Y","N","N","Y","N","N","N","Y","Y","N","Y","Y","Y","N"],["Y","N","N","Y","N","Y","Y","Y","N","Y","N","Y","Y","N","Y","Y","N","N","N","Y","Y","N","N","Y","N","Y","N","N","Y","N","Y","Y","N","N","N","Y","N","N","N","N","N","Y","N","Y","N","Y","N","N","Y","N","N","Y","N","N","N","Y","N","N","Y","N","Y","Y","Y","Y","N","N","N","N","N","Y","N","Y","Y","Y","N","Y","N","N","Y","Y","N","Y","N","N","Y","N","N","N","Y","N","N","Y","N","N","Y","N","N","N","Y","N","N","Y","N","N","N","N","Y","Y","N","N","Y","Y","N","N","N","Y","Y","Y","Y","Y","N","Y","Y","N","N","N","N","Y","Y","N","Y","Y","Y","N","N","Y","Y","Y","N","Y","N","N","N","Y","N","Y","N","Y","Y","N","N","Y","N","Y","Y","Y","Y","Y","Y","Y","N","N","N","N","Y","Y","N","Y","N","N","Y","N","N","N","N","N","N","Y","Y","N","N","Y","N","Y","N","N","Y","Y","N","N","N","Y","N","Y","Y","N","N","Y","Y","N"],["N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","Y","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","Y","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","Y","N","N","N","N","N","N","N","N","N","Y","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","Y","N","N","N","N","N","N","N","N","N","N","N","N"],["N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","Y","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","Y","N","N","N","N","N","N","N","N"],["N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N"],["N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N"],["product7","product7","product5","product5","product7","product5","product5","product7","product6","product7","product6","product7","product7","product7","product8","product7","product7","product5","product5","product6","product8","product7","product7","product5","product7","product5","product8","product8","product7","product6","product5","product8","product7","product6","product6","product7","product6","product5","product7","product7","product5","product5","product7","product7","product5","product8","product5","product7","product6","product5","product7","product5","product8","product6","product8","product8","product7","product7","product7","product8","product8","product5","product8","product8","product7","product7","product7","product7","product5","product6","product7","product8","product8","product5","product7","product7","product7","product5","product7","product7","product5","product7","product5","product5","product7","product5","product7","product7","product8","product7","product8","product6","product6","product7","product8","product6","product7","product6","product5","product5","product7","product8","product7","product7","product6","product7","product7","product8","product7","product7","product7","product7","product7","product7","product7","product8","product7","product7","product8","product7","product5","product7","product5","product7","product5","product5","product5","product5","product7","product6","product5","product5","product5","product6","product6","product8","product7","product7","product5","product5","product7","product8","product8","product5","product6","product7","product7","product8","product7","product7","product7","product5","product8","product2","product5","product7","product5","product7","product5","product7","product5","product5","product8","product6","product5","product5","product5","product5","product5","product7","product6","product2","product5","product6","product5","product6","product5","product6","product7","product8","product6","product7","product5","product7","product8","product5","product8","product7","product8","product7","product5","product5","product7","product7","product8","product5","product7","product7","product5","product7"],[267,0,0,54,0,0,101,5,25,0,8,222,301,2,124,234,0,0,0,49,14,0,30,32,18,35,0,1,70,0,0,38,0,0,99,18,6,0,2,0,0,221,0,129,0,9,0,35,87,19,8,149,0,0,0,73,0,0,7,3,7,94,203,37,0,0,0,3,0,0,0,22,352,204,0,24,0,2,12,429,0,2,0,0,126,0,2,89,161,8,0,593,154,0,195,0,0,0,202,0,0,23,0,0,0,12,170,72,0,6,37,26,192,0,0,1737,0,0,107,11,0,85,0,73,0,0,0,91,73,0,3,244,260,0,0,67,111,731,0,15,14,0,31,28,0,8,0,33,253,0,0,0,14,26,59,240,0,1539,20,0,6,0,5,0,1,7,11,85,0,0,67,10,17,0,0,38,3,62,254,1,0,4,0,1,1,0,28,41,0,651,0,47,0,106,42,0,26,483,82,216],[457,0,0,108,0,0,172,16,110,0,66,171,390,0,220,1422,0,0,0,171,19,0,47,24,32,113,0,0,82,0,0,161,0,0,112,39,7,0,2,0,0,817,0,145,0,15,0,33,575,21,6,359,0,0,0,156,0,0,41,0,6,213,1590,71,0,0,0,0,0,0,0,22,780,792,0,150,0,0,26,910,0,9,0,0,823,0,5,484,346,8,0,267,183,0,887,0,0,0,397,0,0,78,0,0,1,151,552,205,0,14,238,17,786,0,0,946,0,0,356,12,0,361,0,139,0,0,0,150,148,0,2,670,1188,0,14,91,422,1671,0,35,46,0,128,26,0,22,0,21,319,0,0,0,92,73,88,432,0,1395,23,0,6,0,3,0,1,4,9,116,0,0,201,396,12,0,0,95,3,205,628,0,0,22,0,0,0,0,116,61,0,1178,0,128,0,281,130,0,52,1332,324,70],[24140031.5,0,0,1930368.38,0,0,2027336.18,242287.5,3439345,0,565509.41,5336050.2,1568661.9,0,1609035.03,210871764.6,0,0,0,1682005,151327.8,0,270627.5,428074.4,179776.03,2837846.7,0,0,552305,0,0,22656222.36,0,0,27404103.26,568411.03,22392.5,0,650000,0,0,2483734.5,0,2292348.5,0,104169,0,1586695.37,6470563.94,125827,2423200,907042.5,0,0,0,4826899.6,0,0,605975.5,0,50503.7,653419,35627093.75,775013.2,0,0,0,0,0,0,0,68935.10000000001,9374607.129999999,31272610.38,0,25861948.1,0,0,143369.53,61701922.54,0,285350,0,0,14986260.58,0,436800,2522483.8,3616308.4,64763.66,0,88037820,3382581.16,0,7184579.79,0,0,0,2104212.5,0,0,937950,0,0,26000,9242129,1316681.7,2478622.9,0,248040,5283813.72,124052.5,3224679.61,0,0,19559047.3,0,0,22453502.5,4336150,0,7215898.26,0,8949616,0,0,0,923227.5,640431.03,0,5070,6901838.659999999,16890940.43,0,48444500,7033996.59,44400221.39,28489662.41,0,2607312.5,249814.5,0,1205106.5,132184,0,1800175,0,688685.9300000001,4623254.03,0,0,0,1083066.75,5838296.45,457744.3,1220647.03,0,177232068.88,156747.5,0,198354.16,0,30550,0,18850,22100,213072.31,335822.5,0,0,2243605,6898397.01,183893.42,0,0,1057329.33,107377.52,5030137.609999999,14276942.55,0,0,350350,0,0,0,0,1617993,518227.46,0,70105669.74000001,0,3435780.62,0,93345538,10053203.16,0,558805,32791500.26,1080176.1,6837078.3],[23468951.53,0,0,1924587.44,0,0,1789315.42,218983.53,2706278.56,0,684027.5,5352214.4,1439986.6,2600,1618435.01,202011216.73,0,0,0,1625281.87,151645,0,271752,546650,176670,2315744.6,0,130,521950,0,0,23017040.8,0,0,29996801.67,639813.2,8710,0,39000,0,0,2493049.98,0,2274071.48,0,40300,0,7535906.98,6633253.42,126620,2430220,904826,0,0,0,4515420,0,0,606385,3900,48362.6,621855,33634548.53,777248.97,0,0,0,7800,0,0,0,69383.60000000001,9290521.029999999,29759014.39,0,4802850,0,1300,145171,57289861.80999999,0,260000,0,0,14208710.62,0,2249000,2216630,3626740,51805,0,84751593.89,3272047.62,0,7120693.31,0,0,0,2057743.38,0,0,855140,0,0,0,14604200,1243806.98,2288133.81,0,63050,6711209.78,130520,11367599.59,0,0,17906648.7,0,0,20980700,2516800,0,7392746.819999999,0,11058959.44,0,0,0,919620,643370,0,0,6895919.359999999,16616796.11,0,0,6900900.75,51018240,26969981.25,0,5734302.44,250185,2600,1205206.34,156000,0,1797770,0,1284491.74,4656150.859999999,0,0,0,1032200,5500418.3,475007,1162461.95,0,171158174.54,157365,0,36525.42,0,37700,0,19500,27430,162231.52,338772.2,0,0,2267200,5959200,145406,0,0,1050140,27191.07,5076573.159999999,14850342,1950,0,351310.7,0,130,910,0,1551153.5,593160.41,0,69308450.48,0,3202131.44,0,76667502.44000001,20265652.29,0,540800,25341822.74,1070288.7,6729503.3]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>acct_id<\/th>\n      <th>years<\/th>\n      <th>churn_status<\/th>\n      <th>risk<\/th>\n      <th>currency<\/th>\n      <th>ave<\/th>\n      <th>bal<\/th>\n      <th>scheme<\/th>\n      <th>mobile_app<\/th>\n      <th>internet_banking<\/th>\n      <th>ussd_banking<\/th>\n      <th>digital_loan<\/th>\n      <th>unsecured_loan<\/th>\n      <th>termloan<\/th>\n      <th>credit_card<\/th>\n      <th>subsegment<\/th>\n      <th>credit_vol<\/th>\n      <th>debit_vol<\/th>\n      <th>debit_val<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"ftp","language":{"info":"Showing _TOTAL_ entries"},"paging":true,"columnDefs":[{"className":"dt-right","targets":[2,6,16,17,18,19]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"acct_id","targets":1},{"name":"years","targets":2},{"name":"churn_status","targets":3},{"name":"risk","targets":4},{"name":"currency","targets":5},{"name":"ave","targets":6},{"name":"bal","targets":7},{"name":"scheme","targets":8},{"name":"mobile_app","targets":9},{"name":"internet_banking","targets":10},{"name":"ussd_banking","targets":11},{"name":"digital_loan","targets":12},{"name":"unsecured_loan","targets":13},{"name":"termloan","targets":14},{"name":"credit_card","targets":15},{"name":"subsegment","targets":16},{"name":"credit_vol","targets":17},{"name":"debit_vol","targets":18},{"name":"debit_val","targets":19}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -1271,8 +1277,8 @@ Metadata
 <p>The variables and their definition are given below.</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 17%">
-<col style="width: 82%">
+<col style="width: 22%">
+<col style="width: 77%">
 </colgroup>
 <tbody>
 <tr class="odd">

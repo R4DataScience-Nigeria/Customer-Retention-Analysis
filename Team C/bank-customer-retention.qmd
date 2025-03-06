@@ -1,5 +1,5 @@
 ---
-title: "Churn Dashboard"
+title: "Churns"
 format: 
   dashboard:
     orientation: columns
@@ -134,14 +134,14 @@ list(
 #| label: customers loyalty over time
 #| fig-width: 10
 #| fig-asp: 0.618
-churn_by_years
+ggplotly(churn_by_years)
 ```
 
 #### Churn by Risk {width="30%"}
 
 ```{r}
   # create visualization for churn distribution
-  ggplot(new_df, aes(x = fct_relevel(risk,c("LOW","MEDIUM","HIGH")))) +
+  ggplotly(ggplot(new_df, aes(x = fct_relevel(risk,c("LOW","MEDIUM","HIGH")))) +
     geom_bar( aes(fill = churn_status), alpha = 0.5, color = "black",
               position = "dodge") +
     labs(title = "Customer's Risk Churn Rate", 
@@ -158,7 +158,7 @@ churn_by_years
                                     size = 12,
                                     colour = "gray20"),
           plot.caption = element_text(face = "bold.italic",
-                                      size = 8))
+                                      size = 8)))
   
   churn_by_years <- new_df %>%
     group_by(years) %>%
@@ -217,8 +217,6 @@ new_df |>
 ```
 :::
 
-# Prediction
-
 # Data
 
 ## column 3 {.sidebar}
@@ -237,7 +235,7 @@ The data was obtained from a multinational bank with branches in Nigeria and acr
 The variables and their definition are given below.
 
 |                     |                                                                                                  |
-|:--------------------|:-------------------------------------------------------------------------------------------------|
+|:---------------|:-------------------------------------------------------|
 | **Variable**        |                                                                                                  |
 | Account ID          | A unique identifier for each customer account.                                                   |
 | Years               | The number of years a customer has been with the bank.                                           |
@@ -261,3 +259,5 @@ new_df |>
   datatable(options = list(dom = 'ftp', paging = TRUE))
 
 ```
+
+
