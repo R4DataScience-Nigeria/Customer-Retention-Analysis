@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,10 +64,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="Documentation_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="Documentation_files/libs/quarto-html/anchor.min.js"></script>
 <link href="Documentation_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="Documentation_files/libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="Documentation_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="Documentation_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="Documentation_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="Documentation_files/libs/bootstrap/bootstrap-e8633b877160568dff5275d19038869c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="Documentation_files/libs/bootstrap/bootstrap-762d9a5466594febb193879cb6a35051.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -46,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Content</h2>
    
   <ul class="collapse">
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">1. Introduction</a></li>
+  <li><a href="#customer-retention-analysis" id="toc-customer-retention-analysis" class="nav-link active" data-scroll-target="#customer-retention-analysis">1. Customer Retention Analysis</a></li>
   <li><a href="#data-information" id="toc-data-information" class="nav-link" data-scroll-target="#data-information">2. Data Information</a></li>
   <li><a href="#research-questions" id="toc-research-questions" class="nav-link" data-scroll-target="#research-questions">3. Research Questions</a></li>
   <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">4. Data Cleaning</a></li>
@@ -55,8 +89,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#modelling" id="toc-modelling" class="nav-link" data-scroll-target="#modelling">7. Modelling</a></li>
   <li><a href="#dashboard-building" id="toc-dashboard-building" class="nav-link" data-scroll-target="#dashboard-building">8. Dashboard Building</a></li>
   <li><a href="#deployment" id="toc-deployment" class="nav-link" data-scroll-target="#deployment">9. Deployment</a></li>
+  <li><a href="#deploying-to-connect" id="toc-deploying-to-connect" class="nav-link" data-scroll-target="#deploying-to-connect">Deploying to Connect</a></li>
   <li><a href="#collaborators" id="toc-collaborators" class="nav-link" data-scroll-target="#collaborators">10. Collaborators</a></li>
-  <li><a href="#collaboration-and-version-control" id="toc-collaboration-and-version-control" class="nav-link" data-scroll-target="#collaboration-and-version-control">11. Collaboration and Version Control</a></li>
   </ul>
 </nav>
 </div>
@@ -87,15 +121,16 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">1. Introduction</h2>
-<p>This report documents the steps taken to devlop a churn prediction model using machine learning techniques</p>
-<section id="project-title" class="level3">
-<h3 class="anchored" data-anchor-id="project-title">1.1 Project Title</h3>
-<p>Churn Prediction Using Machine Learning</p>
+<section id="customer-retention-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="customer-retention-analysis">1. Customer Retention Analysis</h2>
+<p>This documentation outlines the development of a robust Machine Learning model that accurately predicts customer churn for banks.</p>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">1.1 Introduction</h3>
+<p>In today’s competitive financial sector, customer retention is crucial for banks. Increasing customer churn is impacting revenue and raising the cost of acquiring new customers. Despite various engagement strategies, banks lack a reliable system to predict and prevent customer attrition.</p>
 </section>
 <section id="aim-and-objectives" class="level3">
 <h3 class="anchored" data-anchor-id="aim-and-objectives">1.2 Aim and Objectives</h3>
+<p>The primary aim of this project is to develop a robust Machine Learning model that accurately predicts customer churn for banks. Leveraging historical customer data, including transaction patterns, product usage, account tenure, and demographic information, the model will identify key factors contributing to customer attrition.</p>
 <ul>
 <li><strong>Aim</strong>: To develop a predictive model that accurately identifies customers who are likely to churn.</li>
 <li><strong>Objectives</strong>:
@@ -105,6 +140,12 @@ ul.task-list li input[type="checkbox"] {
 <li>Build and evaluate multiple machine learning models.</li>
 <li>Deploy the best-performing model in a user-friendly dashboard.</li>
 </ul></li>
+<li>Key Deliverable:
+<ul>
+<li>Identify At-Risk Customers: Detect customers who are likely to churn in the near future with high accuracy.</li>
+<li>Understand Churn Drivers: Analyze the primary reasons for customer churn and provide actionable insights.</li>
+<li>Optimize Retention Strategies: Develop targeted retention strategies and personalized interventions to improve customer satisfaction and reduce churn rates.</li>
+</ul></li>
 </ul>
 </section>
 </section>
@@ -113,8 +154,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="data-source" class="level3">
 <h3 class="anchored" data-anchor-id="data-source">2.1 Data Source</h3>
 <ul>
-<li><strong>Source</strong>: The dataset is sourced from Kaggle or any other relevant source.</li>
-<li><strong>Description</strong>: The dataset contains customer information, including demographic details, account information, and service usage patterns.</li>
+<li><strong>Source</strong>: The data-set was obtained from a multinational bank with branches in Nigeria and across Africa. It was generated in 2023.</li>
+<li><strong>Description</strong>: The data-set contains 19 variables and 500,000 rows. It is part of a larger data-set of over 20 million records</li>
 </ul>
 </section>
 <section id="metadata" class="level3">
@@ -122,27 +163,25 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><strong>Columns</strong>:
 <ul>
-<li><code>customerID</code>: Unique identifier for each customer.</li>
-<li><code>gender</code>: Gender of the customer.</li>
-<li><code>SeniorCitizen</code>: Indicates if the customer is a senior citizen.</li>
-<li><code>Partner</code>: Indicates if the customer has a partner.</li>
-<li><code>Dependents</code>: Indicates if the customer has dependents.</li>
-<li><code>tenure</code>: Number of months the customer has been with the company.</li>
-<li><code>PhoneService</code>: Indicates if the customer has phone service.</li>
-<li><code>MultipleLines</code>: Indicates if the customer has multiple lines.</li>
-<li><code>InternetService</code>: Type of internet service the customer has.</li>
-<li><code>OnlineSecurity</code>: Indicates if the customer has online security.</li>
-<li><code>OnlineBackup</code>: Indicates if the customer has online backup.</li>
-<li><code>DeviceProtection</code>: Indicates if the customer has device protection.</li>
-<li><code>TechSupport</code>: Indicates if the customer has tech support.</li>
-<li><code>StreamingTV</code>: Indicates if the customer has streaming TV.</li>
-<li><code>StreamingMovies</code>: Indicates if the customer has streaming movies.</li>
-<li><code>Contract</code>: Type of contract the customer has.</li>
-<li><code>PaperlessBilling</code>: Indicates if the customer has paperless billing.</li>
-<li><code>PaymentMethod</code>: Method of payment used by the customer.</li>
-<li><code>MonthlyCharges</code>: Monthly charges incurred by the customer.</li>
-<li><code>TotalCharges</code>: Total charges incurred by the customer.</li>
-<li><code>Churn</code>: Indicates if the customer has churned.</li>
+<li><p><strong><code>acct_id</code></strong>: A unique identifier for each customer account.</p></li>
+<li><p><strong><code>years</code></strong>: The number of years a customer has been with the bank.</p></li>
+<li><p><strong><code>churn</code></strong>: A binary indicator of whether the customer has churned (e.g., 0 for not churned, 1 for churned).</p></li>
+<li><p><strong><code>risk_rating</code></strong>: A rating or score that reflects the financial risk associated with the customer.</p></li>
+<li><p><strong><code>currency</code></strong>: The currency used in the customer’s account (e.g., NGN, USD, EUR).</p></li>
+<li><p><strong><code>ave_bal</code></strong>: The average balance in the customer’s account over a specified period.</p></li>
+<li><p><strong><code>scheme_type</code></strong>: The type of banking scheme or product the customer is using. Y = Yes; N = No.</p></li>
+<li><p><strong><code>mobile*app*adoption</code></strong>: Indicates whether the customer uses the bank’s mobile app. Y = Yes; N = No.</p></li>
+<li><p><strong><code>internet_banking_adoption</code></strong>: Indicates whether the customer uses internet banking. Y = Yes; N = No.</p></li>
+<li><p><strong><code>ussd_banking_adoption</code></strong>: Indicates whether the customer uses USSD banking services. Y = Yes; N = No.</p></li>
+<li><p><strong><code>digital_loan</code></strong>: Indicates whether the customer has taken a digital loan. Y = Yes; N = No.</p></li>
+<li><p><strong><code>unsecured_loan</code></strong>: Indicates whether the customer has an unsecured loan. Y = Yes; N = No.</p></li>
+<li><p><strong><code>termloan_status</code></strong>: Status of the customer’s term loan. Y = Yes; N = No.</p></li>
+<li><p><strong><code>credit_card</code></strong>: Indicates whether the customer holds a credit card with the bank. Y = Yes; N = No.</p></li>
+<li><p><strong><code>subsegment</code></strong>: Total volume of credit transactions over the last 12 months.</p>
+<p><strong><code>last_12_months_credit_volume</code></strong>: Total volume of credit transactions over the last 12 months.</p></li>
+<li><p><strong><code>last_12_months_debit_volume</code></strong>: Total volume of debit transactions over the last 12 months.</p></li>
+<li><p><strong><code>last_12_months_debit_value</code></strong>: Total value of debit transactions over the last 12 months.</p></li>
+<li><p><strong><code>last_12_months_credit_value</code></strong>: Total value of credit transactions over the last 12 months.</p></li>
 </ul></li>
 </ul>
 </section>
@@ -158,9 +197,67 @@ ul.task-list li input[type="checkbox"] {
 <section id="data-cleaning" class="level2">
 <h2 class="anchored" data-anchor-id="data-cleaning">4. Data Cleaning</h2>
 <ul>
-<li>Handle missing values.</li>
-<li>Correct data types (e.g., convert <code>TotalCharges</code> to numeric).</li>
-<li>Remove duplicates.</li>
+<li><p>Change Column Names to Lower Case</p>
+<p><code>clean_names()</code></p>
+<ul>
+<li>Convert all column names to lower case for consistency.</li>
+</ul></li>
+<li><p>Rename Long Column Names</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rename</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">years =</span> <span class="st">"years_with_bank"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">risk =</span> <span class="st">"risk_rating"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">scheme =</span> <span class="st">"scheme_type"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">mobile_app =</span> <span class="st">"mobile_app_adoption"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">internet_banking =</span> <span class="st">"internet_banking_adoption"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ussd_banking =</span> <span class="st">"ussd_banking_adoption"</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">termloan =</span> <span class="st">"termloan_status"</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">credit_vol =</span> <span class="st">"last_12_months_credit_volume"</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">debit_vol =</span> <span class="st">"last_12_months_debit_volume"</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">debit_val =</span> <span class="st">"last_12_months_debit_value"</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">credit_val =</span> <span class="st">"last_12_months_credit_value"</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Renames long column names to shorter, more manageable names.</li>
+</ul></li>
+<li><p>Filter Out Specific Values</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(<span class="sc">!</span>(ave <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"GBP"</span>, <span class="st">"JPY"</span>, <span class="st">"NGN"</span>, <span class="st">"SBA"</span>, <span class="st">"USD"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Removes rows where the <code>ave</code> column contains specific currency codes instead of average balance.</li>
+</ul></li>
+<li><p>Convert Numeric Columns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(ave, subsegment, debit_vol, debit_val, credit_val), </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>              <span class="sc">~</span> <span class="fu">parse_number</span>(<span class="fu">str_replace_all</span>(., <span class="st">","</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                               <span class="fu">str_replace_all</span>(<span class="st">"-"</span>, <span class="st">"0"</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Converts columns to numeric by removing commas and replacing hyphens with zeros.</li>
+</ul></li>
+<li><p>Convert Character Columns to Factors</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.character), as.factor))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Converts all character columns to factors for better handling in modeling.</li>
+</ul></li>
+<li><p>Recode Churn Column.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">churn =</span> <span class="fu">factor</span>(<span class="fu">ifelse</span>(churn <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"churned"</span>, <span class="st">"not churned"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Recodes the <code>churn</code> column to a factor with levels “churned” and “not churned”.</li>
+</ul></li>
+<li><p>Save Clean Data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(new_churn, <span class="at">file =</span> <span class="st">"Team A/clean_churn.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Saves the cleaned dataset to an RDS file for future use.</li>
+</ul></li>
 </ul>
 </section>
 <section id="data-preprocessing" class="level2">
@@ -187,6 +284,202 @@ ul.task-list li input[type="checkbox"] {
 <li>Select the best-performing model.</li>
 <li>Summary of findings and recommendations</li>
 </ul>
+<section id="load-models" class="level3">
+<h3 class="anchored" data-anchor-id="load-models">Load models</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">file.exists</span>(<span class="st">"Team A/clean_churn.rds"</span>)) {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  eval_fits <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># read outputs in from source:</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">load</span>(<span class="st">"data/mutagen_tbl.Rda"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">load</span>(<span class="st">"data/metrics_wf_set.Rda"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">load</span>(<span class="st">"data/metrics_xgb.Rda"</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">load</span>(<span class="st">"data/xgb_final_fit.Rda"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">load</span>(<span class="st">"data/final_fit.Rda"</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  final_fit <span class="ot">&lt;-</span> bundle<span class="sc">::</span><span class="fu">unbundle</span>(final_fit)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  eval_fits <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="setup" class="level3">
+<h3 class="anchored" data-anchor-id="setup">Setup</h3>
+<p>First, loading tidymodels, along with a few additional tidymodels extension packages:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(baguette)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xgboost)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(finetune)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bundle)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vetiver)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>tidymodels supports a number of R frameworks for parallel computing:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(doMC)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(parallelly)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">availableCores</span>()</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">registerDoMC</span>(<span class="at">cores =</span> <span class="fu">max</span>(<span class="dv">1</span>, <span class="fu">availableCores</span>() <span class="sc">-</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, loading data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load and preprocess data</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>churn_df <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"Team A/clean_churn.rds"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(credit_val, x21)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">churn_status =</span> <span class="st">"churn"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="splitting-up-data" class="level3">
+<h3 class="anchored" data-anchor-id="splitting-up-data">Splitting up data</h3>
+<p>We split data into training and testing sets so that, once we’ve trained our final model, we can get an honest assessment of the model’s performance:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reduce dataset size if needed</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>churn_df <span class="ot">&lt;-</span> churn_df <span class="sc">%&gt;%</span> <span class="fu">sample_n</span>(<span class="dv">50000</span>)  <span class="co"># Keep 50,000 rows for efficiency</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Split data</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>churn_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(churn_df)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>churn_train <span class="ot">&lt;-</span> <span class="fu">training</span>(churn_split)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>churn_test <span class="ot">&lt;-</span> <span class="fu">testing</span>(churn_split)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Reduce CV folds from 10 to 3</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>churn_folds <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(churn_train, <span class="at">v =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="defining-our-modeling-strategies" class="level3">
+<h3 class="anchored" data-anchor-id="defining-our-modeling-strategies">Defining our modeling strategies</h3>
+<p>Our basic strategy is to first try out a bunch of different modeling approaches, and once we have an initial sense for how they perform, delve further into the one that looks the most promising.</p>
+<p>We first define a few <em>recipes</em>, which specify how to process the inputted data in such a way that machine learning models will know how to work with predictors:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Feature engineering recipe</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>recipe_mixed <span class="ot">&lt;-</span> <span class="fu">recipe</span>(churn_status <span class="sc">~</span> ., <span class="at">data =</span> churn_train) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_rm</span>(acct_id) <span class="sc">%&gt;%</span>  <span class="co"># Remove unique ID</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_corr</span>(<span class="fu">all_numeric_predictors</span>(), <span class="at">threshold =</span> <span class="fl">0.9</span>) <span class="sc">%&gt;%</span>  <span class="co"># Remove highly correlated variables</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_nzv</span>(<span class="fu">all_predictors</span>()) <span class="sc">%&gt;%</span>  <span class="co"># Remove near-zero variance predictors</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_YeoJohnson</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span>  </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>(), <span class="sc">-</span><span class="fu">all_outcomes</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_zv</span>(<span class="fu">all_predictors</span>())  <span class="co"># Remove zero-variance predictors</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>These recipes vary in complexity, from basic checks on the input data to advanced feature engineering techniques like principal component analysis.</p>
+<p>We also define several <em>model specifications</em>. tidymodels comes with support for all sorts of machine learning algorithms, from neural networks to XGBoost boosted trees to plain old logistic regression:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose two models (logistic regression and XGBoost)</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>spec_lr <span class="ot">&lt;-</span> <span class="fu">logistic_reg</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"classification"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"glm"</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>spec_xgb <span class="ot">&lt;-</span> <span class="fu">boost_tree</span>(<span class="at">trees =</span> <span class="dv">50</span>, <span class="at">min_n =</span> <span class="fu">tune</span>(), <span class="at">tree_depth =</span> <span class="fu">tune</span>(),</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">learn_rate =</span> <span class="fl">0.1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"xgboost"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"classification"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note how similar the code for each of these model specifications looks! tidymodels takes care of the “translation” from our unified syntax to the code that these algorithms expect.</p>
+<p>If typing all of these out seems cumbersome to you, or you’re not sure how to define a model specification that makes sense for your data, the usemodels RStudio addin may help!</p>
+</section>
+<section id="evaluating-models-round-1" class="level3">
+<h3 class="anchored" data-anchor-id="evaluating-models-round-1">Evaluating models: round 1</h3>
+<p>We’ll pair machine learning models with the recipes that make the most sense for them:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Performance metrics</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>churn_metrics <span class="ot">&lt;-</span> <span class="fu">metric_set</span>(roc_auc, accuracy)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Workflow set with fewer models</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>wf_set <span class="ot">&lt;-</span> <span class="fu">workflow_set</span>(</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">preproc =</span> <span class="fu">list</span>(<span class="at">mixed =</span> recipe_mixed),</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">models =</span> <span class="fu">list</span>(</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">logistic_reg =</span> spec_lr,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">boost_tree =</span> spec_xgb</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a> <span class="co">#Define control settings (without grid argument)</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>ctrl <span class="ot">&lt;-</span> <span class="fu">control_grid</span>(<span class="at">save_pred =</span> <span class="cn">TRUE</span>, <span class="at">parallel_over =</span> <span class="st">"everything"</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Train models with a smaller grid (grid = 5)</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>wf_set_fit <span class="ot">&lt;-</span> <span class="fu">workflow_map</span>(</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  wf_set, </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">fn =</span> <span class="st">"tune_grid"</span>, </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">1</span>,</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">resamples =</span> churn_folds, </span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> churn_metrics,</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">grid =</span> <span class="dv">5</span>,  <span class="co"># Specify grid size here, not in control_grid</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">control =</span> ctrl</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(wf_set_fit, <span class="at">file =</span> <span class="st">"Team C/models/wf_set_fit.Rda"</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>wf_set_fit <span class="ot">&lt;-</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  wf_set_fit[</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">map_lgl</span>(wf_set_fit<span class="sc">$</span>result, </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>            <span class="sc">~</span><span class="fu">pluck</span>(., <span class="st">".metrics"</span>, <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">inherits</span>(<span class="st">"tbl_df"</span>), </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">"tune_results"</span>),</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># First look at metrics:</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>metrics_wf_set <span class="ot">&lt;-</span> <span class="fu">collect_metrics</span>(wf_set_fit, <span class="at">summarize =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Taking a look at how these models did:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>metrics_wf_set <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(.metric <span class="sc">==</span> <span class="st">"roc_auc"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(.estimate))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="evaluating-models-round-2" class="level3">
+<h3 class="anchored" data-anchor-id="evaluating-models-round-2">Evaluating models: round 2</h3>
+<p>It looks like XGBoost with minimal preprocessing was considerably more performant than the other proposed models. Let’s work with those XGBoost results and see if we can make any improvements to performance:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(metrics_wf_set, <span class="at">file =</span> <span class="st">"Team C/models/metrics_wf_set.Rda"</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract best XGBoost model</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>xgb_res <span class="ot">&lt;-</span> <span class="fu">extract_workflow_set_result</span>(wf_set_fit, <span class="st">"mixed_boost_tree"</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>xgb_wflow <span class="ot">&lt;-</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(recipe_mixed) <span class="sc">%&gt;%</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(spec_xgb)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulated annealing tuning</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>xgb_sim_anneal_fit <span class="ot">&lt;-</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tune_sim_anneal</span>(</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">object =</span> xgb_wflow,</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">resamples =</span> churn_folds,</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">iter =</span> <span class="dv">25</span>,</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">metrics =</span> churn_metrics,</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">initial =</span> xgb_res,</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">control =</span> <span class="fu">control_sim_anneal</span>(<span class="at">verbose =</span> <span class="cn">TRUE</span>, <span class="at">parallel_over =</span> <span class="st">"everything"</span>)</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(xgb_sim_anneal_fit, <span class="at">file =</span> <span class="st">"Team C/models/xgb_sim_anneal_fit.Rda"</span>)</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>metrics_xgb <span class="ot">&lt;-</span> <span class="fu">collect_metrics</span>(xgb_sim_anneal_fit, <span class="at">summarize =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(metrics_xgb, <span class="at">file =</span> <span class="st">"Team C/models/metrics_xgb.Rda"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Looks like we <em>did</em> make a small improvement:</p>
+</section>
+<section id="the-final-model-fit" class="level3">
+<h3 class="anchored" data-anchor-id="the-final-model-fit">The final model fit</h3>
+<p>The <code>last_fit()</code> function will take care of fitting the most performant model specification to the whole training dataset:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Final model fit and evaluation against test set</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>xgb_final_fit <span class="ot">&lt;-</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">last_fit</span>(</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">finalize_workflow</span>(xgb_wflow, <span class="fu">select_best</span>(xgb_sim_anneal_fit, <span class="at">metric =</span> <span class="st">"roc_auc"</span>)),</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    churn_split</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(xgb_final_fit, <span class="at">file =</span> <span class="st">"Team C/models/xgb_final_fit.Rda"</span>)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>final_fit <span class="ot">&lt;-</span> <span class="fu">bundle</span>(xgb_final_fit<span class="sc">$</span>.workflow[[<span class="dv">1</span>]])</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(final_fit, <span class="at">file =</span> <span class="st">"Team C/models/final_fit.Rda"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 </section>
 <section id="dashboard-building" class="level2">
 <h2 class="anchored" data-anchor-id="dashboard-building">8. Dashboard Building</h2>
@@ -203,25 +496,41 @@ ul.task-list li input[type="checkbox"] {
 <li>Ensure the dashboard is accessible and user-friendly.</li>
 </ul>
 </section>
+<section id="deploying-to-connect" class="level2">
+<h2 class="anchored" data-anchor-id="deploying-to-connect">Deploying to Connect</h2>
+<p>From here, all we need to do to deploy our fitted model is pass it off to vetiver for deployment to Posit Connect:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>final_fit_vetiver <span class="ot">&lt;-</span> <span class="fu">vetiver_model</span>(final_fit, <span class="st">"mutagen"</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>board <span class="ot">&lt;-</span> <span class="fu">board_connect</span>()</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">vetiver_pin_write</span>(board, final_fit_vetiver)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">vetiver_deploy_rsconnect</span>(board, <span class="st">"simon.couch/mutagen"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 <section id="collaborators" class="level2">
 <h2 class="anchored" data-anchor-id="collaborators">10. Collaborators</h2>
 <ul>
-<li><strong>R4DataScienceNigeria Team</strong>:
-<ul>
-<li>Collaborator 1</li>
-<li>Collaborator 2</li>
-<li>Collaborator 3</li>
-</ul></li>
+<li><strong>R4DataScienceNigeria Team</strong>:</li>
 </ul>
-</section>
-<section id="collaboration-and-version-control" class="level2">
-<h2 class="anchored" data-anchor-id="collaboration-and-version-control">11. Collaboration and Version Control</h2>
-<ul>
-<li><p>Initialize a git repository <code>git init</code></p></li>
-<li><p>Add files to the repo <code>git add</code></p></li>
-<li><p>Commit changes `git commit -m “Initial commit”</p></li>
-<li><p>Push to Github <code>git push</code></p></li>
-</ul>
+<ol type="1">
+<li>Arowolo Victor</li>
+<li>Eyebiokin Oluwaseun</li>
+<li>Adesanya Oluwasegun Qudus</li>
+<li>Adebona Oreoluwa Elizabeth</li>
+<li>Yusuff Olatunji Sikiru</li>
+<li>Chizoma Chidiebube Chikere</li>
+<li>Omowunmi Adebayo-Ajeyomi</li>
+<li>Okoye Gloria. I.</li>
+<li>Adebisi Saheed D.</li>
+<li>Aina Ayomide</li>
+<li>Azeez Babatunde Akintonde</li>
+<li>Omisore Halleluyah</li>
+<li>Ojile Cecilia</li>
+<li>Abdulwahab Morohunmubo Olajumoke</li>
+<li>Daniel Oluwafemi Olofin</li>
+</ol>
 </section>
 
 </main>

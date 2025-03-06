@@ -175,9 +175,11 @@ The primary aim of this project is to develop a robust Machine Learning model th
 -   Select the best-performing model.
 -   Summary of findings and recommendations
 
+### Load models
 
 ```{r}
-#| echo: false
+#| message: false
+#| eval: false
 if (file.exists("Team A/clean_churn.rds")) {
   eval_fits <- FALSE
   # read outputs in from source:
@@ -192,7 +194,7 @@ if (file.exists("Team A/clean_churn.rds")) {
 }
 ```
 
-## Setup
+### Setup
 
 First, loading tidymodels, along with a few additional tidymodels extension packages:
 
@@ -235,7 +237,7 @@ churn_df <- read_rds("Team A/clean_churn.rds") %>%
 
 ```
 
-## Splitting up data
+### Splitting up data
 
 We split data into training and testing sets so that, once we've trained our final model, we can get an honest assessment of the model's performance:
 
@@ -256,7 +258,7 @@ churn_test <- testing(churn_split)
 churn_folds <- vfold_cv(churn_train, v = 3)
 ```
 
-## Defining our modeling strategies
+### Defining our modeling strategies
 
 Our basic strategy is to first try out a bunch of different modeling approaches, and once we have an initial sense for how they perform, delve further into the one that looks the most promising.
 
@@ -298,7 +300,7 @@ Note how similar the code for each of these model specifications looks! tidymode
 
 If typing all of these out seems cumbersome to you, or you're not sure how to define a model specification that makes sense for your data, the usemodels RStudio addin may help!
 
-## Evaluating models: round 1
+### Evaluating models: round 1
 
 We'll pair machine learning models with the recipes that make the most sense for them:
 
@@ -363,7 +365,7 @@ metrics_wf_set %>%
   arrange(desc(.estimate))
 ```
 
-## Evaluating models: round 2
+### Evaluating models: round 2
 
 It looks like XGBoost with minimal preprocessing was considerably more performant than the other proposed models. Let's work with those XGBoost results and see if we can make any improvements to performance:
 
@@ -400,7 +402,7 @@ save(metrics_xgb, file = "Team C/models/metrics_xgb.Rda")
 
 Looks like we *did* make a small improvement:
 
-## The final model fit
+### The final model fit
 
 The `last_fit()` function will take care of fitting the most performant model specification to the whole training dataset:
 
@@ -418,7 +420,6 @@ save(xgb_final_fit, file = "Team C/models/xgb_final_fit.Rda")
 final_fit <- bundle(xgb_final_fit$.workflow[[1]])
 save(final_fit, file = "Team C/models/final_fit.Rda")
 ```
-
 
 ## 8. Dashboard Building
 
@@ -445,21 +446,25 @@ board <- board_connect()
 vetiver_pin_write(board, final_fit_vetiver)
 
 vetiver_deploy_rsconnect(board, "simon.couch/mutagen")
-```s
+```
 
 ## 10. Collaborators
 
 -   **R4DataScienceNigeria Team**:
-    -   Collaborator 1
-    -   Collaborator 2
-    -   Collaborator 3
+1. Arowolo Victor
+2. Eyebiokin Oluwaseun
+3. Adesanya Oluwasegun Qudus
+4. Adebona Oreoluwa Elizabeth
+5. Yusuff Olatunji Sikiru
+6. Chizoma Chidiebube Chikere
+7. Omowunmi Adebayo-Ajeyomi
+8. Okoye Gloria. I.
+9. Adebisi Saheed D.
+10. Aina Ayomide
+11. Azeez Babatunde Akintonde
+12. Omisore Halleluyah
+13. Ojile Cecilia
+14. Abdulwahab Morohunmubo Olajumoke
+15. Daniel Oluwafemi Olofin
 
-## 11. Collaboration and Version Control
-
--   Initialize a git repository `git init`
-
--   Add files to the repo `git add`
-
--   Commit changes \`git commit -m "Initial commit"
-
--   Push to Github `git push`
+    
